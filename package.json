@@ -1,0 +1,31 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "start": "dumi dev",
+    "dev": "dumi dev",
+    "docs:build": "dumi build",
+    "docs:deploy": "gh-pages -d docs-dist",
+    "build": "lerna run build",
+    "deploy": "npm run docs:build && npm run docs:deploy",
+    "release": "npm run build && npm publish",
+    "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "@testing-library/react-hooks": "^3.3.0",
+    "@types/jest": "^26.0.5",
+    "@umijs/fabric": "^2.2.2",
+    "babel-jest": "^26.1.0",
+    "babel-plugin-transform-async-to-promises": "^0.8.15",
+    "dumi": "^1.0.33",
+    "eslint": "^7.5.0",
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "jest": "^26.1.0",
+    "lerna": "^3.22.1",
+    "react-test-renderer": "^16.13.1",
+    "ts-jest": "^26.1.3"
+  }
+}
