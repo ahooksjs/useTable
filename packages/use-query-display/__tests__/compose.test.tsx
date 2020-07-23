@@ -3,10 +3,10 @@ import { pipeMergedCompose, mergedCompose, pipeCompose } from '../src/compose';
 describe('useQueryDisplay#Compose', () => {
   it('pipeCompose#Basic', () => {
     const pipes = [
-      props => {
+      (props) => {
         return { ...props, name: 'foo' };
       },
-      props => {
+      (props) => {
         return {
           ...props,
           height: 120,
@@ -24,11 +24,11 @@ describe('useQueryDisplay#Compose', () => {
 
   it('pipeCompose#Mix', () => {
     const pipes = [
-      props => {
+      (props) => {
         return { ...props, name: 'foo' };
       },
       { size: '📱' },
-      props => {
+      (props) => {
         return {
           ...props,
           height: 120,
@@ -47,10 +47,10 @@ describe('useQueryDisplay#Compose', () => {
 
   it('pipeCompose#Order', () => {
     const pipes = [
-      props => {
+      (props) => {
         return { ...props, arr: props.arr.concat(['foo']) };
       },
-      props => {
+      (props) => {
         return { ...props, arr: props.arr.concat(['bar']) };
       },
     ];
@@ -103,10 +103,10 @@ describe('useQueryDisplay#Compose', () => {
 
   it('pipeMergedCompose#Pipe', () => {
     const props = [
-      $props => {
+      ($props) => {
         return { ...$props, name: 'foo' };
       },
-      $props => {
+      ($props) => {
         return { ...$props, height: 120 };
       },
     ];
@@ -120,7 +120,7 @@ describe('useQueryDisplay#Compose', () => {
 
   it('pipeMergedCompose#pipe & merge', () => {
     const props = [
-      $props => {
+      ($props) => {
         return { ...$props, name: 'foo' };
       },
       {

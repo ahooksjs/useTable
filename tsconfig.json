@@ -7,11 +7,14 @@
     "esModuleInterop": true,
     "downlevelIteration": true,
     "sourceMap": true,
-    "baseUrl": ".",
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "declaration": false,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "baseUrl": ".",
+    "paths": {
+      "@ecojs/*": ["packages/*/src"]
+    },
   },
   "exclude": [
     "node_modules",
@@ -20,6 +23,7 @@
     "dist",
     "**/__tests__",
     "**/__test__",
+    "**/test",
     "**/demo",
     "jest.config.js"
   ]
