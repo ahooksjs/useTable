@@ -11,6 +11,8 @@ import { checkQueryFrom } from './helper';
 
 export * from './type';
 
+export { PREPARE, IS_NORMAL_SYMBOL };
+
 const useMutableState = (initalState: Obj = {}) => {
   const [state, setState] = useState(initalState);
   const mutableState = useMemo(() => ({}), []);
@@ -71,6 +73,7 @@ const useTableQueryPlugin = (options): Plugin => {
           ctx.store = store;
           ctx.query = query;
           ctx.actions = actions;
+          ctx.options = options;
           ctx.helper = {
             ...helper,
             checkQueryFrom: () => checkQueryFrom(ctx as IContext),
@@ -108,7 +111,7 @@ function useTable(service: (params?: Obj) => Promise<IResponse>, options?: Optio
   const plugin: RawPlugins = [useTableQueryPlugin({ ...options, current, pageSize })];
   const { props: tableQueryProps = {}, query } = useQueryDisplay(
     { timelines: [PREPARE].concat(timelines), ...options, service },
-    plugin.concat(addYourMiddlewares(plugins)),
+    plugin.concat(addYourMiddlewares(plugins))
   );
 
   useMount(() => {

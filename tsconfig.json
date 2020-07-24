@@ -24,7 +24,6 @@
     "**/__tests__",
     "**/__test__",
     "**/test",
-    "**/demo",
     "jest.config.js"
   ]
 }
