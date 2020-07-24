@@ -26,6 +26,6 @@ export default {
     { rel: 'stylesheet', href: '/style.css' },
   ],
   resolve: {
-    includes: ['packages/next-table'],
+    includes: ['packages/next-table', 'packages/use-sortable-plugin'],
   },
 };

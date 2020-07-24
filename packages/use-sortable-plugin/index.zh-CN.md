@@ -1,16 +1,16 @@
 ---
-title: useNextTable
+title: useSortablePlugin
 nav:
   title: Hooks
   path: /hooks
 group:
-  title: NextTable
-  path: /next
+  title: useSortablePlugin
+  path: /use-sortable-plugin
   order: 1
-legacy: /next-table
+legacy: /next-sortable-plugin
 ---
 
-# useNextTable
+# useSortablePlugin
 
 ## 代码演示
 

@@ -26,7 +26,7 @@ const createStore = () => {
   const stateMap = {
     get: () => $memoState,
     set: (memoState: Obj) => {
-      $memoState = memoState;
+      $memoState = { ...$memoState, ...memoState };
     },
   };
 
