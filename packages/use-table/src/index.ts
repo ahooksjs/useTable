@@ -1,5 +1,5 @@
 import { useMemo, useRef, useCallback, useState, useEffect } from 'react';
-import useQueryDisplay from '@ecojs/use-query-display';
+import useQueryDisplay from '@ahooksjs/use-query-display';
 import { timelines, defaults, methods, PREPARE } from './config';
 import createStore from './store';
 import middlewares from './middlewares/index';

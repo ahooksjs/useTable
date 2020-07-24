@@ -5,9 +5,9 @@ import {
   IHelper,
   IMiddlewareContext,
   NormalPlugin,
-} from '@ecojs/use-query-display';
+} from '@ahooksjs/use-query-display';
 
-export * from '@ecojs/use-query-display';
+export * from '@ahooksjs/use-query-display';
 
 export type Pipe = (ctx: IMiddlewareContext) => Obj;
 

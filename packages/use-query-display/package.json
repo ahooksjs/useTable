@@ -1,5 +1,5 @@
 {
-  "name": "@ecojs/use-query-display",
+  "name": "@ahooksjs/use-query-display",
   "version": "0.0.1",
   "scripts": {
     "build": "father-build",

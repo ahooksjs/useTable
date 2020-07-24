@@ -1,5 +1,5 @@
 {
-  "name": "@ecojs/use-sortable-plugin",
+  "name": "@ahooksjs/use-sortable-plugin",
   "version": "0.0.1",
   "scripts": {
     "build": "father-build",

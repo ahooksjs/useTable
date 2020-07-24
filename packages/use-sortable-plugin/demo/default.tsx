@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
 import { SchemaForm, Field, Submit, Reset, FormButtonGroup } from '@formily/next';
 import { Input } from '@formily/next-components';
-import useNextFormTable from '@ecojs/next-table';
+import useNextFormTable from '@ahooksjs/next-table';
 import { Table, Pagination } from '@alifd/next';
-import useSortablePlugin from '@ecojs/use-sortable-plugin';
+import useSortablePlugin from '@ahooksjs/use-sortable-plugin';
 
 const list = ({ current, pageSize, ...formData }) => {
   let query = `page=${current}&size=${pageSize}`;

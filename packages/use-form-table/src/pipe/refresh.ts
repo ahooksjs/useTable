@@ -1,4 +1,4 @@
-import { Pipe } from '@ecojs/use-table';
+import { Pipe } from '@ahooksjs/use-table';
 
 const refreshPipe: Pipe = (ctx) => {
   const { store } = ctx;

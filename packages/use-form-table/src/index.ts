@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { createFormActions, IFormActions } from '@formily/react';
-import useTable from '@ecojs/use-table';
+import useTable from '@ahooksjs/use-table';
 import { IS_FORM_DATA_SUBMITTED } from './symbol';
 import { methods } from './config';
 import pipes from './pipe/index';

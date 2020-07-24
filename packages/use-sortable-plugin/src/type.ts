@@ -1,4 +1,4 @@
-import { FormTableNormalPlugin } from '@ecojs/use-table';
+import { FormTableNormalPlugin } from '@ahooksjs/use-table';
 
 export interface IOptions {
   sortByKey?: string;

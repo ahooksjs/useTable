@@ -1,5 +1,5 @@
 {
-  "name": "@ecojs/use-form-table",
+  "name": "@ahooksjs/use-form-table",
   "version": "0.0.1",
   "scripts": {
     "build": "father-build",

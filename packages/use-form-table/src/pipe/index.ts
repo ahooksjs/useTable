@@ -1,4 +1,4 @@
-import { Pipe, IS_NORMAL_SYMBOL } from '@ecojs/use-table';
+import { Pipe, IS_NORMAL_SYMBOL } from '@ahooksjs/use-table';
 import refreshPipe from './refresh';
 import normalPipe from './normal';
 

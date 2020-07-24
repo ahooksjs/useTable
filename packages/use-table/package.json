@@ -1,5 +1,5 @@
 {
-  "name": "@ecojs/use-table",
+  "name": "@ahooksjs/use-table",
   "version": "0.0.1",
   "scripts": {
     "build": "father-build",
@@ -9,7 +9,7 @@
   "module": "dist/index.esm.js",
   "typings": "dist/index.d.ts",
   "dependencies": {
-    "@ecojs/use-query-display": "*"
+    "@ahooksjs/use-query-display": "*"
   },
   "peerDependencies": {
     "react": "^16.12.0"

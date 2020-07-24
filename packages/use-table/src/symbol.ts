@@ -2,7 +2,7 @@
  * 管理私有变量
  */
 
-export { PAYLOAD_SYMBOL, REQUEST_SYMBOL } from '@ecojs/use-query-display';
+export { PAYLOAD_SYMBOL, REQUEST_SYMBOL } from '@ahooksjs/use-query-display';
 
 export const IS_NORMAL_SYMBOL = Symbol.for('isNormal');
 

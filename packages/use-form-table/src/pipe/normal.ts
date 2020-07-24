@@ -1,5 +1,5 @@
 // 一些常规操作
-import { PAYLOAD_SYMBOL, Pipe } from '@ecojs/use-table';
+import { PAYLOAD_SYMBOL, Pipe } from '@ahooksjs/use-table';
 import { IS_FORM_DATA_SUBMITTED } from '../symbol';
 
 const normalPipe: Pipe = (ctx) => {
