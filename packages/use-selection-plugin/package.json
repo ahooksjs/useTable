@@ -1,5 +1,5 @@
 {
-  "name": "@ahooksjs/use-form-table",
+  "name": "@ahooksjs/use-selection-plugin",
   "version": "0.0.1",
   "scripts": {
     "build": "father-build",
@@ -18,12 +18,9 @@
     "@testing-library/react-hooks": "^3.3.0",
     "@types/jest": "^26.0.5",
     "father-build": "^1.17.2",
-    "react-test-renderer": "^16.13.1"
-  },
-  "dependencies": {
-    "@formily/react-schema-renderer": "^1.2.9",
-    "moment": "^2.27.0",
-    "react-eva": "^1.1.10",
-    "styled-components": "^5.1.1"
+    "lint-staged": "^10.0.7",
+    "prettier": "^1.19.1",
+    "react-test-renderer": "^16.13.1",
+    "yorkie": "^2.0.0"
   }
 }
