@@ -50,7 +50,7 @@ const useParams = (ctx: Obj) => {
 
 const propProcessors = [...useProps, useParams];
 
-const useTableQueryPlugin = (options): Plugin => {
+const useTablePlugin = (options): Plugin => {
   const [state, setState] = useMutableState({
     loading: false,
     dataSource: [],
@@ -108,7 +108,7 @@ function useTable(service: (params?: Obj) => Promise<IResponse>, options?: Optio
     refreshDeps = [],
   } = options || {};
 
-  const plugin: RawPlugins = [useTableQueryPlugin({ ...options, current, pageSize })];
+  const plugin: RawPlugins = [useTablePlugin({ ...options, current, pageSize })];
   const { props: tableQueryProps = {}, query } = useQueryDisplay(
     { timelines: [PREPARE].concat(timelines), ...options, service },
     plugin.concat(addYourMiddlewares(plugins))

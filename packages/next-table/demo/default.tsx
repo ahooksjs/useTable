@@ -25,7 +25,7 @@ const list = ({ current, pageSize, ...formData }) => {
 };
 
 const Component = () => {
-  const { formProps, tableProps, paginationProps } = useNextFormTable(list, {});
+  const { formProps, tableProps, paginationProps } = useNextFormTable(list);
 
   return (
     <Fragment>

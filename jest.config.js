@@ -8,6 +8,6 @@ module.exports = {
     },
   },
   moduleNameMapper: {
-    '@ecojs/(.*)': '<rootDir>/packages/$1/src/index',
+    '@ahooksjs/(.*)': '<rootDir>/packages/$1/src/index',
   },
 };

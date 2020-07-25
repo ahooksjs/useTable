@@ -68,8 +68,8 @@ export interface IStore {
 export interface IResponse {
   data: {
     dataSource: Obj[];
-    current: number;
-    pageSize: number;
+    current?: number;
+    pageSize?: number;
     total: number;
     [name: string]: any;
   };

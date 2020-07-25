@@ -21,7 +21,7 @@
     "react-test-renderer": "^16.13.1"
   },
   "dependencies": {
-    "@formily/react": "^1.2.9",
+    "@formily/react-schema-renderer": "^1.2.9",
     "react-eva": "^1.1.10"
   }
 }
