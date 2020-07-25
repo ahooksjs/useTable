@@ -1,4 +1,9 @@
+import * as fs from 'fs';
+
+const includes = fs.readdirSync('./packages').map((pkg) => `packages/${pkg}`);
+
 export default {
+  title: '@ahooksjs/use-table',
   extraBabelPlugins: [
     [
       'babel-plugin-import',
@@ -23,9 +28,8 @@ export default {
       rel: 'stylesheet',
       href: 'https://unpkg.com/@alifd/theme-design-pro@0.6.2/dist/next.min.css',
     },
-    { rel: 'stylesheet', href: '/style.css' },
   ],
   resolve: {
-    includes: ['packages/'],
+    includes: ['docs'].concat(includes),
   },
 };
