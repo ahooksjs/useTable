@@ -1,3 +1,3 @@
-import useFormTable from '@ahooksjs/use-form-table';
+export * from '@ahooksjs/use-form-table';
 
-export default useFormTable;
+export { default } from '@ahooksjs/use-form-table';

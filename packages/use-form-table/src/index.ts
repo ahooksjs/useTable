@@ -64,3 +64,5 @@ const useFormTable = (
 };
 
 export default useFormTable;
+
+export { methods };

@@ -1,4 +1,4 @@
-import { useMemo, useRef, useCallback, useState, useEffect } from 'react';
+import { useMemo, useCallback } from 'react';
 import useQueryDisplay from '@ahooksjs/use-query-display';
 import { timelines, defaults, methods, PREPARE } from './config';
 import createStore from './store';
@@ -8,41 +8,11 @@ import { Obj, ReturnValue, RawPlugins, Options, Plugin, IContext, IResponse } fr
 import { addYourMiddlewares } from './shared';
 import { IS_NORMAL_SYMBOL } from './symbol';
 import { checkQueryFrom } from './helper';
+import { useMutableState, useMount, useUpdateEffect } from './use';
 
 export * from './type';
 
-export { PREPARE, IS_NORMAL_SYMBOL };
-
-const useMutableState = (initalState: Obj = {}) => {
-  const [state, setState] = useState(initalState);
-  const mutableState = useMemo(() => ({}), []);
-  Object.assign(mutableState, state);
-  return [mutableState, setState];
-};
-
-const useMount = (fn) => {
-  useEffect(fn, []);
-};
-
-const useStateIsInit = () => {
-  const ref = useRef(true);
-  if (ref.current) {
-    ref.current = false;
-    return true;
-  }
-
-  return ref.current;
-};
-
-const useUpdateEffect = (fn, deps) => {
-  const isInit = useStateIsInit();
-
-  useEffect(() => {
-    if (!isInit) {
-      fn();
-    }
-  }, deps);
-};
+export { PREPARE, IS_NORMAL_SYMBOL, methods };
 
 const useParams = (ctx: Obj) => {
   ctx.getParams = ctx.store.paramMap.get;

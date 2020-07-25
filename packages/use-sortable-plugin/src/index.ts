@@ -1,64 +1,41 @@
 import { useRef } from 'react';
+import { methods } from '@ahooksjs/use-form-table';
 import { IOptions, TUseSortablePlugin } from './type';
 
-const needResetActions = ['onFormMount', 'onFormSubmit', 'onFormReset'];
+const needResetActions = [methods.ON_MOUNT, methods.ON_FORM_SUBMIT, methods.ON_FORM_RESET];
 
 const useSortablePlugin: TUseSortablePlugin = (options: IOptions = {}) => {
   const sort = useRef({});
-  const {
-    sortByKey = 'sortBy',
-    sortOrderKey = 'sortOrder',
-    multiple = false,
-    transformer = res => res,
-  } = options;
+  const { sortByKey = 'sortBy', sortOrderKey = 'sortOrder' } = options;
 
-  const onSort = ctx => (dataIndex, order) => {
-    const { query, params } = ctx;
-    const { sortBy } = params;
-
-    let sortParams;
-    if (multiple) {
-      sortParams = transformer({
-        sortBy: {
-          ...sortBy,
-          [dataIndex]: order,
-        },
-      });
-      sort.current = { ...sortBy, [dataIndex]: order };
-    } else {
-      sortParams = transformer({
-        [sortByKey]: dataIndex,
-        [sortOrderKey]: order,
-      });
-      sort.current = { [dataIndex]: order };
-    }
-    query({ ...sortParams, pageIndex: 1 });
-  };
-
-  const resetSort = ctx => {
-    const { params, meta } = ctx;
-    const { queryFrom } = meta;
-
-    if (needResetActions.includes(queryFrom)) {
-      if (multiple) {
-        delete params.sortBy;
-      } else {
-        delete params[sortByKey];
-        delete params[sortOrderKey];
-      }
-      sort.current = {};
-    }
+  const propsToParams = (props) => {
+    return Object.entries(props).reduce((acc, val) => {
+      const [dataIndex, order] = val;
+      return { ...acc, [sortByKey]: dataIndex, [sortOrderKey]: order };
+    }, {});
   };
 
   return {
     middlewares: (ctx, next) => {
-      resetSort(ctx);
+      const { meta } = ctx;
+      const { queryFrom } = meta;
+      if (needResetActions.includes(queryFrom)) {
+        sort.current = {};
+      } else {
+        ctx.params = { ...ctx.params, ...propsToParams(sort.current) };
+      }
       return next();
     },
-    props: ctx => ({
+    props: (ctx) => ({
       tableProps: {
         sort: sort.current,
-        onSort: onSort(ctx),
+        onSort: (dataIndex, order) => {
+          const { query } = ctx;
+
+          sort.current = { [dataIndex]: order };
+          const sortParams = propsToParams(sort.current);
+          query({ ...sortParams, pageIndex: 1 });
+        },
       },
     }),
   };
