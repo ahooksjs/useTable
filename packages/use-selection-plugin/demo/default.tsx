@@ -42,10 +42,10 @@ const Component = () => {
       </SchemaForm>
 
       <Table {...tableProps}>
-        <Table.Column title="name" dataIndex="name.last" width={140} />
+        <Table.Column title="name" dataIndex="name.last"  width={200} />
         <Table.Column title="email" dataIndex="email" width={500} />
         <Table.Column title="phone" dataIndex="phone" width={500} />
-        <Table.Column title="gender" dataIndex="gender" width={500} />
+        <Table.Column title="gender" dataIndex="gender" width={200} />
       </Table>
       <Pagination style={{ marginTop: 16 }} {...paginationProps} />
     </Fragment>

@@ -2,8 +2,24 @@ import React, { Fragment } from 'react';
 import { SchemaForm, Field, Submit, Reset, FormButtonGroup } from '@formily/next';
 import { Input } from '@formily/next-components';
 import useNextFormTable from '@ahooksjs/next-form-table';
-import { Table, Pagination } from '@alifd/next';
+import useAsyncDefaultPlugin from '@ahooksjs/use-async-default-plugin';
 import useFilterPlugin from '@ahooksjs/use-filter-plugin';
+import useSortablePlugin from '@ahooksjs/use-sortable-plugin';
+import useSelectionPlugin from '@ahooksjs/use-selection-plugin';
+import { Table, Pagination, Button } from '@alifd/next';
+
+const select = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({
+        data: [
+          { label: '默认选中', value: 'default_select' },
+          { label: '测试', value: 'test' },
+        ],
+      });
+    }, 1000);
+  });
+};
 
 const filters = [
   {
@@ -41,9 +57,12 @@ const list = ({ current, pageSize, ...formData }) => {
 };
 
 const Component = () => {
+  const asyncDefaultPlugin = useAsyncDefaultPlugin({ query: select, field: 'name' });
+  const selectionPlugin = useSelectionPlugin({ primaryKey: 'phone' });
   const filterPlugin = useFilterPlugin();
-  const { formProps, tableProps, paginationProps } = useNextFormTable(list, {
-    plugins: [filterPlugin],
+  const sortablePlugin = useSortablePlugin();
+  const { formProps, tableProps, paginationProps, getSelectedRowKeys } = useNextFormTable(list, {
+    plugins: [asyncDefaultPlugin, filterPlugin, sortablePlugin, selectionPlugin],
   });
 
   return (
@@ -56,6 +75,16 @@ const Component = () => {
         </FormButtonGroup>
       </SchemaForm>
 
+      <p>
+        <Button
+          onClick={() => {
+            console.log(getSelectedRowKeys());
+          }}
+        >
+          点击查看勾选值
+        </Button>
+      </p>
+
       <Table primaryKey={'login.uuid'} {...tableProps}>
         <Table.Column title="name" dataIndex="name.last"  width={200} />
         <Table.Column
@@ -65,7 +94,7 @@ const Component = () => {
           filters={filters}
           filterMode={'single'}
         />
-        <Table.Column title="phone" dataIndex="phone" width={500} />
+        <Table.Column title="phone" dataIndex="phone" width={500} sortable />
         <Table.Column title="gender" dataIndex="gender" width={200} />
       </Table>
       <Pagination style={{ marginTop: 16 }} {...paginationProps} />

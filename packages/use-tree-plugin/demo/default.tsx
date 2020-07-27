@@ -60,7 +60,7 @@ const Component = () => {
       <Table primaryKey={'login.uuid'} {...tableProps}>
         <Table.Column title="email" dataIndex="email" width={500} />
         <Table.Column title="phone" dataIndex="phone" width={500} />
-        <Table.Column title="gender" dataIndex="gender" width={500} />
+        <Table.Column title="gender" dataIndex="gender" width={200} />
       </Table>
       <Pagination style={{ marginTop: 16 }} {...paginationProps} />
     </Fragment>

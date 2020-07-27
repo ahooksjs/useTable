@@ -14,6 +14,10 @@ legacy: /next-form-table
 
 ## 代码演示
 
-### 默认请求
+### 默认
 
 <code src="./demo/default.tsx" />
+
+### 多插件
+
+<code src="./demo/all.tsx" />
