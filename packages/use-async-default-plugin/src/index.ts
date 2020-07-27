@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import { FormPath, IFieldState } from '@formily/react';
 import { methods } from '@ahooksjs/use-table';
 import { TUseAsyncDefaultPlugin, IGetValue } from './type';
@@ -18,6 +19,8 @@ const getValue: IGetValue = (data) => {
  * 3. 将入参带入 query
  */
 const useAsyncDefaultPlugin: TUseAsyncDefaultPlugin = (options) => {
+  const asyncDefaultRef = useRef({});
+
   return {
     middlewares: (ctx, next) => {
       const { query, field, isDefault = true, setDefaultValue = getValue } = options;
@@ -57,6 +60,7 @@ const useAsyncDefaultPlugin: TUseAsyncDefaultPlugin = (options) => {
               actions.setFormState((state) => {
                 const { values } = actions.getFormState();
                 state.initialValues = { ...values, ...initialValues };
+                asyncDefaultRef.current = state.initialValues;
               });
             }
 
@@ -75,6 +79,8 @@ const useAsyncDefaultPlugin: TUseAsyncDefaultPlugin = (options) => {
           })
           .then(next);
       }
+
+      ctx.params = { ...asyncDefaultRef.current, ...ctx.params };
 
       return next();
     },
