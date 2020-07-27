@@ -5,7 +5,6 @@ export interface IChecker {
   isObject: (obj: any) => boolean;
   isPromise: (obj: any) => boolean;
   isUndefined: (obj: any) => boolean;
-  isASCPResponse: (obj: any) => boolean;
 }
 
 export const isUndefined: IChecker['isUndefined'] = obj => typeof obj === 'undefined';
@@ -26,17 +25,11 @@ export const isPromise: IChecker['isPromise'] = obj => {
   );
 };
 
-export const isASCPResponse: IChecker['isASCPResponse'] = (res = { data: [] }) => {
-  const { data } = res;
-  return Array.isArray(data) || (isObject(data) && Array.isArray(data.dataSource));
-};
-
 export default {
   isFunction,
   isMiddlewares,
   isPromise,
   isObject,
   isUndefined,
-  isASCPResponse,
   isString,
 };
