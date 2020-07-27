@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { SchemaForm, Field, Submit, Reset, FormButtonGroup } from '@formily/next';
 import { Input } from '@formily/next-components';
-import useNextFormTable from '@ahooksjs/next-table';
+import useNextFormTable from '@ahooksjs/next-form-table';
 import { Table, Pagination } from '@alifd/next';
 
 const list = ({ current, pageSize, ...formData }) => {

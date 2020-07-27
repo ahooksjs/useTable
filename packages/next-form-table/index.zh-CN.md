@@ -1,16 +1,16 @@
 ---
-title: useNextTable
+title: useNextFormTable
 nav:
   title: Hooks
   path: /hooks
 group:
-  title: NextTable
+  title: NextFormTable
   path: /next
   order: 1
-legacy: /next-table
+legacy: /next-form-table
 ---
 
-# useNextTable
+# useNextFormTable
 
 ## 代码演示
 
