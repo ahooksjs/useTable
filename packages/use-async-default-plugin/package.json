@@ -1,0 +1,23 @@
+{
+  "name": "@ahooksjs/use-async-default-plugin",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "father-build",
+    "release": "npm run build && npm publish"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "typings": "dist/index.d.ts",
+  "peerDependencies": {
+    "react": "^16.12.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "@testing-library/react-hooks": "^3.3.0",
+    "@types/jest": "^26.0.5",
+    "father-build": "^1.17.2",
+    "react-test-renderer": "^16.13.1"
+  }
+}
