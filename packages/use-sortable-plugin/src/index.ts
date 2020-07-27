@@ -34,7 +34,7 @@ const useSortablePlugin: TUseSortablePlugin = (options: IOptions = {}) => {
 
           sort.current = { [dataIndex]: order };
           const sortParams = propsToParams(sort.current);
-          query({ ...sortParams, pageIndex: 1 });
+          query({ ...sortParams, current: 1 });
         },
       },
     }),
