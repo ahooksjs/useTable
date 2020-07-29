@@ -1,4 +1,4 @@
-import { FormTableNormalPlugin, Copy } from '@ahooksjs/use-table';
+import { FormTableNormalPlugin } from '@ahooksjs/use-table';
 
 export interface IOptions {
   primaryKey?: string;
