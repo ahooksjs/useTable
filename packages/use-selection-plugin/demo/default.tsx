@@ -27,7 +27,7 @@ const list = ({ current, pageSize, ...formData }) => {
 
 const Component = () => {
   const selectionPlugin = useSelectionPlugin({ primaryKey: 'phone' });
-  const { formProps, tableProps, paginationProps } = useNextFormTable(list, {
+  const { tableProps, paginationProps, formProps } = useNextFormTable(list, {
     plugins: [selectionPlugin],
   });
 
@@ -42,7 +42,7 @@ const Component = () => {
       </SchemaForm>
 
       <Table {...tableProps}>
-        <Table.Column title="name" dataIndex="name.last"  width={200} />
+        <Table.Column title="name" dataIndex="name.last" width={200} />
         <Table.Column title="email" dataIndex="email" width={500} />
         <Table.Column title="phone" dataIndex="phone" width={500} />
         <Table.Column title="gender" dataIndex="gender" width={200} />

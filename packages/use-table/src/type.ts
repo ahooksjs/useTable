@@ -29,7 +29,15 @@ export interface ITableProps {
   };
 }
 
-export interface ReturnValue {
+declare global {
+  export namespace UseTableCore {
+    export interface ReturnValue extends IReturnValue {
+      [name: string]: any;
+    }
+  }
+}
+
+export interface IReturnValue {
   tableProps: ITableProps;
   paginationProps: ITableProps['paginationProps'];
   query: IApp['query'];
@@ -100,4 +108,4 @@ export interface Options {
 export type TUseTable = (
   service: (params?: Obj) => Promise<IResponse>,
   options?: Options
-) => ReturnValue;
+) => IReturnValue;
