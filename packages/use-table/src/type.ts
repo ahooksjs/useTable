@@ -1,17 +1,14 @@
-import {
-  Obj,
-  IApp,
-  RawPlugins,
-  IHelper,
-  IMiddlewareContext,
-  NormalPlugin,
-} from '@ahooksjs/use-query-display';
+import { Obj, IApp, IHelper, IMiddlewareContext, NormalPlugin } from '@ahooksjs/use-query-display';
 
 export * from '@ahooksjs/use-query-display';
 
 export type Pipe = (ctx: IMiddlewareContext) => Obj;
 
 export type Processor = (ctx: Obj) => any;
+
+export type Copy<T> = {
+  [P in keyof T]: Copy<T[P]>;
+};
 
 export interface PluginOptions {
   app: IApp;
@@ -31,6 +28,10 @@ export interface ITableProps {
 
 declare global {
   export namespace UseTableCore {
+    export interface PreReturnValue extends IReturnValue {
+      [name: string]: any;
+    }
+
     export interface ReturnValue extends IReturnValue {
       [name: string]: any;
     }

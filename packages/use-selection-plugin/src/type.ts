@@ -1,12 +1,8 @@
-import { FormTableNormalPlugin } from '@ahooksjs/use-table';
+import { FormTableNormalPlugin, Copy } from '@ahooksjs/use-table';
 
 export interface IOptions {
   primaryKey?: string;
 }
-
-export type Copy<T> = {
-  [P in keyof T]: T[P];
-};
 
 export interface IProps {
   tableProps: {
@@ -21,10 +17,14 @@ export interface IProps {
 }
 
 declare global {
-  type TReturnValue = Copy<UseTableCore.ReturnValue>;
   export namespace UseTableCore {
-    export interface ReturnValue extends TReturnValue {
+    export interface PreReturnValue extends ReturnValue {
+      [name: string]: any;
+    }
+
+    export interface ReturnValue extends Omit<UseTableCore.ReturnValue, 'tableProps'> {
       getSelectedRowKeys: IProps['getSelectedRowKeys'];
+      tableProps: IProps['tableProps'] & PreReturnValue['tableProps'];
     }
   }
 }
