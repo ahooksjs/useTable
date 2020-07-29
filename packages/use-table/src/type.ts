@@ -17,14 +17,6 @@ export interface PluginOptions {
   app: IApp;
 }
 
-export interface Options {
-  current?: number;
-  pageSize?: number;
-  autoFirstQuery?: boolean;
-  plugins?: RawPlugins<IContext>;
-  refreshDeps?: any[];
-}
-
 export interface ITableProps {
   dataSource: any[];
   loading: boolean;
@@ -32,16 +24,16 @@ export interface ITableProps {
     total: number;
     pageSize: number;
     current: number;
-    onChange: (current: number, ...any: any[]) => void;
-    onPageSizeChange: (pageSize: number, ...any: any[]) => void;
+    onChange: (current: number, ...rest: any[]) => void;
+    onPageSizeChange: (pageSize: number, ...rest: any[]) => void;
   };
 }
 
 export interface ReturnValue {
   tableProps: ITableProps;
+  paginationProps: ITableProps['paginationProps'];
   query: IApp['query'];
   getParams: () => {};
-  paginationProps: ITableProps['paginationProps'];
   actions: Obj;
   [name: string]: any;
 }
@@ -95,4 +87,17 @@ export interface IContext extends IMiddlewareContext {
   response: IResponse;
 }
 
-export type FormTableNormalPlugin = NormalPlugin<IContext>;
+export type FormTableNormalPlugin<P = Obj> = NormalPlugin<IContext, P>;
+
+export interface Options {
+  current?: number;
+  pageSize?: number;
+  autoFirstQuery?: boolean;
+  plugins?: FormTableNormalPlugin[];
+  refreshDeps?: any[];
+}
+
+export type TUseTable = (
+  service: (params?: Obj) => Promise<IResponse>,
+  options?: Options
+) => ReturnValue;

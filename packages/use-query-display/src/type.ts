@@ -24,14 +24,14 @@ export type Middleware<Ctx = IMiddlewareContext> = (
 // 底层的 Plugin，可以读取 NormalPlugin 的属性
 export type NativePlugin = (ctx: PluginContext) => NormalPlugin;
 
-export type NormalPlugin<Ctx = IMiddlewareContext> = {
+export type NormalPlugin<Ctx = IMiddlewareContext, P = Obj> = {
   middlewares?:
     | Middleware<Ctx>
     | Middleware<Ctx>[]
     | {
         [name: string]: Middleware<Ctx> | Middleware<Ctx>[];
       };
-  props?: ((props: Obj) => any) | Obj;
+  props?: ((props: Ctx) => P) | P;
 };
 
 export type Plugin<Ctx = IMiddlewareContext> = NormalPlugin<Ctx> | NativePlugin;
