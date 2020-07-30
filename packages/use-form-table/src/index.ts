@@ -47,9 +47,16 @@ const useFormTablePlugin: () => Plugin = () => {
 
 export type Effects = IFormEffect<any, any>;
 
+export interface IUseFormTableReturnValue extends IReturnValue {
+  formProps: {
+    effects: Effects;
+    actions: ISchemaFormActions;
+  };
+}
+
 declare global {
   export namespace UseTableCore {
-    export interface ReturnValue extends IReturnValue {
+    export interface ReturnValue extends IUseFormTableReturnValue {
       formProps: {
         effects: Effects;
         actions: ISchemaFormActions;
@@ -58,7 +65,10 @@ declare global {
   }
 }
 
-const useFormTable = (service: (params) => Promise<IResponse>, options?: Options) => {
+const useFormTable = (
+  service: (params) => Promise<IResponse>,
+  options?: Options
+): IUseFormTableReturnValue => {
   const formTablePlugin = useFormTablePlugin();
   const plugins = [formTablePlugin].concat(options?.plugins || []);
   return useTable(service, { ...options, plugins });

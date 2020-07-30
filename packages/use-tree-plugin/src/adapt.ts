@@ -1,10 +1,10 @@
 import { Obj } from '@ahooksjs/use-table';
 import { IResponse } from './type';
 
-const adapt = (res: IResponse, primaryKey: string) => {
+const adapt = (res: IResponse, primaryKey: string): IResponse => {
   const { data = { dataSource: [] } } = res || {};
 
-  res.data.dataSource = (data.dataSource as Obj[]).map(d => {
+  res.data.dataSource = (data.dataSource as Obj[]).map((d) => {
     if (d.lazyChildren) {
       return {
         ...d,

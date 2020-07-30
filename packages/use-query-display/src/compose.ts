@@ -4,30 +4,32 @@
 import { isPromise, isFunction } from './checker';
 import msg from './msg';
 
+type Obj = {
+  [name: string]: any;
+};
+
 export interface IComposer {
   onionCompose: (middlewares: any[]) => (context: any, next?: () => Promise<any>) => Promise<any>;
   pipeCompose: (pipes: any[]) => (arg: any) => any;
   reducedCompose: (props: any[]) => { [name: string]: any };
-  processCompose: (processors: Function[]) => (context?: any) => { [name: string]: any };
-  pipeMergedCompose: (
-    props: any[],
-    fn?: (res: any, prop?: {}, rawProp?: {}, initial?: boolean) => any,
-  ) => {};
-
+  processCompose: (
+    processors: ((...args: any[]) => any)[]
+  ) => (context?: any) => { [name: string]: any };
+  pipeMergedCompose: (props: any[], fn?: (res: any, prop?: Obj, initial?: boolean) => any) => Obj;
   mergedCompose: (
     props: { [name: string]: any },
-    fn?: (res: any, prop?: {}, rawProp?: {}, initial?: boolean) => any,
+    fn?: (res: any, prop?: Obj, initial?: boolean) => any
   ) => any;
 
   timelineCompose: (
     timelines: string[],
     native: { [name: string]: any },
-    extension?: { [name: string]: any },
+    extension?: { [name: string]: any }
   ) => any[];
 }
 
 // Koa 洋葱模型
-export const onionCompose: IComposer['onionCompose'] = middlewares => (context, next) => {
+export const onionCompose: IComposer['onionCompose'] = (middlewares) => (context, next) => {
   let index = -1;
   return dispatch(0);
   function dispatch(i: number) {
@@ -51,16 +53,16 @@ export const onionCompose: IComposer['onionCompose'] = middlewares => (context, 
 // 类似 Redux 的 pipe 模型
 export const pipeCompose: IComposer['pipeCompose'] = (pipes = []) => {
   if (pipes.length === 0) {
-    return arg => arg;
+    return (arg) => arg;
   }
 
   if (pipes.length === 1) {
-    return isFunction(pipes[0]) ? pipes[0] : ctx => ({ ...ctx, ...pipes[0] });
+    return isFunction(pipes[0]) ? pipes[0] : (ctx) => ({ ...ctx, ...pipes[0] });
   }
 
   return pipes
-    .map(pipe => {
-      return isFunction(pipe) ? pipe : ctx => ({ ...ctx, ...pipe });
+    .map((pipe) => {
+      return isFunction(pipe) ? pipe : (ctx) => ({ ...ctx, ...pipe });
     })
     .reduceRight((next, current) => (ctx: any) => {
       return next(current(ctx));
@@ -68,7 +70,7 @@ export const pipeCompose: IComposer['pipeCompose'] = (pipes = []) => {
 };
 
 export const processCompose: IComposer['processCompose'] = (processors = []) => (context = {}) => {
-  processors.forEach(processor => {
+  processors.forEach((processor) => {
     processor(context);
   });
 
@@ -76,18 +78,18 @@ export const processCompose: IComposer['processCompose'] = (processors = []) => 
 };
 
 // 合并 prop
-export const reducedCompose: IComposer['reducedCompose'] = props =>
+export const reducedCompose: IComposer['reducedCompose'] = (props) =>
   props.reduce(
     (acc, prop) => ({
       ...acc,
       ...prop,
     }),
-    {},
+    {}
   );
 
 export const mergedCompose: IComposer['mergedCompose'] = (props, fn = (key, res) => res) =>
   props.reduce((acc: { [name: string]: any }, prop: { [name: string]: any }) => {
-    Object.keys(prop).forEach(key => {
+    Object.keys(prop).forEach((key) => {
       if (!acc[key]) {
         acc[key] = fn(key, prop[key], true);
       } else {
@@ -95,7 +97,7 @@ export const mergedCompose: IComposer['mergedCompose'] = (props, fn = (key, res)
         acc[key] = fn(
           key,
           Array.isArray(acc[key]) ? acc[key].concat(prop[key]) : [acc[key], prop[key]],
-          false,
+          false
         );
       }
     });
@@ -104,7 +106,7 @@ export const mergedCompose: IComposer['mergedCompose'] = (props, fn = (key, res)
 
 export const pipeMergedCompose: IComposer['pipeMergedCompose'] = (
   props,
-  fn = (key, res) => res,
+  fn = (key, res) => res
 ) => {
   const { pipes, merged = [] } = props.reduce(
     (acc, prop) => {
@@ -115,7 +117,7 @@ export const pipeMergedCompose: IComposer['pipeMergedCompose'] = (
       }
       return acc;
     },
-    { pipes: [], merged: [] },
+    { pipes: [], merged: [] }
   );
 
   return pipeCompose(pipes)(mergedCompose(merged, fn));

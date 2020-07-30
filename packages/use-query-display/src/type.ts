@@ -42,7 +42,7 @@ export type RawPlugins<Ctx = IMiddlewareContext> = Plugin<Ctx>[];
 export interface IHelper extends IChecker, IComposer {}
 
 export interface Plugins {
-  middlewares: {};
+  middlewares: Obj;
   props: any[];
   [name: string]: any;
 }

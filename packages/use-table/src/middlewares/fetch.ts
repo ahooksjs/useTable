@@ -27,7 +27,7 @@ const fetchMiddleware: Middleware = (ctx, next) => {
         return next().then(() => Promise.resolve(ctx.response));
       },
       (err: Obj = {}) => {
-        const reject = request.reject || (() => {});
+        const reject = request.reject || (() => null);
         const { content = {} } = err;
         clearTimeout(ctx.meta[LOADING_TIMER]);
         actions.setState({ loading: false, dataSource: [], current: 1, total: 0 });

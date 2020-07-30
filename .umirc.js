@@ -4,6 +4,7 @@ const includes = fs.readdirSync('./packages').map((pkg) => `packages/${pkg}`);
 
 export default {
   title: '@ahooksjs/use-table',
+  logo: '/logo.svg',
   extraBabelPlugins: [
     [
       'babel-plugin-import',

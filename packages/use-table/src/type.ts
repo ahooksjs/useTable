@@ -42,7 +42,7 @@ export interface IReturnValue {
   tableProps: ITableProps;
   paginationProps: ITableProps['paginationProps'];
   query: IApp['query'];
-  getParams: () => {};
+  getParams: () => Obj;
   actions: Obj;
   [name: string]: any;
 }
