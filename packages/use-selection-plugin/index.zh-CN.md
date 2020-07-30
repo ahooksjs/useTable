@@ -1,12 +1,11 @@
 ---
 title: useSelectionPlugin
-nav:
-  title: Hooks
-  path: /hooks
+order: 2
 group:
-  title: useSelectionPlugin
-  path: /use-selection-plugin
+  title: Next
+  path: /next
   order: 1
+legacy: /next/use-selection-plugin
 ---
 
 # useSelectionPlugin

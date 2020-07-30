@@ -1,12 +1,11 @@
 ---
 title: useSortablePlugin
-nav:
-  title: Hooks
-  path: /hooks
+order: 2
 group:
-  title: useSortablePlugin
-  path: /use-sortable-plugin
+  title: Next
+  path: /next
   order: 1
+legacy: /next/use-sortable-plugin
 ---
 
 # useSortablePlugin

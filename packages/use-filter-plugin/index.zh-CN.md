@@ -1,12 +1,11 @@
 ---
 title: useFilterPlugin
-nav:
-  title: Hooks
-  path: /hooks
+order: 3
 group:
-  title: useFilterPlugin
-  path: /use-filter-plugin
+  title: Next
+  path: /next
   order: 1
+legacy: /next/use-filter-plugin
 ---
 
 # useFilterPlugin

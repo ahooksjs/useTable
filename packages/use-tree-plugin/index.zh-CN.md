@@ -1,12 +1,11 @@
 ---
 title: useTreePlugin
-nav:
-  title: Hooks
-  path: /hooks
+order: 4
 group:
-  title: useTreePlugin
-  path: /use-tree-plugin
+  title: Next
+  path: /next
   order: 1
+legacy: /next/use-tree-plugin
 ---
 
 # useTreePlugin
