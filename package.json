@@ -38,6 +38,7 @@
     "react-test-renderer": "^16.13.1",
     "styled-components": "^5.1.1",
     "ts-jest": "^26.1.3",
-    "typescript": "^3.9.7"
+    "typescript": "^3.9.7",
+    "father-build": "^1.17.2"
   }
 }

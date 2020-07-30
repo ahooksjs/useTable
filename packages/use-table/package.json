@@ -16,8 +16,5 @@
   },
   "files": [
     "dist"
-  ],
-  "devDependencies": {
-    "father-build": "^1.17.2"
-  }
+  ]
 }

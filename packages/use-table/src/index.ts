@@ -4,7 +4,7 @@ import { timelines, defaults, methods, PREPARE } from './config';
 import createStore from './store';
 import middlewares from './middlewares/index';
 import useProps from './props/index';
-import { Obj, RawPlugins, Plugin, IContext, IResponse } from './type';
+import { Obj, RawPlugins, Plugin, IContext, TUseTable } from './type';
 import { addYourMiddlewares } from './shared';
 import { IS_NORMAL_SYMBOL } from './symbol';
 import { checkQueryFrom } from './helper';
@@ -70,12 +70,7 @@ const useTablePlugin = (options): Plugin => {
   };
 };
 
-function useTable<T>(
-  service: (params?: Obj) => Promise<IResponse>,
-  options?: T
-): UseTableCore.ReturnValue;
-
-function useTable(service, options) {
+const useTable: TUseTable = (service, options) => {
   const {
     plugins = [],
     current = defaults.current,
