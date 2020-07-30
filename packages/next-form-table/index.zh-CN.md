@@ -1,16 +1,15 @@
 ---
 title: useNextFormTable
-nav:
-  title: Hooks
-  path: /hooks
 group:
-  title: NextFormTable
+  title: Next
   path: /next
   order: 1
-legacy: /next-form-table
+legacy: /next/use-form-table
 ---
 
 # useNextFormTable
+
+Form + Table 场景的 Fusion Next 实现
 
 ## 代码演示
 

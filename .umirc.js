@@ -1,10 +1,7 @@
-import * as fs from 'fs';
-
-const includes = fs.readdirSync('./packages').map((pkg) => `packages/${pkg}`);
-
 export default {
   title: '@ahooksjs/use-table',
   logo: '/logo.svg',
+  favicon: '/simple-logo.svg',
   extraBabelPlugins: [
     [
       'babel-plugin-import',
@@ -29,8 +26,10 @@ export default {
       rel: 'stylesheet',
       href: 'https://unpkg.com/@alifd/theme-design-pro@0.6.2/dist/next.min.css',
     },
+    // https://github.com/umijs/dumi/issues/138
+    { rel: 'stylesheet', href: '/style.css' },
   ],
   resolve: {
-    includes: ['docs'].concat(includes),
+    includes: ['docs', 'packages']
   },
 };

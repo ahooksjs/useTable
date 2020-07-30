@@ -1,12 +1,11 @@
 ---
 title: useAsyncDefaultPlugin
-nav:
-  title: Hooks
-  path: /hooks
+order: 1000
 group:
-  title: useAsyncDefaultPlugin
-  path: /use-async-default-plugin
-  order: 1
+  title: Next
+  path: /next
+  order: 2
+legacy: /next/use-async-default-plugin
 ---
 
 # useAsyncDefaultPlugin
