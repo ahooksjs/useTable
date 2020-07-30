@@ -26,18 +26,6 @@ export interface ITableProps {
   };
 }
 
-declare global {
-  export namespace UseTableCore {
-    export interface PreReturnValue extends IReturnValue {
-      [name: string]: any;
-    }
-
-    export interface ReturnValue extends IReturnValue {
-      [name: string]: any;
-    }
-  }
-}
-
 export interface IReturnValue {
   tableProps: ITableProps;
   paginationProps: ITableProps['paginationProps'];

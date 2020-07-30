@@ -16,17 +16,4 @@ export interface IProps {
   getSelectedRowKeys: () => string[];
 }
 
-declare global {
-  export namespace UseTableCore {
-    export interface PreReturnValue extends ReturnValue {
-      [name: string]: any;
-    }
-
-    export interface ReturnValue extends Omit<UseTableCore.ReturnValue, 'tableProps'> {
-      getSelectedRowKeys: IProps['getSelectedRowKeys'];
-      tableProps: IProps['tableProps'] & PreReturnValue['tableProps'];
-    }
-  }
-}
-
 export type TUseTableSelection = (options?: IOptions) => FormTableNormalPlugin<IProps>;
