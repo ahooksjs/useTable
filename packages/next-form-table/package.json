@@ -13,6 +13,7 @@
     "@ahooksjs/use-form-table": "^0.0.1"
   },
   "files": [
-    "dist"
+    "lib",
+    "es"
   ]
 }
