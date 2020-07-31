@@ -17,7 +17,7 @@ legacy: /next/use-async-default-plugin
 ## 引用方式
 
 ```js
-import { useAsyncDefaultPlugin } from '@ahooksjs/use-async-default-plugin';
+import useAsyncDefaultPlugin from '@ahooksjs/use-async-default-plugin';
 ```
 
 ## 代码演示
