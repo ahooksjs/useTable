@@ -9,10 +9,13 @@
     "build": "father-build && lerna run build:tsc",
     "bootstrap": "lerna bootstrap",
     "clean": "lerna clean",
+    "add": "lerna add",
     "deploy": "npm run docs:build && npm run docs:deploy",
     "release": "npm run build && npm publish",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
-    "test": "jest"
+    "test": "jest",
+    "prevesion": "npm run build && npm run test",
+    "version:alpha": "npm run prevesion && lerna version prerelease --preid alpha --force-publish=* --no-git-tag-version -m \"chore(versions): publish packages %s\""
   },
   "devDependencies": {
     "@alifd/next": "^1.20.18",
