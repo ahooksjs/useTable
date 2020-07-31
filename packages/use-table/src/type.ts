@@ -90,8 +90,8 @@ export interface Options {
   current?: number;
   pageSize?: number;
   autoFirstQuery?: boolean;
-  plugins?: FormTableNormalPlugin[];
   refreshDeps?: any[];
+  plugins?: FormTableNormalPlugin[];
 }
 
 export type TUseTable = (
