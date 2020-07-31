@@ -1,5 +1,5 @@
 export default {
-  title: '@ahooksjs/use-table',
+  title: '查询表格解决方案',
   logo: '/logo.svg',
   favicon: '/simple-logo.svg',
   extraBabelPlugins: [

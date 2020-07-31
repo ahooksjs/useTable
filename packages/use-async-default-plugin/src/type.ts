@@ -6,7 +6,7 @@ export interface IOptions {
   query: TQuery | TQuery[];
   field: string | string[];
   isDefault?: boolean;
-  setDefaultValue?: () => void;
+  setDefaultValue?: (data: IEnum[], name: string) => any;
 }
 
 export type TUseAsyncDefaultPlugin = (params: IOptions) => FormTableNormalPlugin;
@@ -16,4 +16,4 @@ interface IEnum {
   value: any;
 }
 
-export type IGetValue = (data: IEnum[], name?: string) => string;
+export type IGetValue = (data: IEnum[], name: string) => string;
