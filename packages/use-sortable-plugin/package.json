@@ -1,9 +1,8 @@
 {
   "name": "@ahooksjs/use-sortable-plugin",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha.0",
   "scripts": {
-    "build:tsc": "tsc --project tsconfig.build.json --declarationDir ./lib && tsc --project tsconfig.build.json --declarationDir ./es",
-    "release": "npm run build:tsc && npm publish"
+    "build:tsc": "tsc --project tsconfig.build.json --declarationDir ./lib && tsc --project tsconfig.build.json --declarationDir ./es"
   },
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -11,8 +10,8 @@
     "react": "^16.12.0"
   },
   "dependencies": {
-    "@ahooksjs/use-form-table": "*",
-    "@ahooksjs/use-table": "*"
+    "@ahooksjs/use-form-table": "^0.0.1-alpha.0",
+    "@ahooksjs/use-table": "^0.0.1-alpha.0"
   },
   "files": [
     "lib",

@@ -1,9 +1,8 @@
 {
   "name": "@ahooksjs/use-form-table",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha.0",
   "scripts": {
-    "build:tsc": "tsc --project tsconfig.build.json --declarationDir ./lib && tsc --project tsconfig.build.json --declarationDir ./es",
-    "release": "npm run build:tsc && npm publish"
+    "build:tsc": "tsc --project tsconfig.build.json --declarationDir ./lib && tsc --project tsconfig.build.json --declarationDir ./es"
   },
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -15,10 +14,10 @@
     "es"
   ],
   "dependencies": {
+    "@ahooksjs/use-table": "^0.0.1-alpha.0",
     "@formily/react-schema-renderer": "^1.2.9",
     "moment": "^2.27.0",
     "react-eva": "^1.1.10",
-    "styled-components": "^5.1.1",
-    "@ahooksjs/use-table": "*"
+    "styled-components": "^5.1.1"
   }
 }

@@ -1,14 +1,13 @@
 {
   "name": "@ahooksjs/use-table",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha.0",
   "scripts": {
-    "build:tsc": "tsc --project tsconfig.build.json --declarationDir ./lib && tsc --project tsconfig.build.json --declarationDir ./es",
-    "release": "npm run build:tsc && npm publish"
+    "build:tsc": "tsc --project tsconfig.build.json --declarationDir ./lib && tsc --project tsconfig.build.json --declarationDir ./es"
   },
   "main": "lib/index.js",
   "module": "es/index.js",
   "dependencies": {
-    "@ahooksjs/use-query-display": "*"
+    "@ahooksjs/use-query-display": "^0.0.1-alpha.0"
   },
   "peerDependencies": {
     "react": "^16.12.0"
