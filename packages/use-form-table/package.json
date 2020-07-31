@@ -1,6 +1,6 @@
 {
   "name": "@ahooksjs/use-form-table",
-  "version": "0.0.1-alpha.0",
+  "version": "0.0.1",
   "scripts": {
     "build:tsc": "tsc --project tsconfig.build.json --declarationDir ./lib && tsc --project tsconfig.build.json --declarationDir ./es"
   },
@@ -14,7 +14,7 @@
     "es"
   ],
   "dependencies": {
-    "@ahooksjs/use-table": "^0.0.1-alpha.0",
+    "@ahooksjs/use-table": "^0.0.1",
     "@formily/react-schema-renderer": "^1.2.9",
     "moment": "^2.27.0",
     "react-eva": "^1.1.10",
