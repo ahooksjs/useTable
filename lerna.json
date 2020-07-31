@@ -9,6 +9,7 @@
       ]
     },
     "publish": {
+      "registry": "https://registry.npmjs.org",
       "allowBranch": "master",
       "ignoreChanges": [
         "*.md"
