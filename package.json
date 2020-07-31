@@ -6,7 +6,7 @@
     "dev": "dumi dev",
     "docs:build": "dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
-    "build": "lerna run build",
+    "build": "father-build && lerna run build:tsc",
     "bootstrap": "lerna bootstrap",
     "clean": "lerna clean",
     "deploy": "npm run docs:build && npm run docs:deploy",
@@ -31,6 +31,7 @@
     "eslint": "^7.5.0",
     "eslint-plugin-react": "^7.20.5",
     "eslint-plugin-react-hooks": "^4.0.8",
+    "father-build": "^1.18.2",
     "jest": "^26.1.0",
     "lerna": "^3.22.1",
     "moment": "^2.27.0",
@@ -38,7 +39,6 @@
     "react-test-renderer": "^16.13.1",
     "styled-components": "^5.1.1",
     "ts-jest": "^26.1.3",
-    "typescript": "^3.9.7",
-    "father-build": "^1.17.2"
+    "typescript": "^3.9.7"
   }
 }

@@ -2,22 +2,23 @@
   "name": "@ahooksjs/use-form-table",
   "version": "0.0.1",
   "scripts": {
-    "build": "father-build",
+    "build:tsc": "tsc --project tsconfig.build.json --declarationDir ./lib && tsc --project tsconfig.build.json --declarationDir ./es",
     "release": "npm run build && npm publish"
   },
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "typings": "dist/index.d.ts",
+  "main": "lib/index.js",
+  "module": "es/index.js",
   "peerDependencies": {
     "react": "^16.12.0"
   },
   "files": [
-    "dist"
+    "lib",
+    "es"
   ],
   "dependencies": {
     "@formily/react-schema-renderer": "^1.2.9",
     "moment": "^2.27.0",
     "react-eva": "^1.1.10",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.1.1",
+    "@ahooksjs/use-table": "*"
   }
 }

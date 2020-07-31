@@ -1,11 +1,16 @@
 import { useMemo } from 'react';
-import useTable, { IResponse, Options, Plugin, IReturnValue } from '@ahooksjs/use-table';
+import useTable, {
+  IResponse,
+  Options,
+  FormTableNormalPlugin,
+  IReturnValue,
+} from '@ahooksjs/use-table';
 import { createFormActions, IFormEffect, ISchemaFormActions } from '@formily/react-schema-renderer';
 import { IS_FORM_DATA_SUBMITTED } from './symbol';
 import { methods } from './config';
 import pipes from './pipe/index';
 
-const useFormTablePlugin: () => Plugin = () => {
+const useFormTablePlugin: () => FormTableNormalPlugin = () => {
   const actions: ISchemaFormActions = useMemo(createFormActions, []);
 
   return {
@@ -54,24 +59,13 @@ export interface IUseFormTableReturnValue extends IReturnValue {
   };
 }
 
-declare global {
-  export namespace UseTableCore {
-    export interface ReturnValue extends IUseFormTableReturnValue {
-      formProps: {
-        effects: Effects;
-        actions: ISchemaFormActions;
-      };
-    }
-  }
-}
-
 const useFormTable = (
   service: (params) => Promise<IResponse>,
   options?: Options
 ): IUseFormTableReturnValue => {
   const formTablePlugin = useFormTablePlugin();
   const plugins = [formTablePlugin].concat(options?.plugins || []);
-  return useTable(service, { ...options, plugins });
+  return useTable(service, { ...options, plugins }) as IUseFormTableReturnValue;
 };
 
 export default useFormTable;
