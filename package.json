@@ -13,8 +13,8 @@
     "deploy": "npm run docs:build && npm run docs:deploy",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "test": "jest",
-    "prevesion": "npm run build && npm run test",
-    "version:alpha": "npm run prevesion && lerna version prerelease --preid alpha --force-publish=* --no-git-tag-version -m \"chore(versions): publish packages %s\"",
+    "preversion": "npm run build && npm run test",
+    "version:alpha": "npm run preversion && lerna version prerelease --preid alpha --force-publish=* --no-git-tag-version -m \"chore(versions): publish packages %s\"",
     "release:force": "lerna publish from-package --yes",
     "release": "lerna publish"
   },
