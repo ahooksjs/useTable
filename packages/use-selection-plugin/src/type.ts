@@ -1,4 +1,4 @@
-import { FormTableNormalPlugin } from '@ahooksjs/use-table';
+import { TableNormalPlugin } from '@ahooksjs/use-table';
 
 export interface IOptions {
   primaryKey?: string;
@@ -16,4 +16,4 @@ export interface IProps {
   getSelectedRowKeys: () => string[];
 }
 
-export type TUseTableSelection = (options?: IOptions) => FormTableNormalPlugin<IProps>;
+export type TUseTableSelection = (options?: IOptions) => TableNormalPlugin<IProps>;

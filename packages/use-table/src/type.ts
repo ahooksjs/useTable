@@ -77,6 +77,7 @@ export interface IContext extends IMiddlewareContext {
   query: IApp['query'];
   helper: ITableHelper;
   params: Obj;
+  methods: Obj;
   meta: {
     queryFrom: string;
     [name: string]: any;
@@ -84,14 +85,14 @@ export interface IContext extends IMiddlewareContext {
   response: IResponse;
 }
 
-export type FormTableNormalPlugin<P = Obj> = NormalPlugin<IContext, P>;
+export type TableNormalPlugin<P = Obj> = NormalPlugin<IContext, P>;
 
 export interface Options {
   current?: number;
   pageSize?: number;
   autoFirstQuery?: boolean;
   refreshDeps?: any[];
-  plugins?: FormTableNormalPlugin[];
+  plugins?: TableNormalPlugin[];
 }
 
 export type TUseTable = (

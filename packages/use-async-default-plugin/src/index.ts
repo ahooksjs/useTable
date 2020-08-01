@@ -1,6 +1,5 @@
-import { useRef } from 'react'
+import { useRef } from 'react';
 import { FormPath, IFieldState } from '@formily/react';
-import { methods } from '@ahooksjs/use-table';
 import { TUseAsyncDefaultPlugin, IGetValue } from './type';
 
 const getValue: IGetValue = (data) => {
@@ -24,7 +23,7 @@ const useAsyncDefaultPlugin: TUseAsyncDefaultPlugin = (options) => {
   return {
     middlewares: (ctx, next) => {
       const { query, field, isDefault = true, setDefaultValue = getValue } = options;
-      const { actions, meta } = ctx;
+      const { actions, methods, meta } = ctx;
       const { queryFrom } = meta;
 
       if (queryFrom === methods.ON_MOUNT) {

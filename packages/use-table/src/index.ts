@@ -44,6 +44,7 @@ const useTablePlugin = (options): Plugin => {
           ctx.query = query;
           ctx.actions = actions;
           ctx.options = options;
+          ctx.methods = methods;
           ctx.helper = {
             ...helper,
             checkQueryFrom: () => checkQueryFrom(ctx as IContext),
@@ -94,6 +95,6 @@ const useTable: TUseTable = (service, options) => {
   const { paginationProps, ...$tableProps } = tableProps;
 
   return { ...props, tableProps: $tableProps, paginationProps, query, getParams, actions };
-}
+};
 
 export default useTable;

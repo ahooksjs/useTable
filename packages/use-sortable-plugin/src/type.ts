@@ -1,8 +1,8 @@
-import { FormTableNormalPlugin } from '@ahooksjs/use-table';
+import { TableNormalPlugin } from '@ahooksjs/use-table';
 
 export interface IOptions {
   sortByKey?: string;
   sortOrderKey?: string;
 }
 
-export type TUseSortablePlugin = (options?: IOptions) => FormTableNormalPlugin;
+export type TUseSortablePlugin = (options?: IOptions) => TableNormalPlugin;

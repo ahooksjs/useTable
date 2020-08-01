@@ -1,4 +1,4 @@
-import { FormTableNormalPlugin } from '@ahooksjs/use-table';
+import { TableNormalPlugin } from '@ahooksjs/use-table';
 
 type TQuery = () => Promise<any>;
 
@@ -9,7 +9,7 @@ export interface IOptions {
   setDefaultValue?: (data: IEnum[], name: string) => any;
 }
 
-export type TUseAsyncDefaultPlugin = (params: IOptions) => FormTableNormalPlugin;
+export type TUseAsyncDefaultPlugin = (params: IOptions) => TableNormalPlugin;
 
 interface IEnum {
   label: string;

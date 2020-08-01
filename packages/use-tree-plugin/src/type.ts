@@ -1,4 +1,4 @@
-import { FormTableNormalPlugin, Obj, IResponse } from '@ahooksjs/use-table';
+import { TableNormalPlugin, Obj, IResponse } from '@ahooksjs/use-table';
 
 export * from '@ahooksjs/use-table';
 
@@ -17,7 +17,7 @@ export interface IOptions {
   iterator?: any;
 }
 
-export type TUseTree = (query: TQuery, options?: IOptions) => FormTableNormalPlugin;
+export type TUseTree = (query: TQuery, options?: IOptions) => TableNormalPlugin;
 
 export interface ITraverse {
   (tree: Obj[], cb: (node: Obj, posPath: string | number) => boolean, pos?: string | number);
