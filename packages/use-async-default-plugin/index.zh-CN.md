@@ -4,7 +4,7 @@ order: 1000
 group:
   title: Next
   path: /next
-  order: 1
+  order: 10
 legacy: /next/use-async-default-plugin
 ---
 

@@ -1,8 +1,8 @@
 ---
-title: 前言
+title: Preface
 order: 1
 ---
 
 # useTable
 
-具备插件能力的 Table Hooks
+> A Pluggable Hooks for Table
