@@ -10,7 +10,7 @@ const propsToParams = (props) => {
   }, {});
 };
 
-const useSortablePlugin: TUseFilterPlugin = (options: IOptions = {}) => {
+const useFilterPlugin: TUseFilterPlugin = (options: IOptions = {}) => {
   const filterRef = useRef({});
   const transformer = options.transformer || ((res) => res);
 
@@ -33,4 +33,4 @@ const useSortablePlugin: TUseFilterPlugin = (options: IOptions = {}) => {
   };
 };
 
-export default useSortablePlugin;
+export default useFilterPlugin;
