@@ -40,4 +40,4 @@ const { formProps, tableProps, paginationProps, getSelectedRowKeys } = useNextFo
 });
 ```
 
-看完前因后果，如果有兴趣的话可以看看[如何使用](./quickstart)。
+看完前因后果，如果有兴趣的话可以看看[如何使用](./getting-started)。

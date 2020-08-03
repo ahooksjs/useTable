@@ -1,55 +1,50 @@
 ---
-title: useNextFormTable
+title: useTable
 order: 1
 group:
-  title: Next
-  path: /next
-  order: 10
-legacy: /next/use-form-table
+  title: Core
+  path: /core
+  order: 20
+legacy: /core/use-table
 ---
 
-# useNextFormTable
+# useTable
 
 ## 何时使用
 
-表单列表查询页，`Form` + `Table` 场景的 [Fusion Next](https://github.com/alibaba-fusion/next) 和 [formily](formilyjs.org) 实现
+为你独有的 Design 自定义具备插件能力 table hook
 
 ## 安装
 
 ```sh
-npm install @ahooksjs/next-form-table --save
+npm install @ahooksjs/use-table --save
 ```
 
 ## 引用方式
 
 ```js
-import useNextFormTable from '@ahooksjs/next-form-table';
+import useTable from '@ahooksjs/use-table';
 ```
 
-## 代码演示
+## 使用
 
-### 默认
-
-<code src="./demo/default.tsx" />
-
-### 重新请求
-
-<code src="./demo/refreshDeps.tsx" />
-
-### 默认 pageSize
-
-<code src="./demo/pageSize.tsx" />
-
-### 多插件
-
-<code src="./demo/all.tsx" />
-
-## API
+比如一些 Design 组件，Table 是否出现 loading 的 props 是 `isLoading`，还有 Pagination 的当前页 props 是 `pageIndex`。那么你可以通过 useTable 返回值来自定义。
 
 ```js
-const { formProps, tableProps, paginationProps, query, getParams } = useNextFormTable(service, [
-  options,
-]);
+const useYourDesignTable = (...args) => {
+  const { tableProps, paginationProps, ...remain } = useTable(...args);
+  return {
+    tableProps: {
+      ...tableProps,
+      isLoading: tableProps.loading,
+    },
+    paginationProps: {
+      ...paginationProps,
+      pageIndex: paginationProps.current,
+    },
+    ...remain,
+  }
+}
 ```
 
 ## 参数
@@ -86,20 +81,12 @@ interface IResponse {
 
 ## 返回值
 
-| 参数            | 说明                                                                                     | 类型                                      |
-| --------------- | ---------------------------------------------------------------------------------------- | ----------------------------------------- |
-| formProps       | formily props，更多定义可以看下面 `IFormProps`                                           | `Object`                                  |
-| tableProps      | fusion next table props，更多定义可以看下面 `ITableProps`                                | `Object`                                  |
-| paginationProps | fusion pagination props，更多定义可以看下面 `IPaginationProps`                           | `Object`                                  |
+| 参数            | 说明                                                                                   | 类型                                      |
+| --------------- | -------------------------------------------------------------------------------------- | ----------------------------------------- |
+| tableProps      | fusion next table props，更多定义可以看下面 `ITableProps`                              | `Object`                                  |
+| paginationProps | fusion pagination props，更多定义可以看下面 `IPaginationProps`                         | `Object`                                  |
 | query           | 处理过的请求方法，可以在外界刷新 table，默认会带上上一次请求的参数，传入对象会自动合并 | `(params?: Object) => Promise<IResponse>` |
-| getParams       | 获取请求参数，只会在请求成功才更新                                                       | `() => Object`                            |
-
-#### IFormProps
-
-| 参数    | 说明                           | 类型               | 默认值                           |
-| ------- | ------------------------------ | ------------------ | -------------------------------- |
-| actions | formily schema form 的 actions | ISchemaFormActions | ISchemaFormActions               |
-| effects | formily effects                | Effects            | 监听了 onFormSubmit，onFormReset |
+| getParams       | 获取请求参数，只会在请求成功才更新                                                     | `() => Object`                            |
 
 #### ITableProps
 

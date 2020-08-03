@@ -10,7 +10,11 @@ legacy: /next/next-table
 
 # useNextTable
 
+⚠️ useNextTable `参数`和`返回值`继承于 [use-table](../core/use-table)
+
 ## 何时使用
+
+Table 查询页，基于 [Fusion Next](https://github.com/alibaba-fusion/next) 实现
 
 ## 安装
 
@@ -52,7 +56,7 @@ const { tableProps, paginationProps, query, getParams } = useNextTable(service, 
 | 参数           | 说明                             | 类型    | 默认值 |
 | -------------- | -------------------------------- | ------- | ------ |
 | current        | 当前页码                         | Number  | 1      |
-| pageSize       | 每一页显示条树                   | Number  | 20     |
+| pageSize       | 每一页显示条数                   | Number  | 20     |
 | autoFirstQuery | 初始化是否自动请求               | Boolean | true   |
 | refreshDeps    | refreshDeps 变化，会触发重新请求 | Array   | []     |
 | plugins        | 插件集合                         | Array   | []     |

@@ -41,7 +41,7 @@ describe('useQueryDisplay#Props', () => {
   });
 
   it('function in props', () => {
-    const getName = () => {};
+    const getName = () => ({});
 
     const plugins = [
       {
