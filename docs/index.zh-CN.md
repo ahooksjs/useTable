@@ -1,47 +1,38 @@
 ---
-title: 前言
+title: 介绍
 order: 1
 ---
 
 # useTable
 
-> 具备插件能力的 Table Hooks，更多信息可看 [RFC](https://github.com/alibaba/hooks/issues/465)
+## 简介
 
-## 背景
+面向中后台查询表格的插件能力 Hook 解决方案，更多信息可看 [RFC](https://github.com/alibaba/hooks/issues/465) 和 [Github](https://github.com/ahooksjs/useTable)。
 
-在中后台业务上表单查询场景很多，基本上占了 60% 左右，如何梳理一个通用解决方案来提效是我们现在面临的问题。另外一个问题就是虽然场景类似但是中后台业务场景变化不可预测，我们需要提供一个灵活的可扩展机制来让更多人沉淀能力。
+## 特性
 
-我们需要一个方案可以方便用户扩展 Filter、排序、多选等能力，同时也方便上层建设对应的解决方案，比如配置化、数据驱动，所以我们把每一个功能抽离出对应的插件，插件核心的理念是“Write One Do Everything”也就是只写一个地方就可以处理一个功能，并且每个插件都是可以组合的。
+- 🔗 `Plugins`: 具备多个场景的插件
+- 🚀 `Extensible`: 可定制能力强，可以方便其他 Design 集成
+- 💡 `Hook`: 全部基于 Hook 实现
 
-## 案例
+## 整体概览
 
-下面我举我们这边业务经常遇到的场景
+```jsx | inline
+import React from 'react';
 
-#### 异步默认值
-
-我们要实现的功能是“发一个请求取下拉数据 --> 取第一个值设置默认值 --> 请求参数加上对应的默认值 --> 表格的请求才能发送”，并且在重置的时候要保留默认值。
-
-#### 多选
-
-如果你要实现一个多选的功能的话，你需要做几件事情
-
-- [x] 设置 Table props，比如 rowSelection；
-- [x] 监听事件，比如 onChange；
-- [x] query 请求之后要清除选中项；
-
-你会发现我们要做很多事情才能实现某个功能，如果只做一次还好，但是如果你每次开发都涉及多个页面，你如何把这些能力沉淀起来，并且可以组合使用呢？
-
-## 期望
-
-我们期望上面说的功能都是单独的，然后我们可以先沉淀需要的时候直接引用。下面以伪代码呈现
-
-```js
-const asyncDefaultPlugin = useAsyncDefaultPlugin({ query: select, field: 'name' });
-const selectionPlugin = useSelectionPlugin({ primaryKey: 'phone' });
-
-const { formProps, tableProps, paginationProps, getSelectedRowKeys } = useNextFormTable(list, {
-  plugins: [asyncDefaultPlugin, selectionPlugin],
-});
+export default () => (
+  <>
+    <img src="https://img.alicdn.com/tfs/TB1kXIaP4v1gK0jSZFFXXb0sXXa-1088-701.png" width="500" />
+  </>
+);
 ```
 
-如果你好奇如何使用和如何实现的话，可以继续往下看。
+下面简单描述各个实体之间的关系，顺序是自底向上：
+
+- `useTable`：一个具备插件能力的 Table Hooks；
+- `useFormTable`: useTable + useFormTablePlugin 定制出来的，form 主要用到了 [formily](https://github.com/alibaba/formily)；
+- `Design`：主要是各种 Design 的适配，比如 Antd、Fusion 等；
+- `Plugins`：不同功能的插件，不同的 Design 可以使用；
+- `Solutions`：针对不同场景可以不同的解决方案，底层可以共用一套插件技术体系；
+
+看完如果还想了解为什么要有插件，可以点击查看[缘由](./zh-CN/why)。

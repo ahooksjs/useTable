@@ -1,5 +1,5 @@
 export default {
-  title: '查询表格解决方案',
+  title: 'A Solution for Table',
   logo: '/logo.svg',
   favicon: '/simple-logo.svg',
   extraBabelPlugins: [
