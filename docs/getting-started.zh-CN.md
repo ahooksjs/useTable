@@ -99,3 +99,5 @@ const Component = () => {
   );
 };
 ```
+
+如果想了解 useNextFormTable 的更多能力的话，比如插件使用，可以到 [useNextFormTable](./next/next-form-table) 查看。

@@ -86,10 +86,34 @@ interface IResponse {
 
 ## 返回值
 
-| 参数            | 说明                                     | 类型          |
-| --------------- | ---------------------------------------- | ------------- |
-| formProps       | formily props，分别是 actions 和 effects | Object        |
-| tableProps      | fusion next table props                  | Object        |
-| paginationProps | fusion pagination props                  | Object        |
-| query           | 处理过的请求方法，可以在外界刷新 table   | () => Promise |
-| getParams       | 获取请求参数，只会在请求成功才更新       | () => ({})    |
+| 参数            | 说明                                                                                     | 类型                                      |
+| --------------- | ---------------------------------------------------------------------------------------- | ----------------------------------------- |
+| formProps       | formily props，更多定义可以看下面 `IFormProps`                                           | `Object`                                  |
+| tableProps      | fusion next table props，更多定义可以看下面 `ITableProps`                                | `Object`                                  |
+| paginationProps | fusion pagination props，更多定义可以看下面 `IPaginationProps`                           | `Object`                                  |
+| query           | 处理过的请求方法，可以在外界刷新 table，默认会带上上一次请求的参数，传入对象会自动合并 | `(params?: Object) => Promise<IResponse>` |
+| getParams       | 获取请求参数，只会在请求成功才更新                                                       | `() => Object`                            |
+
+#### IFormProps
+
+| 参数    | 说明                           | 类型               | 默认值                           |
+| ------- | ------------------------------ | ------------------ | -------------------------------- |
+| actions | formily schema form 的 actions | ISchemaFormActions | ISchemaFormActions               |
+| effects | formily effects                | Effects            | 监听了 onFormSubmit，onFormReset |
+
+#### ITableProps
+
+| 参数       | 说明             | 类型    | 默认值 |
+| ---------- | ---------------- | ------- | ------ |
+| dataSource | 数据源           | any[]   | []     |
+| loading    | 是否出现 loading | Boolean | false  |
+
+#### IPaginationProps
+
+| 参数             | 说明                   | 类型                         | 默认值   |
+| ---------------- | ---------------------- | ---------------------------- | -------- |
+| total            | 总数                   | `Number`                     | 0        |
+| current          | 当前页                 | `Number`                     | 1        |
+| pageSize         | 页大小                 | `Number`                     | 20       |
+| onChange         | 监听当前页改变的事件   | `(current: number) => void`  | 触发请求 |
+| onPageSizeChange | 监听页码大小改变的事件 | `(pageSize: number) => void` | 触发请求 |
