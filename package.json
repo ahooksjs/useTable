@@ -4,6 +4,7 @@
   "scripts": {
     "start": "dumi dev",
     "dev": "dumi dev",
+    "add:pkg": "node ./scripts/add",
     "docs:build": "dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
     "build": "father-build && lerna run build:tsc",

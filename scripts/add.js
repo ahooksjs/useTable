@@ -11,7 +11,7 @@ const add = ({ templateDir = 'template', destDir = 'src' }) => {
   const contentDir = path.resolve(process.cwd(), templateDir);
   const pkgName = cli.input[0];
   const name = camelcase(pkgName);
-  const dest = path.resolve(process.cwd(), destDir, name);
+  const dest = path.resolve(process.cwd(), destDir, pkgName);
 
   const options = {
     dest,
@@ -21,6 +21,7 @@ const add = ({ templateDir = 'template', destDir = 'src' }) => {
       TEMPLATE_CONTENT_DIR: '',
     },
     variable: {
+      pkgName,
       name,
     },
   };
@@ -46,9 +47,8 @@ const add = ({ templateDir = 'template', destDir = 'src' }) => {
     );
 };
 
-add({ destDir: MAIN_DIR }).then(({ name }) => {
-  fs.appendFileSync(
-    path.resolve(__dirname, '..', MAIN_DIR, 'index.ts'),
-    `\nexport { default as ${name} } from './${name}/index';\n`
+add({ destDir: MAIN_DIR }).then(() => {
+  console.log(
+    `${style.green.open}新增 Hook 之后如果本地服务报错，请重新起服务${style.green.close}`
   );
 });
