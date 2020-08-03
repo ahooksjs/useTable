@@ -3,7 +3,13 @@ title: 快速上手
 order: 3
 ---
 
-先使用 [Fusion Next](https://fusion.design/pc/component/doc/102) 和 [formily](formilyjs.org) 让大家熟悉下如何组合搭配使用。
+## 演示
+
+先使用 [Fusion Next](https://fusion.design/pc/component/doc/102) 和 [formily](formilyjs.org) 让大家熟悉下如何组合搭配使用，可以先看看 Codesandbox 这个例子。
+
+<code src="./demo.tsx" inline />
+
+下面逐步描述下如何使用：
 
 ## 安装
 
@@ -34,7 +40,10 @@ interface IResponse {
 
 ```js
 const list = () => {
-  return window.fetch(`<path-to-get-list>`).then((res) => res.json()).then(transform);
+  return window
+    .fetch(`<path-to-get-list>`)
+    .then((res) => res.json())
+    .then(transform);
 };
 ```
 
@@ -42,12 +51,16 @@ const list = () => {
 
 ```js
 const list = () => {
-  return Promise.resolve({
-    success: true,
-    data: {
-      dataSource: [{ name: 'foo' }],
-      total: 1,
-    }
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({
+        success: true,
+        data: {
+          dataSource: [{ name: 'foo' }],
+          total: 1,
+        },
+      });
+    }, 1000);
   });
 };
 ```
@@ -55,6 +68,7 @@ const list = () => {
 #### 引用
 
 ```js
+import '@alifd/next/dist/next.css';
 import useNextFormTable from '@ahooksjs/next-form-table';
 import { Table, Pagination } from '@alifd/next';
 import { SchemaForm, Field, Submit, Reset, FormButtonGroup } from '@formily/next';
@@ -68,7 +82,7 @@ const Component = () => {
   const { formProps, tableProps, paginationProps } = useNextFormTable(list);
 
   return (
-    <Fragment>
+    <div>
       <SchemaForm {...formProps} components={{ Input }} style={{ marginBottom: 20 }} inline>
         <Field name="name" title="name" x-component={'Input'} />
         <FormButtonGroup>
@@ -81,7 +95,7 @@ const Component = () => {
         <Table.Column title="name" dataIndex="name" width={200} />
       </Table>
       <Pagination style={{ marginTop: 16 }} {...paginationProps} />
-    </Fragment>
+    </div>
   );
 };
 ```
