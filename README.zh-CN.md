@@ -1,4 +1,4 @@
-[English](https://github.com/alibaba/hooks/blob/master/README.md) | 简体中文
+[English](https://github.com/ahooksjs/useTable/blob/master/README.md) | 简体中文
 
 # @ahooks/useTable
 
