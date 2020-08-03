@@ -29,20 +29,25 @@
     "@types/jest": "^26.0.5",
     "@typescript-eslint/eslint-plugin": "^3.7.1",
     "@typescript-eslint/parser": "^3.7.1",
+    "ansi-styles": "^4.2.1",
     "babel-jest": "^26.1.0",
     "babel-plugin-transform-async-to-promises": "^0.8.15",
+    "camelcase": "^6.0.0",
     "dumi": "^1.0.33",
     "eslint": "^7.5.0",
     "eslint-plugin-react": "^7.20.5",
     "eslint-plugin-react-hooks": "^4.0.8",
     "father-build": "^1.18.2",
+    "fs-extra": "^9.0.1",
     "jest": "^26.1.0",
     "lerna": "^3.22.1",
+    "meow": "^7.0.1",
     "moment": "^2.27.0",
     "react-eva": "^1.1.10",
     "react-test-renderer": "^16.13.1",
     "styled-components": "^5.1.1",
     "ts-jest": "^26.1.3",
-    "typescript": "^3.9.7"
+    "typescript": "^3.9.7",
+    "use-template": "^0.3.4"
   }
 }

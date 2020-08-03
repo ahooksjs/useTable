@@ -16,6 +16,8 @@
     "**/__tests__",
     "**/__test__",
     "**/test",
-    "jest.config.js"
+    "jest.config.js",
+    "scripts",
+    "template"
   ]
 }
