@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks';
-import <%= name %> from '..';
+import <%= name %> from '../src';
 
 describe('<%= name %>', () => {
   it('should be defined', () => {
