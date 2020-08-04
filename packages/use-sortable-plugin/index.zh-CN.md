@@ -2,8 +2,8 @@
 title: useSortablePlugin
 order: 2
 group:
-  title: Next
-  path: /next
+  title: Plugin
+  path: /plugin
   order: 10
 legacy: /next/use-sortable-plugin
 ---
@@ -13,8 +13,6 @@ legacy: /next/use-sortable-plugin
 ## 何时使用
 
 表格需要排序
-
-⚠️ 需要跟 [next-form-table](./next-form-table) 结合一起使用才能有效。
 
 ## 安装
 

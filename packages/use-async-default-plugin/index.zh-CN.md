@@ -2,10 +2,10 @@
 title: useAsyncDefaultPlugin
 order: 1000
 group:
-  title: Next
-  path: /next
+  title: Plugin
+  path: /plugin
   order: 10
-legacy: /next/use-async-default-plugin
+legacy: /plugin/use-async-default-plugin
 ---
 
 # useAsyncDefaultPlugin
@@ -13,8 +13,6 @@ legacy: /next/use-async-default-plugin
 ## 何时使用
 
 下拉框有异步默认值需求，你要获取下拉框数据然后设置默认值，请求的时候也要带过去。
-
-⚠️ 需要跟 [next-form-table](./next-form-table) 结合一起使用才能有效。
 
 ## 安装
 

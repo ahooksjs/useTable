@@ -2,8 +2,8 @@
 title: useFilterPlugin
 order: 3
 group:
-  title: Next
-  path: /next
+  title: Plugin
+  path: /plugin
   order: 10
 legacy: /next/use-filter-plugin
 ---
@@ -13,8 +13,6 @@ legacy: /next/use-filter-plugin
 ## 何时使用
 
 表格需要 filter 功能
-
-⚠️ 需要跟 [next-form-table](./next-form-table) 结合一起使用才能有效。
 
 ## 安装
 
