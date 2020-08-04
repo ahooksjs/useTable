@@ -4,7 +4,6 @@ import { Processor } from '../type';
 const usePaginationProps: Processor = (ctx) => {
   const { actions, app, options } = ctx;
   const { total, pageSize, current } = actions.getState();
-  const { query } = app;
 
   ctx.paginationProps = {
     total,
@@ -12,7 +11,7 @@ const usePaginationProps: Processor = (ctx) => {
     current,
     pageSizeSelector: 'filter',
     onChange: ($current: number) => {
-      query(
+      app.query(
         { current: $current },
         {
           queryFrom: methods.ON_PAGE_CHANGE,
@@ -20,7 +19,7 @@ const usePaginationProps: Processor = (ctx) => {
       );
     },
     onPageSizeChange: ($pageSize: number) => {
-      query(
+      app.query(
         { pageSize: $pageSize, current: options.current },
         {
           queryFrom: methods.ON_PAGE_SIZE_CHANGE,

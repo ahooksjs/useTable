@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react-hooks';
 import useTable from '../src/index';
 import service from './fixtures/service';
 import sleep from './fixtures/sleep';
@@ -14,8 +14,8 @@ describe('useTable#options', () => {
           expect(params).toEqual({ current: CURRENT, pageSize: 20 });
           return service({ dataSource, total: TOTAL });
         },
-        { current: CURRENT },
-      ),
+        { current: CURRENT }
+      )
     );
 
     await waitForNextUpdate();
@@ -33,8 +33,8 @@ describe('useTable#options', () => {
           expect(params).toEqual({ current: 1, pageSize: PAGE_SIZE });
           return service({ dataSource, total: TOTAL });
         },
-        { pageSize: PAGE_SIZE },
-      ),
+        { pageSize: PAGE_SIZE }
+      )
     );
 
     await waitForNextUpdate();
@@ -45,13 +45,23 @@ describe('useTable#options', () => {
   it('autoFirstQuery', async () => {
     const dataSource = [{ name: 'ahooks' }];
     const TOTAL = 25;
-    const { result } = renderHook(() =>
-      useTable(() => service({ dataSource, total: TOTAL }), { autoFirstQuery: false }),
+    const { result, waitForNextUpdate } = renderHook(() =>
+      useTable(() => service({ dataSource, total: TOTAL }), { autoFirstQuery: false })
     );
 
     expect(result.current.tableProps.dataSource).toEqual([]);
     await sleep(2);
     expect(result.current.tableProps.dataSource).toEqual([]);
+
+    const { onPageSizeChange } = result.current.paginationProps;
+    act(() => {
+      onPageSizeChange(10);
+    });
+    await waitForNextUpdate();
+    await waitForNextUpdate();
+
+    expect(result.current.paginationProps.current).toEqual(1);
+    expect(result.current.paginationProps.pageSize).toEqual(10);
   });
 
   it('refreshDeps', async () => {
@@ -59,7 +69,7 @@ describe('useTable#options', () => {
     const TOTAL = 25;
     let status = true;
     const { result, waitForNextUpdate, rerender } = renderHook(() =>
-      useTable(() => service({ dataSource, total: TOTAL }), { refreshDeps: [status] }),
+      useTable(() => service({ dataSource, total: TOTAL }), { refreshDeps: [status] })
     );
 
     await waitForNextUpdate();
