@@ -1,5 +1,5 @@
 export default {
-  title: 'A Solution for Table',
+  title: 'A Hook Solution for Table',
   logo: '/logo.svg',
   favicon: '/simple-logo.svg',
   extraBabelPlugins: [
