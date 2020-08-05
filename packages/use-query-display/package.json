@@ -1,6 +1,6 @@
 {
   "name": "@ahooksjs/use-query-display",
-  "version": "0.0.1",
+  "version": "0.0.2-alpha.0",
   "scripts": {
     "build:tsc": "tsc --project tsconfig.build.json --declarationDir ./lib && tsc --project tsconfig.build.json --declarationDir ./es"
   },
