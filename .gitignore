@@ -5,3 +5,4 @@ lerna-debug.log
 cjs
 lib
 es
+dist
