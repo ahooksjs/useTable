@@ -1,14 +1,11 @@
 import { useMemo } from 'react';
-import useTable, {
-  IResponse,
-  Options,
-  TableNormalPlugin,
-  IReturnValue,
-} from '@ahooksjs/use-table';
+import useTable, { IResponse, Options, TableNormalPlugin, IReturnValue } from '@ahooksjs/use-table';
 import { createFormActions, IFormEffect, ISchemaFormActions } from '@formily/react-schema-renderer';
 import { IS_FORM_DATA_SUBMITTED } from './symbol';
 import { methods } from './config';
 import pipes from './pipe/index';
+
+export * from '@ahooksjs/use-table';
 
 const useFormTablePlugin: () => TableNormalPlugin = () => {
   const actions: ISchemaFormActions = useMemo(createFormActions, []);
