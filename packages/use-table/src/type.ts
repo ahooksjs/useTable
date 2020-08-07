@@ -96,6 +96,6 @@ export interface Options {
 }
 
 export type TUseTable = (
-  service: (params?: Obj) => Promise<IResponse>,
+  service: (params: Obj) => Promise<IResponse>,
   options?: Options
 ) => IReturnValue;
