@@ -67,6 +67,8 @@ const list = () => {
 
 #### 引用
 
+引用对应的 Next 组件和 formily
+
 ```js
 import '@alifd/next/dist/next.css';
 import useNextFormTable from '@ahooksjs/next-form-table';
@@ -100,4 +102,25 @@ const Component = () => {
 };
 ```
 
-如果想了解 useNextFormTable 的更多能力的话，比如插件使用，可以到 [useNextFormTable](./next/next-form-table) 查看。
+#### 插件
+
+下面演示下使用 useSelectionPlugin 的场景，加了两段代码，分别是
+
+首先引入 useSelectionPlugin
+
+```js
+import useSelectionPlugin from "@ahooksjs/use-selection-plugin"
+```
+
+然后使用
+
+```js
+const plugin = useSelectionPlugin()
+const { formProps, tableProps, paginationProps } = useNextFormTable(list, {
+  plugins: [plugin]
+});
+```
+
+<code src="./demo1.tsx" inline />
+
+如果想了解 useNextFormTable 的更多能力的话，可以到 [useNextFormTable](./next/next-form-table) 查看。

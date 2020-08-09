@@ -42,4 +42,4 @@ const plugin = useSelectionPlugin({ primaryKey });
 
 | 参数       | 说明                      | 类型     | 默认值 |
 | ---------- | ------------------------- | -------- | ------ |
-| primaryKey | 可选，table 的 primaryKey | `String` | id     |
+| primaryKey | 可选，dataSource当中数据的主键，如果给定的数据源中的属性不包含该主键，会造成选择状态全部选中 | `String` | id     |
