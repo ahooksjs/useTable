@@ -26,20 +26,20 @@ legacy: /advance/plugin
 
 ## 场景
 
-服务端驱动的场景，Table 的 `primaryKey`、`columns` 数据是根据后端吐出来的。我们需要做的事情有：
+服务端驱动的场景，Table 的 `primaryKey`、`columns` 数据是根据后端吐出来的。我们需要做的事情有下面三步
 
 - 解析返回值；
 - 获取需要的 Props；
 - 设置到对应 TableProps 或者让用户自定义；
 
-这几个操作其实是一个功能，我们可以抽离出一个插件 useResponsePlugin。
+这几个操作其实是一个功能，我们可以抽离出一个插件 `useResponsePlugin`。下面我们逐步实现自定义插件：
 
 #### 解析返回值
 
 我们可以通过中间件的方式获取到 response
 
 ```js
-const useResponsePlugin = {
+const useResponsePlugin = () => {
   return {
     middlewares: async (ctx, next) => {
       await next();
@@ -61,8 +61,8 @@ const useResponsePlugin = {
   return {
     middlewares: async (ctx, next) => {
       await next();
-      // 这里获取到 response，并且解析
-      response.current = adapt(ctx.response);
+      // 这里获取到 response
+      response.current = ctx.response;
     }
   }
 }
@@ -74,13 +74,13 @@ useTable 提供了可以自动合并 table props 的能力还有暴露方法给�
 
 ```js
 const useResponsePlugin = {
-  const response = useRef();
+  const response = useRef({});
 
   return {
     middlewares: async (ctx, next) => {
       await next();
-      // 这里获取到 response，并且解析
-      response.current = adapt(ctx.response);
+      // 这里获取到 response
+      response.current = ctx.response;
     },
     props: {
       tableProps: {
@@ -96,7 +96,7 @@ const useResponsePlugin = {
 
 ```js
 const Component = () => {
-  const { tableProps, getColumns } = useTable(list, { plugins: [useResponsePlugin] });
+  const { tableProps, getColumns } = useTable(list, { plugins: [useResponsePlugin()] });
   return (
     <Fragment>
       <Table {...tableProps}>
@@ -109,7 +109,11 @@ const Component = () => {
 };
 ```
 
-通过一个例子简单了解了插件，我们可以看看插件整体设计细节
+整体的例子可以看下面的 codesandbox。
+
+<code src="./demo2.tsx" inline />
+
+通过一个例子简单了解了如何自定义插件，下面我们看看插件整体设计细节。
 
 ## 设计细节
 

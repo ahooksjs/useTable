@@ -7,7 +7,7 @@ order: 1
 
 ## 简介
 
-面向中后台查询表格场景的具备插件能力的 Hook 解决方案，更多信息可看 [RFC](https://github.com/alibaba/hooks/issues/465) 和 [Github](https://github.com/ahooksjs/useTable)。
+面向中后台`查询表格场景`并且具备插件能力的 Hook 解决方案，更多信息可看 [RFC](https://github.com/alibaba/hooks/issues/465) 和 [Github](https://github.com/ahooksjs/useTable)。
 
 ## 特性
 

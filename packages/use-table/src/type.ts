@@ -21,6 +21,7 @@ export interface ITableProps {
     total: number;
     pageSize: number;
     current: number;
+    pageSizeSelector: false | 'filter' | 'dropdown';
     onChange: (current: number, ...rest: any[]) => void;
     onPageSizeChange: (pageSize: number, ...rest: any[]) => void;
   };

@@ -12,7 +12,7 @@ legacy: /next/use-filter-plugin
 
 ## 何时使用
 
-表格需要 filter 功能
+过滤器 Filter 功能 🕶
 
 ## 安装
 
@@ -28,7 +28,7 @@ import useFilterPlugin from '@ahooksjs/use-filter-plugin';
 
 ## 代码演示
 
-### 默认请求
+### 基本使用
 
 <code src="./demo/default.tsx" />
 

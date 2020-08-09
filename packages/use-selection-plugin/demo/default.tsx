@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { SchemaForm, Field, Submit, Reset, FormButtonGroup } from '@formily/next';
 import { Input } from '@formily/next-components';
 import useNextFormTable from '@ahooksjs/next-form-table';
-import { Table, Pagination } from '@alifd/next';
+import { Table, Pagination, Button, Message } from '@alifd/next';
 import useSelectionPlugin from '@ahooksjs/use-selection-plugin';
 
 const list = ({ current, pageSize, ...formData }) => {
@@ -27,12 +27,24 @@ const list = ({ current, pageSize, ...formData }) => {
 
 const Component = () => {
   const selectionPlugin = useSelectionPlugin({ primaryKey: 'phone' });
-  const { tableProps, paginationProps, formProps } = useNextFormTable(list, {
+  const { tableProps, paginationProps, formProps, getSelectedRowKeys } = useNextFormTable(list, {
     plugins: [selectionPlugin],
   });
 
   return (
     <Fragment>
+      <p>
+        <Button
+          onClick={() => {
+            const selected = getSelectedRowKeys();
+            Message.success(selected.join(','));
+            console.log(selected);
+          }}
+        >
+          点击查看勾选值
+        </Button>
+      </p>
+
       <SchemaForm {...formProps} components={{ Input }} style={{ marginBottom: 20 }} inline>
         <Field name="name" title="name" x-component={'Input'} />
         <FormButtonGroup>

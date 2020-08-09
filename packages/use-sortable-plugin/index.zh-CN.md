@@ -12,7 +12,7 @@ legacy: /next/use-sortable-plugin
 
 ## 何时使用
 
-表格需要排序
+排序功能 ⓢ
 
 ## 安装
 

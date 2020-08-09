@@ -12,7 +12,7 @@ legacy: /core/use-table
 
 ## 何时使用
 
-为你独有的 Design 自定义具备插件能力 table hook
+为你独有的 Design 自定义具备插件能力 Table Hook
 
 ## 安装
 
@@ -43,8 +43,8 @@ const useYourDesignTable = (...args) => {
       pageIndex: paginationProps.current,
     },
     ...remain,
-  }
-}
+  };
+};
 ```
 
 ## 参数
@@ -102,5 +102,6 @@ interface IResponse {
 | total            | 总数                   | `Number`                     | 0        |
 | current          | 当前页                 | `Number`                     | 1        |
 | pageSize         | 页大小                 | `Number`                     | 20       |
+| pageSizeSelector | 每页显示选择器类型     | `String`                     | 'filter' |
 | onChange         | 监听当前页改变的事件   | `(current: number) => void`  | 触发请求 |
 | onPageSizeChange | 监听页码大小改变的事件 | `(pageSize: number) => void` | 触发请求 |

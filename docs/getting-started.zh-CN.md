@@ -5,11 +5,11 @@ order: 3
 
 ## 演示
 
-先使用 [Fusion Next](https://fusion.design/pc/component/doc/102) 和 [formily](formilyjs.org) 让大家熟悉下如何组合搭配使用，可以先看看 Codesandbox 这个例子。
+先使用 [Fusion Next](https://fusion.design/pc/component/doc/102) 和 [formily](https://formilyjs.org/) 让大家熟悉下如何组合搭配使用，可以先看看 Codesandbox 这个例子。
 
 <code src="./demo.tsx" inline />
 
-下面逐步描述下如何使用：
+下面逐步描述下如何使用。
 
 ## 安装
 
@@ -19,7 +19,7 @@ npm install @ahooksjs/next-form-table @alifd/next @formily/next @formily/next-co
 
 ## 使用
 
-#### 请求源
+#### 定义请求源
 
 需要注意两点，一个是请求源必须返回一个 Promise 接口，另外一个接口返回的格式为：
 
@@ -67,7 +67,7 @@ const list = () => {
 
 #### 引用
 
-引用对应的 Next 组件和 formily
+引用 Next 组件和 formily
 
 ```js
 import '@alifd/next/dist/next.css';
@@ -104,22 +104,24 @@ const Component = () => {
 
 #### 插件
 
-下面演示下使用 useSelectionPlugin 的场景，加了两段代码，分别是
+如果需要加上多选的功能，只需要加两段代码即可，分别是
 
-首先引入 useSelectionPlugin
+* 引入 `useSelectionPlugin`
 
 ```js
-import useSelectionPlugin from "@ahooksjs/use-selection-plugin"
+import useSelectionPlugin from '@ahooksjs/use-selection-plugin';
 ```
 
-然后使用
+* 创建并注入
 
 ```js
-const plugin = useSelectionPlugin()
+const plugin = useSelectionPlugin();
 const { formProps, tableProps, paginationProps } = useNextFormTable(list, {
-  plugins: [plugin]
+  plugins: [plugin],
 });
 ```
+
+可以看看下面的可运行例子
 
 <code src="./demo1.tsx" inline />
 

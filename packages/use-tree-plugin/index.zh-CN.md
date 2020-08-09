@@ -12,7 +12,7 @@ legacy: /next/use-tree-plugin
 
 ## 何时使用
 
-表格需要懒加载树的能力
+懒加载树的功能 🌲
 
 ## 安装
 

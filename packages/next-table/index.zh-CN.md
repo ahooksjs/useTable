@@ -10,11 +10,11 @@ legacy: /next/next-table
 
 # useNextTable
 
-⚠️ useNextTable `参数`和`返回值`继承于 [use-table](../core/use-table)
+> useNextTable `参数`和`返回值`继承于 [use-table](../core/use-table)
 
 ## 何时使用
 
-Table 查询页，基于 [Fusion Next](https://github.com/alibaba-fusion/next) 实现
+`查询表格场景`，基于 [Fusion Next](https://github.com/alibaba-fusion/next) 实现
 
 ## 安装
 
@@ -98,6 +98,7 @@ interface IResponse {
 | ---------------- | ---------------------- | ---------------------------- | -------- |
 | total            | 总数                   | `Number`                     | 0        |
 | current          | 当前页                 | `Number`                     | 1        |
+| pageSizeSelector | 每页显示选择器类型     | `String`                     | 'filter' |
 | pageSize         | 页大小                 | `Number`                     | 20       |
 | onChange         | 监听当前页改变的事件   | `(current: number) => void`  | 触发请求 |
 | onPageSizeChange | 监听页码大小改变的事件 | `(pageSize: number) => void` | 触发请求 |
