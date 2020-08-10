@@ -1,6 +1,6 @@
 ---
 title: useAsyncDefaultPlugin
-order: 1000
+order: 5
 group:
   title: Plugin
   path: /plugin
