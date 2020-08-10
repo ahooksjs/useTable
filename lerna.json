@@ -8,6 +8,9 @@
         "--no-package-lock"
       ]
     },
+    "version": {
+      "message": "chore(versions): publish packages %s"
+    },
     "publish": {
       "registry": "https://registry.npmjs.org",
       "allowBranch": "master",
@@ -16,5 +19,5 @@
       ]
     }
   },
-  "version": "0.0.2-alpha.1"
+  "version": "0.0.2-alpha.2"
 }

@@ -15,7 +15,7 @@
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "test": "jest",
     "preversion": "npm run build && npm run test",
-    "version:alpha": "npm run preversion && lerna version prerelease --preid alpha --force-publish=* --no-git-tag-version -m \"chore(versions): publish packages %s\"",
+    "version:alpha": "lerna version prerelease --preid alpha --force-publish=* --no-git-tag-version",
     "release:force": "lerna publish from-package --yes",
     "release": "lerna publish"
   },
