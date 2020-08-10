@@ -17,7 +17,7 @@ describe('useTable#plugin', () => {
       },
     };
     const { waitForNextUpdate, result } = renderHook(() =>
-      useTable(() => service({ dataSource, total: TOTAL }), { plugins: [plugin] }),
+      useTable(() => service({ dataSource, total: TOTAL }), { plugins: [plugin] })
     );
 
     await waitForNextUpdate();
@@ -41,7 +41,7 @@ describe('useTable#plugin', () => {
       },
     };
     const { waitForNextUpdate, result } = renderHook(() =>
-      useTable(() => service({ dataSource, total: TOTAL }), { plugins: [plugin, plugin1] }),
+      useTable(() => service({ dataSource, total: TOTAL }), { plugins: [plugin, plugin1] })
     );
 
     await waitForNextUpdate();
@@ -60,7 +60,7 @@ describe('useTable#plugin', () => {
       },
     };
     const { waitForNextUpdate, result } = renderHook(() =>
-      useTable(() => service({ dataSource, total: TOTAL }), { plugins: [plugin] }),
+      useTable(() => service({ dataSource, total: TOTAL }), { plugins: [plugin] })
     );
 
     await waitForNextUpdate();
@@ -78,7 +78,7 @@ describe('useTable#plugin', () => {
       },
     };
     const { waitForNextUpdate, result } = renderHook(() =>
-      useTable(() => service({ dataSource, total: TOTAL }), { plugins: [plugin] }),
+      useTable(() => service({ dataSource, total: TOTAL }), { plugins: [plugin] })
     );
 
     await waitForNextUpdate();
@@ -96,13 +96,31 @@ describe('useTable#plugin', () => {
       }),
     };
     const { waitForNextUpdate, result } = renderHook(() =>
-      useTable(() => service({ dataSource, total: TOTAL }), { plugins: [plugin] }),
+      useTable(() => service({ dataSource, total: TOTAL }), { plugins: [plugin] })
     );
 
     await waitForNextUpdate();
     await waitForNextUpdate();
 
     expect(result.current.test).toEqual(true);
+  });
+
+  it('getParams', async () => {
+    const dataSource = [{ name: 'ahooks' }];
+    const TOTAL = 25;
+    const plugin = {
+      props: () => ({
+        getParams: () => true,
+      }),
+    };
+    const { waitForNextUpdate, result } = renderHook(() =>
+      useTable(() => service({ dataSource, total: TOTAL }), { plugins: [plugin] })
+    );
+
+    await waitForNextUpdate();
+    await waitForNextUpdate();
+
+    expect(result.current.getParams()).toEqual(true);
   });
 
   it('all', async () => {

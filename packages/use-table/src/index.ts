@@ -3,8 +3,8 @@ import useQueryDisplay from '@ahooksjs/use-query-display';
 import { timelines, defaults, methods, PREPARE } from './config';
 import createStore from './store';
 import middlewares from './middlewares/index';
-import useProps from './props/index';
-import { Obj, RawPlugins, Plugin, IContext, TUseTable } from './type';
+import propProcessors from './props/index';
+import { RawPlugins, Plugin, IContext, TUseTable } from './type';
 import { addYourMiddlewares } from './shared';
 import { IS_NORMAL_SYMBOL } from './symbol';
 import { checkQueryFrom } from './helper';
@@ -13,12 +13,6 @@ import { useMutableState, useMount, useUpdateEffect } from './use';
 export * from './type';
 
 export { PREPARE, IS_NORMAL_SYMBOL, methods };
-
-const useParams = (ctx: Obj) => {
-  ctx.getParams = ctx.store.paramMap.get;
-};
-
-const propProcessors = [...useProps, useParams];
 
 const useTablePlugin = (options): Plugin => {
   const [state, setState] = useMutableState({
