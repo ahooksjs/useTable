@@ -11,7 +11,7 @@ const renderMiddleware: Middleware = (ctx, next) => {
     params.current = current || params.current;
     params.pageSize = pageSize || params.pageSize;
 
-    const resolve = request.resolve || (() => {});
+    const resolve = request.resolve || (() => ({}));
     store.paramMap.set(params);
     clearTimeout(meta[LOADING_TIMER]);
 
