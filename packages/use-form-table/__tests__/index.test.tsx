@@ -10,16 +10,14 @@ import {
 import useFormTable from '../src/index';
 import service from './fixtures/service';
 
-describe('useFormTable#basic', () => {
-  beforeEach(() => {
-    registerFormField(
-      'string',
-      connect()((props) => {
-        return <input {...props} value={props.value || ''} />;
-      })
-    );
-  });
+registerFormField(
+  'string1',
+  connect()((props) => {
+    return <input {...props} value={props.value || ''} />;
+  })
+);
 
+describe('useFormTable#basic', () => {
   it('submit', async () => {
     const data = { name: 'ahooks' };
 
@@ -31,7 +29,7 @@ describe('useFormTable#basic', () => {
       return (
         <Fragment>
           <SchemaForm {...formProps}>
-            <Field name={'name'} type="string" x-props={{ 'data-testid': 'input' }} />
+            <Field name={'name'} type="string1" x-props={{ 'data-testid': 'input' }} />
             <button type="submit">Submit</button>
           </SchemaForm>
 
@@ -72,7 +70,7 @@ describe('useFormTable#basic', () => {
       return (
         <Fragment>
           <SchemaForm {...formProps}>
-            <Field name={'name'} type="string" x-props={{ 'data-testid': 'input' }} />
+            <Field name={'name'} type="string1" x-props={{ 'data-testid': 'input' }} />
             <button type="submit">Submit</button>
             <button type="reset">Reset</button>
           </SchemaForm>
@@ -123,7 +121,7 @@ describe('useFormTable#basic', () => {
       return (
         <Fragment>
           <SchemaForm {...formProps}>
-            <Field name={'name'} type="string" x-props={{ 'data-testid': 'input' }} />
+            <Field name={'name'} type="string1" x-props={{ 'data-testid': 'input' }} />
             <button type="submit">Submit</button>
             <button type="reset">Reset</button>
           </SchemaForm>
