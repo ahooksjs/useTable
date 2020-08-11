@@ -45,9 +45,9 @@ const useResponsePlugin = () => {
       await next();
       // 这里获取到 response，并且解析
       console.log(ctx.response);
-    }
-  }
-}
+    },
+  };
+};
 ```
 
 #### 获取 props
@@ -131,41 +131,56 @@ const usePlugin = () => {
 
 #### 概览
 
-插件整体是一个 Hook，只是你需要返回一些特定的接口来作为集成。你可以在插件里面使用任何 Hook，比如 useState 等。
+插件整体是一个 Hook，只是你需要返回一些特定的接口来作为集成。你可以在插件里面使用任何 Hook，比如 useState 等。两个重要的概念 `Middlewares` 和 `Props` 需要重点了解。
 
 #### Middlewares
 
-这个是 Koa 的洋葱模型，可以方便你设置参数，也可以方便你在请求前做一些处理，请求后做一些处理，写法跟你在写 Koa Middleware 一样。
+这个是 Koa 的洋葱模型，可以方便你设置参数，也可以方便你在请求前做一些处理，请求后做一些处理，写法跟你在写 Koa Middleware 一样。可以通过 ctx 来修改参数和返回值，具体定义可看 [Ctx](#ctx)。
 
 ```js
 // 请求之前
-const willQueryMiddleware = (ctx, next) => {
-  // 可以获取参数
-  // 这里处理请求前的处理
-  return next();
+const useWillQueryPlugin = () => {
+  return {
+    middlewares: (ctx, next) => {
+      // 可以获取参数
+      // 这里处理请求前的处理
+      ctx.params = { ...ctx.params };
+      return next();
+    },
+  };
 };
 
 // 请求之后
-const didQueryMiddleware = (ctx, next) => {
-  return next().then(() => {
-    // 请求之后做的处理，比如处理一些状态设置或者返回数据处理
-  });
+const useDidQueryPlugin = () => {
+  return {
+    middlewares: (ctx, next) => {
+      return next().then(() => {
+        // 请求之后做的处理，比如处理一些状态设置或者返回数据处理
+        ctx.response = { ...ctx.response };
+      });
+    },
+  };
 };
 ```
 
 #### Props
 
-props 有两个功能，一个是自动合并 table、 form、pagination 的 props，另外一个是为了暴露功能到外界，可以让外界使用，比如一些获取的数据。
+props 有两个功能，分别是
+
+- 自动合并 table、 form、pagination 的 props；
+- 暴露功能到外界，可以让外界使用，比如一些获取的数据；
 
 ```js
-const props = (ctx) => {
-  return {
-    tableProps: {},
-    formProps: {},
-    paginationProps: {},
-    // 其他的，名字随意
-    foo: {},
-  };
+const usePlugin = {
+  props: (ctx) => {
+    return {
+      tableProps: {},
+      formProps: {},
+      paginationProps: {},
+      // 其他的，名字随意
+      foo: {},
+    };
+  },
 };
 ```
 
@@ -185,14 +200,14 @@ const usePlugin = () => {
 
 const { tableProps, name } = useTable(service, { plugins: [usePlugin()] });
 
-// 这个时候 tableProps 的 test 属性为 1，还有 name 就是你暴露的 ahooks
+// 这个时候 tableProps 的 test 属性为 1，还有 name 就是 usePlugin 暴露的 ahooks
 ```
 
 formProps、paginationProps 以此类推。
 
 #### Ctx
 
-这个是 middleware 还有 props 为函数的时候注入的 ctx 的 interface 定义
+这个是 middlewares 和 props 的 ctx interface 定义
 
 ```js
 interface ICtx {
@@ -205,7 +220,6 @@ interface ICtx {
   actions: object;
   // 每一次请求要缓存的数据
   store: object;
-  helper: object;
   // 可以手动触发请求
   query: (params?: object) => Promise<IResponse>;
   // 请求参数
@@ -214,3 +228,20 @@ interface ICtx {
   response: IResponse;
 }
 ```
+
+**queryFrom**
+
+| queryFrom          | 说明                           | 提供者                    |
+| ------------------ | ------------------------------ | ------------------------- |
+| `onMount`          | 表示是 Table mount 的时候触发  | `useTable & useFormTable` |
+| `onPageSizeChange` | 表示是切换 pageSize 的时候触发 | `useTable & useFormTable` |
+| `onPageChange`     | 表示是切换当前页的时候触发     | `useTable & useFormTable` |
+| `onFormSubmit`     | 表示是点击查询的时候触发       | `useFormTable`            |
+| `onFormReset`      | 表示是点击重置的时候触发       | `useFormTable`            |
+
+**store**
+
+| 属性       | 说明                                                  | 提供者                    |
+| ---------- | ----------------------------------------------------- | ------------------------- |
+| `stateMap` | 提供 set & get 方法，set 的时候会自动合并上一次 state | `useTable & useFormTable` |
+| `paramMap` | 提供 set & get 方法，set 会直接覆盖                   | `useTable & useFormTable` |
