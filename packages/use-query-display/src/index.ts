@@ -6,20 +6,18 @@
  */
 import { useMemo, useRef } from 'react';
 import createPluginManager from './plugin';
-import composer, {
-  pipeMergedCompose,
-  onionCompose,
-  timelineCompose,
-} from './compose';
+import composer, { pipeMergedCompose, onionCompose, timelineCompose } from './compose';
 import checker, { isFunction } from './checker';
 import { PAYLOAD_SYMBOL, REQUEST_SYMBOL } from './symbol';
 import { Obj, IApp, IRequest, RawPlugins, Plugins } from './type';
 
 export * from './type';
 
+export * from './checker';
+
 export { PAYLOAD_SYMBOL, REQUEST_SYMBOL };
 
-const useInit = fn => {
+const useInit = (fn) => {
   const ref = useRef(true);
   if (ref.current) {
     ref.current = false;
@@ -28,16 +26,13 @@ const useInit = fn => {
 };
 
 // 请求中间件化
-const createQuery = (ctx: IApp['ctx'], plugins: Plugins): IApp['query'] => (
-  payload,
-  meta = {},
-) => {
+const createQuery = (ctx: IApp['ctx'], plugins: Plugins): IApp['query'] => (payload, meta = {}) => {
   ctx[PAYLOAD_SYMBOL] = payload;
   ctx.meta = meta;
 
-  return onionCompose(
-    timelineCompose(ctx[REQUEST_SYMBOL].timelines, plugins.middlewares || []),
-  )(ctx);
+  return onionCompose(timelineCompose(ctx[REQUEST_SYMBOL].timelines, plugins.middlewares || []))(
+    ctx
+  );
 };
 
 const usePlugin = (pluginContext: {
@@ -56,9 +51,9 @@ const usePlugin = (pluginContext: {
   const plugins = useMemo(plugin.get, []);
   // 只有第一个 props 优先级最高，因为它是 Native plugin props
   const pluginsProps = plugins.props.slice(0, 1).concat(
-    plugins.props.slice(1).map(p => {
+    plugins.props.slice(1).map((p) => {
       return isFunction(p) ? p(pluginContext.app.ctx) : p;
-    }),
+    })
   );
   const props = pipeMergedCompose(pluginsProps);
 
@@ -78,14 +73,11 @@ const useQueryDisplay = (request: IRequest, rawPlugins?: RawPlugins) => {
         ...composer,
       },
     }),
-    [],
+    []
   );
 
   const { props, plugins } = usePlugin({ rawPlugins, app });
-  const query = useMemo(() => createQuery(app.ctx, plugins), [
-    plugins,
-    request,
-  ]);
+  const query = useMemo(() => createQuery(app.ctx, plugins), [plugins, request]);
   app.query = query;
 
   return { props, plugins, query };
