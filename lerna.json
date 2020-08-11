@@ -1,22 +1,16 @@
 {
-  "packages": [
-    "packages/*"
-  ],
+  "packages": ["packages/*"],
   "command": {
     "bootstrap": {
-      "npmClientArgs": [
-        "--no-package-lock"
-      ]
+      "npmClientArgs": ["--no-package-lock"]
     },
     "version": {
-      "message": "chore(versions): publish packages %s"
+      "message": "%s"
     },
     "publish": {
       "registry": "https://registry.npmjs.org",
       "allowBranch": "master",
-      "ignoreChanges": [
-        "*.md"
-      ]
+      "ignoreChanges": ["*.md"]
     }
   },
   "version": "0.0.2"
