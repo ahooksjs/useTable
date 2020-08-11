@@ -12,11 +12,15 @@ English | [简体中文](https://github.com/ahooksjs/useTable/blob/master/README
 
 ## Install
 
+- Use Fusion Design
+
 ```sh
 npm install @ahooksjs/next-form-table --save
 ```
 
 ## Usage
+
+- Use Fusion Design
 
 ```js
 import useNextFormTable from '@ahooksjs/next-form-table';

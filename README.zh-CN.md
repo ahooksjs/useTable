@@ -12,11 +12,15 @@
 
 ## 安装
 
+- 使用 Fusion Design
+
 ```sh
 npm install @ahooksjs/next-form-table --save
 ```
 
 ## 使用
+
+- 使用 Fusion Design
 
 ```js
 import useNextFormTable from '@ahooksjs/next-form-table';
