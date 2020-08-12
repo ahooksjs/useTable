@@ -6,8 +6,11 @@ import { Pipe, Transformer } from '../type';
 const updatePipe: Pipe = (ctx) => {
   const { [PAYLOAD_SYMBOL]: payload, params, actions, meta, store, helper } = ctx;
   const { isFunction, isObject } = helper;
-  const { ctxMap } = store;
-  const nextParams = meta[IS_NORMAL_SYMBOL] ? params : ctxMap.get('prevParams');
+  const { paramMap } = store;
+  const nextParams = {
+    ...paramMap.get(),
+    ...params,
+  };
 
   // 局部的 transformer, 局部覆盖全局
   // 需要把 transform 之后的值保留下来
@@ -25,8 +28,6 @@ const updatePipe: Pipe = (ctx) => {
       ...payload,
     };
   }
-
-  ctxMap.set({ prevParams: ctx.params });
 
   return ctx;
 };

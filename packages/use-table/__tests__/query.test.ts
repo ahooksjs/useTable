@@ -122,4 +122,32 @@ describe('useTable#query', () => {
     expect(result.current.paginationProps.pageSize).toEqual(20);
     expect(result.current.paginationProps.total).toEqual(TOTAL);
   });
+
+  it('autoFirstQuery false', async () => {
+    const dataSource = [{ name: 'ahooks' }];
+    const TOTAL = 25;
+    const normalParams = { current: 1, pageSize: 20 };
+    let extraParams = {};
+    const { result, waitForNextUpdate } = renderHook(() =>
+      useTable(
+        (params) => {
+          expect(params).toEqual({ ...normalParams, ...extraParams });
+          return service({ dataSource, total: TOTAL });
+        },
+        { autoFirstQuery: false }
+      )
+    );
+    expect(result.current.tableProps.loading).toEqual(false);
+    expect(result.current.tableProps.dataSource).toEqual([]);
+
+    act(() => {
+      extraParams = { name: 'foo' };
+      result.current.query(extraParams);
+    });
+
+    await waitForNextUpdate();
+    await waitForNextUpdate();
+
+    expect(result.current.tableProps.dataSource).toEqual(dataSource);
+  });
 });
