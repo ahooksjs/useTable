@@ -141,6 +141,16 @@ describe('useTable#query', () => {
     expect(result.current.tableProps.dataSource).toEqual([]);
 
     act(() => {
+      extraParams = {};
+      result.current.query();
+    });
+
+    await waitForNextUpdate();
+    await waitForNextUpdate();
+
+    expect(result.current.tableProps.dataSource).toEqual(dataSource);
+
+    act(() => {
       extraParams = { name: 'foo' };
       result.current.query(extraParams);
     });

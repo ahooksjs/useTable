@@ -149,4 +149,52 @@ describe('useTable#plugin', () => {
     });
     expect(result.current.state).toEqual(false);
   });
+
+  it('dynamic', async () => {
+    const dataSource = [{ name: 'ahooks' }];
+    const TOTAL = 25;
+    const usePlugin = () => {
+      return {
+        props: () => ({
+          name: 'foo',
+        }),
+      };
+    };
+
+    const usePlugin1 = () => {
+      return {
+        props: () => ({
+          title: 'bar',
+        }),
+      };
+    };
+    const { waitForNextUpdate, result } = renderHook(() => {
+      const [isAll, setState] = useState(true);
+      const plugin = usePlugin();
+      const plugin1 = usePlugin1();
+      const returnValue = useTable(() => service({ dataSource, total: TOTAL }), {
+        plugins: isAll ? [plugin, plugin1] : [plugin],
+      });
+
+      return {
+        ...returnValue,
+        setState,
+        isAll,
+      };
+    });
+
+    await waitForNextUpdate();
+    await waitForNextUpdate();
+
+    expect(result.current.isAll).toEqual(true);
+    expect((result.current as any).name).toEqual('foo');
+    expect((result.current as any).title).toEqual('bar');
+
+    act(() => {
+      result.current.setState(false);
+    });
+    expect(result.current.isAll).toEqual(false);
+    expect((result.current as any).name).toEqual('foo');
+    expect((result.current as any).title).toEqual(undefined);
+  });
 });

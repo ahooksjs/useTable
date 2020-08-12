@@ -39,11 +39,11 @@ const useTablePlugin = (options): Plugin => {
           ctx.actions = actions;
           ctx.options = options;
           ctx.methods = methods;
+          ctx.meta = { ...ctx.meta, [IS_NORMAL_SYMBOL]: isNormal };
           ctx.helper = {
             ...helper,
             checkQueryFrom: () => checkQueryFrom(ctx as IContext),
           };
-          ctx.meta = { ...ctx.meta, [IS_NORMAL_SYMBOL]: isNormal };
 
           return next();
         },
