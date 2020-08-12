@@ -8,7 +8,7 @@ import { RawPlugins, Plugin, IContext, TUseTable } from './type';
 import { addYourMiddlewares } from './shared';
 import { IS_NORMAL_SYMBOL } from './symbol';
 import { checkQueryFrom } from './helper';
-import { useMutableState, useMount, useUpdateEffect } from './use';
+import { useMutableState, useMount, useUpdateEffect, usePersistFn } from './use';
 
 export * from './type';
 
@@ -74,8 +74,9 @@ const useTable: TUseTable = (service, options) => {
   } = options || {};
 
   const plugin: RawPlugins = [useTablePlugin({ ...options, current, pageSize })];
+  const persistedService = usePersistFn(service);
   const { props: tableQueryProps = {}, query } = useQueryDisplay(
-    { timelines: [PREPARE].concat(timelines), ...options, service },
+    { timelines: [PREPARE].concat(timelines), ...options, service: persistedService },
     plugin.concat(addYourMiddlewares(plugins))
   );
 

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { renderHook, act } from '@testing-library/react-hooks';
 import useTable from '../src/index';
 import service from './fixtures/service';
@@ -10,7 +11,7 @@ describe('useTable#basic', () => {
       useTable((params) => {
         expect(params).toEqual({ current: 1, pageSize: 20 });
         return service({ dataSource, total: TOTAL });
-      }),
+      })
     );
     expect(result.current.tableProps.loading).toEqual(false);
     expect(result.current.tableProps.dataSource).toEqual([]);
@@ -36,7 +37,7 @@ describe('useTable#basic', () => {
       useTable((p) => {
         expect(p).toEqual(params);
         return service({ dataSource });
-      }),
+      })
     );
     // Loading
     await waitForNextUpdate();
@@ -62,7 +63,7 @@ describe('useTable#basic', () => {
       useTable((p) => {
         expect(p).toEqual(params);
         return service({ dataSource });
-      }),
+      })
     );
     // Loading
     await waitForNextUpdate();
@@ -88,5 +89,50 @@ describe('useTable#basic', () => {
     // it will reset current when change pageSize
     expect(result.current.paginationProps.current).toEqual(1);
     expect(result.current.paginationProps.pageSize).toEqual(10);
+  });
+
+  it('get params from outside', async () => {
+    const dataSource = [{ name: 'ahooks' }];
+    const TOTAL = 25;
+    let $name = 'foo';
+    const { result, waitForNextUpdate } = renderHook(() => {
+      const [name, setName] = useState($name);
+      return {
+        name,
+        setName: (n) => {
+          $name = n;
+          setName(n);
+        },
+        ...useTable(
+          () => {
+            expect(name).toEqual($name);
+            return service({ dataSource, total: TOTAL });
+          },
+          { refreshDeps: [name] }
+        ),
+      };
+    });
+    expect(result.current.tableProps.loading).toEqual(false);
+    expect(result.current.tableProps.dataSource).toEqual([]);
+
+    // Loading
+    await waitForNextUpdate();
+    expect(result.current.tableProps.loading).toEqual(true);
+    expect(result.current.tableProps.dataSource).toEqual([]);
+
+    // Response
+    await waitForNextUpdate();
+    expect(result.current.tableProps.loading).toEqual(false);
+    expect(result.current.tableProps.dataSource).toEqual(dataSource);
+    expect(result.current.paginationProps.current).toEqual(1);
+    expect(result.current.paginationProps.pageSize).toEqual(20);
+    expect(result.current.paginationProps.total).toEqual(TOTAL);
+
+    act(() => {
+      result.current.setName('bar');
+    });
+
+    await waitForNextUpdate();
+    await waitForNextUpdate();
   });
 });

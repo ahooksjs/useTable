@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState, useEffect } from 'react';
+import { useMemo, useRef, useState, useEffect, useCallback } from 'react';
 import { Obj } from './type';
 
 export const useMutableState = (initalState: Obj = {}) => {
@@ -30,4 +30,15 @@ export const useUpdateEffect = (fn, deps) => {
       fn();
     }
   }, deps);
+};
+
+export const usePersistFn = (fn) => {
+  const ref = useRef<any>(() => {
+    throw new Error('Cannot call function while rendering.');
+  });
+
+  ref.current = fn;
+  const persistFn = useCallback((...args) => ref.current(...args), [ref]);
+
+  return persistFn;
 };
