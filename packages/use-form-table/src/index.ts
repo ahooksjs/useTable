@@ -27,7 +27,6 @@ const useFormTablePlugin: () => TableNormalPlugin = () => {
           actions,
           effects: ($) => {
             $(methods.ON_FORM_SUBMIT).subscribe((payload) => {
-              actions.setFormState(payload.values);
               return ctx.query(
                 { ...payload.values, current: ctx.options.current },
                 { [IS_FORM_DATA_SUBMITTED]: true, queryFrom: methods.ON_FORM_SUBMIT }
@@ -35,7 +34,6 @@ const useFormTablePlugin: () => TableNormalPlugin = () => {
             });
 
             $(methods.ON_FORM_RESET).subscribe((payload) => {
-              actions.setFormState(payload.values);
               return ctx.query(
                 { ...payload.values, current: ctx.options.current },
                 { [IS_FORM_DATA_SUBMITTED]: true, queryFrom: methods.ON_FORM_RESET }
