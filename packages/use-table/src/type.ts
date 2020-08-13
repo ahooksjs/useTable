@@ -1,4 +1,11 @@
-import { Obj, IApp, IHelper, IMiddlewareContext, NormalPlugin } from '@ahooksjs/use-query-display';
+import {
+  Obj,
+  IApp,
+  IHelper,
+  IMiddlewareContext,
+  NormalPlugin,
+  NativePlugin,
+} from '@ahooksjs/use-query-display';
 
 export * from '@ahooksjs/use-query-display';
 
@@ -86,7 +93,7 @@ export interface IContext extends IMiddlewareContext {
   response: IResponse;
 }
 
-export type TableNormalPlugin<P = Obj> = NormalPlugin<IContext, P>;
+export type TableNormalPlugin<P = Obj> = NormalPlugin<IContext, P> | NativePlugin<IContext, P>;
 
 export interface Options {
   current?: number;

@@ -16,6 +16,9 @@ const combineMiddlewares = (a: Obj, b: Obj) => {
   }, a);
 };
 
+/**
+ * [1, [2, 4]] ==> [1, 2, 4]
+ */
 function flat(enhancers: any[]): any[] {
   return enhancers
     .filter(e => e)

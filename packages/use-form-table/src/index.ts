@@ -60,7 +60,7 @@ const useFormTable = (
   options?: Options
 ): IUseFormTableReturnValue => {
   const formTablePlugin = useFormTablePlugin();
-  const plugins = [formTablePlugin].concat(options?.plugins || []);
+  const plugins = [formTablePlugin, ...(options?.plugins || [])];
   return useTable(service, { ...options, plugins }) as IUseFormTableReturnValue;
 };
 

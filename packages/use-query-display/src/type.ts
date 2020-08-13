@@ -18,11 +18,13 @@ export interface IMiddlewareContext {
 
 export type Middleware<Ctx = IMiddlewareContext> = (
   ctx: Ctx,
-  next: () => Promise<any>,
+  next: () => Promise<any>
 ) => Promise<any>;
 
 // 底层的 Plugin，可以读取 NormalPlugin 的属性
-export type NativePlugin = (ctx: PluginContext) => NormalPlugin;
+export type NativePlugin<Ctx = IMiddlewareContext, P = Obj> = (
+  ctx: PluginContext
+) => NormalPlugin<Ctx, P>;
 
 export type NormalPlugin<Ctx = IMiddlewareContext, P = Obj> = {
   middlewares?:

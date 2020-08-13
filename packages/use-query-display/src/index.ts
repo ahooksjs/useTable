@@ -35,32 +35,33 @@ const createQuery = (ctx: IApp['ctx'], plugins: Plugins): IApp['query'] => (payl
   );
 };
 
-const usePlugin = (pluginContext: {
+const usePlugin = (pluginManagerContext: {
   app: IApp;
   rawPlugins?: RawPlugins;
   props?: Obj;
   plugins?: Plugins;
 }): Obj => {
-  const plugin = useMemo(createPluginManager, []);
+  const pluginManager = useMemo(createPluginManager, []);
 
   useInit(() => {
-    plugin.context.set(pluginContext);
+    pluginManager.context.set(pluginManagerContext);
   });
-  plugin.pureUse(pluginContext.rawPlugins);
+  // 每次执行都重新计算插件
+  pluginManager.pureUse(pluginManagerContext.rawPlugins);
 
-  const plugins = useMemo(plugin.get, []);
-  // 只有第一个 props 优先级最高，因为它是 Native plugin props
+  const plugins = useMemo(pluginManager.get, []);
+  // TODO 只有第一个 props 优先级最高，因为它是 Native plugin props
   const pluginsProps = plugins.props.slice(0, 1).concat(
     plugins.props.slice(1).map((p) => {
-      return isFunction(p) ? p(pluginContext.app.ctx) : p;
+      return isFunction(p) ? p(pluginManagerContext.app.ctx) : p;
     })
   );
   const props = pipeMergedCompose(pluginsProps);
 
-  pluginContext.plugins = plugins;
-  pluginContext.props = props;
+  pluginManagerContext.plugins = plugins;
+  pluginManagerContext.props = props;
 
-  return pluginContext;
+  return pluginManagerContext;
 };
 
 const useQueryDisplay = (request: IRequest, rawPlugins?: RawPlugins) => {
