@@ -1,6 +1,6 @@
 import { useMemo, useCallback } from 'react';
 import useQueryDisplay from '@ahooksjs/use-query-display';
-import { timelines, defaults, methods, PREPARE } from './config';
+import { timelines, defaults, methods, PREPARE, WILL_QUERY } from './config';
 import createStore from './store';
 import middlewares from './middlewares/index';
 import propProcessors from './props/index';
@@ -12,7 +12,7 @@ import { useMutableState, useMount, useUpdateEffect, usePersistFn } from './use'
 
 export * from './type';
 
-export { PREPARE, IS_NORMAL_SYMBOL, methods };
+export { PREPARE, WILL_QUERY, IS_NORMAL_SYMBOL, methods };
 
 const useTablePlugin = (options): Plugin => {
   const [state, setState] = useMutableState({
@@ -50,6 +50,7 @@ const useTablePlugin = (options): Plugin => {
         ...middlewares,
       },
 
+      // 返回 props
       props: (props) => {
         const { helper } = app;
         return helper.processCompose(propProcessors)({

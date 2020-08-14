@@ -51,6 +51,7 @@ export const onionCompose: IComposer['onionCompose'] = (middlewares) => (context
 };
 
 // 类似 Redux 的 pipe 模型
+// pipeCompose([a, b, c])(x) ==> c(b(a(x)))
 export const pipeCompose: IComposer['pipeCompose'] = (pipes = []) => {
   if (pipes.length === 0) {
     return (arg) => arg;
@@ -119,7 +120,6 @@ export const pipeMergedCompose: IComposer['pipeMergedCompose'] = (
     },
     { pipes: [], merged: [] }
   );
-
   return pipeCompose(pipes)(mergedCompose(merged, fn));
 };
 

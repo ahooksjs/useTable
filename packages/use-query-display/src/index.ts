@@ -10,6 +10,7 @@ import composer, { pipeMergedCompose, onionCompose, timelineCompose } from './co
 import checker, { isFunction } from './checker';
 import { PAYLOAD_SYMBOL, REQUEST_SYMBOL } from './symbol';
 import { Obj, IApp, IRequest, RawPlugins, Plugins } from './type';
+import { IS_NATIVE_SYMBOL } from './symbol';
 
 export * from './type';
 
@@ -48,14 +49,23 @@ const usePlugin = (pluginManagerContext: {
   });
   // 每次执行都重新计算插件
   pluginManager.pureUse(pluginManagerContext.rawPlugins);
-
   const plugins = useMemo(pluginManager.get, []);
-  // TODO 只有第一个 props 优先级最高，因为它是 Native plugin props
-  const pluginsProps = plugins.props.slice(0, 1).concat(
-    plugins.props.slice(1).map((p) => {
-      return isFunction(p) ? p(pluginManagerContext.app.ctx) : p;
+
+  const pluginsProps = plugins.props
+    .filter((prop) => {
+      return prop[IS_NATIVE_SYMBOL];
     })
-  );
+    .reverse()
+    .concat(
+      plugins.props.reduce((acc, prop) => {
+        if (prop[IS_NATIVE_SYMBOL]) {
+          return acc;
+        } else {
+          return acc.concat(isFunction(prop) ? prop(pluginManagerContext.app.ctx) : prop);
+        }
+      }, [])
+    );
+
   const props = pipeMergedCompose(pluginsProps);
 
   pluginManagerContext.plugins = plugins;

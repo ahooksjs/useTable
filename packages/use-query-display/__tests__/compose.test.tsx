@@ -53,10 +53,13 @@ describe('useQueryDisplay#Compose', () => {
       (props) => {
         return { ...props, arr: props.arr.concat(['bar']) };
       },
+      (props) => {
+        return { ...props, arr: props.arr.concat(['baz']) };
+      },
     ];
 
     const composed = pipeCompose(pipes)({ arr: [] });
-    expect(composed).toEqual({ arr: ['foo', 'bar'] });
+    expect(composed).toEqual({ arr: ['foo', 'bar', 'baz'] });
   });
 
   it('mergedCompose#Basic', () => {

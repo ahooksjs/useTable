@@ -33,13 +33,13 @@ const useTableProps: Processor = (ctx) => {
   const { props, actions, helper, paginationProps } = ctx;
   const state = actions.getState();
   const { pipeCompose } = helper;
-  const tablePluginProps = Array.isArray(props.tableProps) ? props.tableProps : [props.tableProps];
+  const tablePropsOfPlugin = Array.isArray(props.tableProps) ? props.tableProps : [props.tableProps];
   const paginationPluginProps = Array.isArray(props.paginationProps)
     ? props.paginationProps
     : [props.paginationProps];
 
   const tableProps = {
-    ...pipeCompose(tablePluginProps)({}),
+    ...pipeCompose(tablePropsOfPlugin)({}),
     dataSource: state.dataSource,
     loading: state.loading,
     paginationProps: {
