@@ -29,12 +29,15 @@ const useFormTablePlugin: () => TableNormalPlugin = () => {
         return next();
       },
     },
-    props: (props) => {
+    props: (pluginProps) => {
+      const { formProps = {} } = pluginProps || {};
+      const { effects = () => ({}), ...formPropsOfPlugins } = formProps;
+
       return {
-        ...props,
+        ...pluginProps,
         formProps: {
           actions,
-          effects: ($) => {
+          effects: ($, ...args) => {
             $(methods.ON_FORM_SUBMIT).subscribe((payload) => {
               return app.query(
                 { ...payload.values, current: app.ctx.options.current },
@@ -48,7 +51,10 @@ const useFormTablePlugin: () => TableNormalPlugin = () => {
                 { [IS_FORM_DATA_SUBMITTED]: true, queryFrom: methods.ON_FORM_RESET }
               );
             });
+
+            effects($, ...args);
           },
+          ...formPropsOfPlugins,
         },
       };
     },
@@ -61,6 +67,7 @@ export interface IUseFormTableReturnValue extends IReturnValue {
   formProps: {
     effects: Effects;
     actions: ISchemaFormActions;
+    [name: string]: any;
   };
 }
 
