@@ -9,9 +9,19 @@ describe('useFormTable#plugin', () => {
 
     const usePlugin = () => {
       return {
-        props: {
+        props: () => ({
           formProps: {
             test: 1,
+          },
+        }),
+      };
+    };
+
+    const usePlugin1 = () => {
+      return {
+        props: {
+          formProps: {
+            name: 'foo',
           },
         },
       };
@@ -22,7 +32,7 @@ describe('useFormTable#plugin', () => {
         (params) => {
           return service({ ...params, dataSource, total: TOTAL });
         },
-        { plugins: [usePlugin()], autoFirstQuery: false }
+        { plugins: [usePlugin(), usePlugin1()], autoFirstQuery: false }
       )
     );
 

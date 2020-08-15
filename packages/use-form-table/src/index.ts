@@ -31,7 +31,9 @@ const useFormTablePlugin: () => TableNormalPlugin = () => {
     },
     props: (pluginProps) => {
       const { formProps = {} } = pluginProps || {};
-      const { effects = () => ({}), ...formPropsOfPlugins } = formProps;
+      const { helper } = app;
+      const theFormProps = Array.isArray(formProps) ? formProps : [formProps];
+      const { effects = () => ({}), ...formPropsOfPlugins } = helper.pipeCompose(theFormProps)({});
 
       return {
         ...pluginProps,
