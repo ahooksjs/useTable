@@ -1,6 +1,6 @@
 {
   "name": "@ahooksjs/use-adapt-plugin",
-  "version": "0.0.3-alpha.1",
+  "version": "0.0.3-alpha.2",
   "scripts": {
     "build:tsc": "tsc --project tsconfig.build.json --declarationDir ./lib && tsc --project tsconfig.build.json --declarationDir ./es"
   },
