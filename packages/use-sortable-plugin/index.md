@@ -8,6 +8,8 @@ group:
 legacy: /next/use-sortable-plugin
 ---
 
+> ⚠️ English Translation In Progress
+
 # useSortablePlugin
 
 ## 何时使用

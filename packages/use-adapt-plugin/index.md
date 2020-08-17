@@ -8,6 +8,8 @@ group:
 legacy: /next/use-adapt-plugin
 ---
 
+> ⚠️ English Translation In Progress
+
 # useAdaptPlugin
 
 ## 何时使用

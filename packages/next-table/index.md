@@ -8,6 +8,8 @@ group:
 legacy: /next/next-table
 ---
 
+> ⚠️ English Translation In Progress
+
 # useNextTable
 
 > useNextTable `参数`和`返回值`继承于 [use-table](../core/use-table)

@@ -8,6 +8,8 @@ group:
 legacy: /plugin/use-async-default-plugin
 ---
 
+> ⚠️ English Translation In Progress
+
 # useAsyncDefaultPlugin
 
 ## 何时使用

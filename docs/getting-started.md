@@ -3,6 +3,8 @@ title: Getting Started
 order: 3
 ---
 
+> ⚠️ English Translation In Progress
+
 ## 演示
 
 先使用 [Fusion Next](https://fusion.design/pc/component/doc/102) 和 [formily](https://formilyjs.org/) 让大家熟悉下如何组合搭配使用，可以先看看 Codesandbox 这个例子。

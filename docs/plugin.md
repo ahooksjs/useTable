@@ -8,6 +8,8 @@ group:
 legacy: /advance/plugin
 ---
 
+> ⚠️ English Translation In Progress
+
 ## 背景
 
 具体的背景可以看[缘由](../why)

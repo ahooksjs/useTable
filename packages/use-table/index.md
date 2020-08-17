@@ -8,6 +8,8 @@ group:
 legacy: /core/use-table
 ---
 
+> ⚠️ English Translation In Progress
+
 # useTable
 
 ## 何时使用

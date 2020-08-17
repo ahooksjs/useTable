@@ -8,6 +8,8 @@ group:
 legacy: /next/use-selection-plugin
 ---
 
+> ⚠️ English Translation In Progress
+
 # useSelectionPlugin
 
 ## 何时使用

@@ -8,6 +8,8 @@ group:
 legacy: /advance/design
 ---
 
+> ⚠️ English Translation In Progress
+
 ## 背景
 
 不同端或者不同部门都会有不同 Design 的实现，现在 alibaba 对外输出有两个 Design 能力，一个是 [Fusion Next](https://fusion.design/)，另外一个是 [Antd](https://ant.design/)。他们组件体系面向技术人员的设计会存在一定的不同。
