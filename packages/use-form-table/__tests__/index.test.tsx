@@ -182,7 +182,7 @@ describe('useFormTable#basic', () => {
     });
   });
 
-  it('submit', async () => {
+  it('method', async () => {
     const data = { name: 'ahooks' };
     let method = methods.ON_FORM_MOUNT;
 
