@@ -3,6 +3,7 @@ export default {
   logo: '/u/logo.svg',
   favicon: '/u/simple-logo.svg',
   publicPath: '/u/',
+  base: '/useTable',
   extraBabelPlugins: [
     [
       'babel-plugin-import',
