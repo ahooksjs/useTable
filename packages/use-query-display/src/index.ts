@@ -90,6 +90,7 @@ const useQueryDisplay = (request: IRequest, rawPlugins?: RawPlugins) => {
   const { props, plugins } = usePlugin({ rawPlugins, app });
   const query = useMemo(() => createQuery(app.ctx, plugins), [plugins, request]);
   app.query = query;
+  app.ctx.query = query;
 
   return { props, plugins, query };
 };
