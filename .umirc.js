@@ -1,7 +1,8 @@
 export default {
   title: 'A Hook Solution for Table',
-  logo: '/logo.svg',
-  favicon: '/simple-logo.svg',
+  logo: '/u/logo.svg',
+  favicon: '/u/simple-logo.svg',
+  publicPath: '/u/',
   extraBabelPlugins: [
     [
       'babel-plugin-import',
@@ -27,7 +28,7 @@ export default {
       href: 'https://unpkg.com/@alifd/theme-design-pro@0.6.2/dist/next-noreset.min.css',
     },
     // https://github.com/umijs/dumi/issues/138
-    { rel: 'stylesheet', href: '/style.css' },
+    { rel: 'stylesheet', href: '/u/style.css' },
   ],
   resolve: {
     includes: ['docs', 'packages']

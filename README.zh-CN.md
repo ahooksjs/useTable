@@ -7,7 +7,7 @@
 ## 特性
 
 - 🔗`Plugins`: 具备多个场景的插件
-- 🚀`Extensible`: 可定制能力强，可以方便其他 Design 集成
+- 🚀`Extensible`: 可定制能力强，插件易开发，方便与 Fusion、Antd 等 Design 系统集成
 - 💡`Hook`: 全部基于 Hook 实现
 
 ## 安装
