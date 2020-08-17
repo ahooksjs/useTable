@@ -3,7 +3,7 @@ import { REQUEST_SYMBOL, LOADING_TIMER } from '../symbol';
 
 const renderMiddleware: Middleware = (ctx, next) => {
   return next().then(() => {
-    const { response, params, [REQUEST_SYMBOL]: request, meta, actions, store } = ctx;
+    const { response = {}, params, [REQUEST_SYMBOL]: request, meta, actions, store } = ctx;
 
     const { data = {} } = response;
     const { current, pageSize } = data;
