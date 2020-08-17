@@ -5,6 +5,7 @@ import useTable, {
   TableNormalPlugin,
   IReturnValue,
   WILL_QUERY,
+  PREPARE,
 } from '@ahooksjs/use-table';
 import { createFormActions, IFormEffect, ISchemaFormActions } from '@formily/react-schema-renderer';
 import { IS_FORM_DATA_SUBMITTED } from './symbol';
@@ -18,6 +19,13 @@ const useFormTablePlugin: () => TableNormalPlugin = () => {
 
   return ({ app }) => ({
     middlewares: {
+      [PREPARE]: (ctx, next) => {
+        // 不要 table onMount 触发，应该在 onFormMount 的时候触发
+        if (ctx.meta.queryFrom === methods.ON_MOUNT) {
+          return Promise.resolve();
+        }
+        return next();
+      },
       [WILL_QUERY]: (ctx, next) => {
         ctx.methods = { ...ctx.methods, ...methods };
         ctx.actions = { ...ctx.actions, ...actions };
@@ -40,6 +48,10 @@ const useFormTablePlugin: () => TableNormalPlugin = () => {
         formProps: {
           actions,
           effects: ($, ...args) => {
+            $(methods.ON_FORM_MOUNT).subscribe(() => {
+              app.query({}, { queryFrom: methods.ON_FORM_MOUNT });
+            });
+
             $(methods.ON_FORM_SUBMIT).subscribe((payload) => {
               return app.query(
                 { ...payload.values, current: app.ctx.options.current },

@@ -26,7 +26,7 @@ const useAsyncDefaultPlugin: TUseAsyncDefaultPlugin = (options) => {
       const { actions, methods, meta } = ctx;
       const { queryFrom } = meta;
 
-      if (queryFrom === methods.ON_MOUNT) {
+      if ([methods.ON_MOUNT, methods.ON_FORM_MOUNT].includes(queryFrom)) {
         let queries;
         let fields;
 

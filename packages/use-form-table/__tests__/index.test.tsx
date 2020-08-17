@@ -7,7 +7,7 @@ import {
   registerFormField,
   connect,
 } from '@formily/react-schema-renderer';
-import useFormTable from '../src/index';
+import useFormTable, { methods } from '../src/index';
 import service from './fixtures/service';
 
 registerFormField(
@@ -177,6 +177,63 @@ describe('useFormTable#basic', () => {
       const element = screen.getByText('ahooks', { exact: false });
       expect(JSON.parse(element.innerHTML)).toEqual({
         dataSource: [{ ...data, current: 1, pageSize: 20, name: 'ahooks' }],
+        loading: false,
+      });
+    });
+  });
+
+  it('submit', async () => {
+    const data = { name: 'ahooks' };
+    let method = methods.ON_FORM_MOUNT;
+
+    const usePlugin = () => {
+      return {
+        middlewares: (ctx, next) => {
+          expect(ctx.meta.queryFrom).toEqual(method);
+          return next();
+        },
+      };
+    };
+
+    const TestComponent = () => {
+      const { formProps, tableProps } = useFormTable(
+        (params) => {
+          return service({ dataSource: [{ ...params, name: params.name || data.name }] });
+        },
+        {
+          plugins: [usePlugin()],
+        }
+      );
+
+      return (
+        <Fragment>
+          <SchemaForm {...formProps}>
+            <Field name={'name'} type="string1" x-props={{ 'data-testid': 'input' }} />
+            <button type="submit">Submit</button>
+          </SchemaForm>
+
+          <div>{JSON.stringify(tableProps)}</div>
+        </Fragment>
+      );
+    };
+
+    const { queryByTestId, queryByText } = render(<TestComponent />);
+
+    await waitFor(() => {
+      const element = screen.getByText('ahooks', { exact: false });
+      expect(JSON.parse(element.innerHTML)).toEqual({
+        dataSource: [{ ...data, current: 1, pageSize: 20 }],
+        loading: false,
+      });
+    });
+
+    fireEvent.change(queryByTestId('input') as HTMLElement, { target: { value: 'foo' } });
+    fireEvent.click(queryByText('Submit') as HTMLElement);
+    method = methods.ON_FORM_SUBMIT;
+    await waitFor(() => {
+      const element = screen.getByText('foo', { exact: false });
+      expect(JSON.parse(element.innerHTML)).toEqual({
+        dataSource: [{ ...data, current: 1, pageSize: 20, name: 'foo' }],
         loading: false,
       });
     });

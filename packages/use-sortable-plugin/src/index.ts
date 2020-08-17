@@ -1,8 +1,5 @@
 import { useRef } from 'react';
-import { methods } from '@ahooksjs/use-form-table';
 import { IOptions, TUseSortablePlugin } from './type';
-
-const needResetActions = [methods.ON_MOUNT, methods.ON_FORM_SUBMIT, methods.ON_FORM_RESET];
 
 const useSortablePlugin: TUseSortablePlugin = (options: IOptions = {}) => {
   const sort = useRef({});
@@ -17,9 +14,16 @@ const useSortablePlugin: TUseSortablePlugin = (options: IOptions = {}) => {
 
   return {
     middlewares: (ctx, next) => {
-      const { meta } = ctx;
+      const { meta, methods } = ctx;
       const { queryFrom } = meta;
-      if (needResetActions.includes(queryFrom)) {
+      if (
+        [
+          methods.ON_MOUNT,
+          methods.ON_FORM_MOUNT,
+          methods.ON_FORM_SUBMIT,
+          methods.ON_FORM_RESET,
+        ].includes(queryFrom)
+      ) {
         sort.current = {};
       } else {
         ctx.params = { ...ctx.params, ...propsToParams(sort.current) };
