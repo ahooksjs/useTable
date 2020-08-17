@@ -7,10 +7,12 @@ export const adaptParams = (params: Obj = {}, map = {}) => {
       {}
     ),
     ...Object.keys(map).reduce(
-      (acc, key) => ({
-        ...acc,
-        [map[key]]: params[key],
-      }),
+      (acc, key) => {
+        return ({
+          ...acc,
+          [map[key]]: params[map[key]] || params[key],
+        })
+      },
       {}
     ),
   };

@@ -4,10 +4,6 @@ import useAdaptPlugin from '../src';
 import service from './fixtures/service';
 
 describe('useAdaptPlugin', () => {
-  it('should be defined', () => {
-    expect(useAdaptPlugin).toBeDefined();
-  });
-
   it('default', async () => {
     const dataSource = [{ name: 'ahooks' }];
     const TOTAL = 25;
@@ -66,6 +62,40 @@ describe('useAdaptPlugin', () => {
         }
       )
     );
+
+    await waitForNextUpdate();
+    await waitForNextUpdate();
+    expect(result.current.getParams()).toEqual({ ...expectedParams, pageIndex: 2 });
+  });
+
+  it('query', async () => {
+    const dataSource = [{ name: 'ahooks' }];
+    const TOTAL = 25;
+    const expectedParams = { pageIndex: 1, pageSize: 20 };
+
+    const { waitForNextUpdate, result } = renderHook(() =>
+      useTable(
+        (params) => {
+          expect(params).toEqual(expectedParams);
+          return service({ dataSource, total: TOTAL });
+        },
+        {
+          plugins: [
+            useAdaptPlugin({
+              map: { current: 'pageIndex' },
+            }),
+          ],
+        }
+      )
+    );
+
+    await waitForNextUpdate();
+    await waitForNextUpdate();
+
+    act(() => {
+      expectedParams.pageIndex = 2;
+      result.current.query({ pageIndex: expectedParams.pageIndex });
+    });
 
     await waitForNextUpdate();
     await waitForNextUpdate();
