@@ -1,5 +1,5 @@
 ---
-title: 缘由
+title: 动机
 order: 2
 ---
 
