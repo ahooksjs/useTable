@@ -26,9 +26,16 @@ const list = ({ current, pageSize, ...formData }) => {
 
 const Component = () => {
   const [state, setState] = useState('yes');
-  const { formProps, tableProps, paginationProps } = useNextFormTable(list, {
-    refreshDeps: [state],
-  });
+  const { formProps, tableProps, paginationProps } = useNextFormTable(
+    (params) =>
+      list({
+        ...params,
+        type: state,
+      }),
+    {
+      refreshDeps: [state],
+    }
+  );
 
   return (
     <Fragment>

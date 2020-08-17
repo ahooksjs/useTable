@@ -233,11 +233,12 @@ interface ICtx {
 
 | queryFrom          | 说明                           | 提供者                    |
 | ------------------ | ------------------------------ | ------------------------- |
-| `onMount`          | 表示是 Table mount 的时候触发  | `useTable & useFormTable` |
+| `onMount`          | 表示是 Table mount 的时候触发  | `useTable`                |
 | `onPageSizeChange` | 表示是切换 pageSize 的时候触发 | `useTable & useFormTable` |
 | `onPageChange`     | 表示是切换当前页的时候触发     | `useTable & useFormTable` |
 | `onFormSubmit`     | 表示是点击查询的时候触发       | `useFormTable`            |
 | `onFormReset`      | 表示是点击重置的时候触发       | `useFormTable`            |
+| `onFormMount`      | 表示是点击重置的时候触发       | `useFormTable`            |
 
 **store**
 
