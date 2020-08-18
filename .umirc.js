@@ -38,13 +38,13 @@ export default {
   navs: {
     'zh-CN': [
       null,
-      { title: 'GitHub', path: 'https://github.com/alibaba/hooks' },
-      { title: '更新日志', path: 'https://github.com/alibaba/hooks/releases' },
+      { title: 'GitHub', path: 'https://github.com/ahooksjs/useTable' },
+      { title: '更新日志', path: 'https://github.com/ahooksjs/useTable/releases' },
     ],
     'en-US': [
       null,
-      { title: 'GitHub', path: 'https://github.com/alibaba/hooks' },
-      { title: 'Changelog', path: 'https://github.com/alibaba/hooks/releases' },
+      { title: 'GitHub', path: 'https://github.com/ahooksjs/useTable' },
+      { title: 'Changelog', path: 'https://github.com/ahooksjs/useTable/releases' },
     ],
   },
 };
