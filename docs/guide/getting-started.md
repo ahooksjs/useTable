@@ -131,4 +131,4 @@ const { formProps, tableProps, paginationProps } = useNextFormTable(list, {
 
 <code src="./demo1.tsx" inline />
 
-如果想了解 useNextFormTable 的更多能力的话，可以到 [useNextFormTable](./next/next-form-table) 查看。
+如果想了解 useNextFormTable 的更多能力的话，可以到 [useNextFormTable](../hooks/next/next-form-table) 查看。

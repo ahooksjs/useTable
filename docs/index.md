@@ -32,4 +32,4 @@ export default () => (
 - `Design`：It can used by many Design, such as Antd and Fusion Next;
 - `Plugins`：Different features, such as sort, filter;
 
-If you want to know the plugin, please look into [Motivation](./motivation)。
+If you want to know the plugin, please look into [Motivation](./guide/motivation)。
