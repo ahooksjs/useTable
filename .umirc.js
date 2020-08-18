@@ -1,5 +1,5 @@
 export default {
-  title: 'useTable - A Hook Solution for Table',
+  title: 'useTable • A Hook Solution for Table',
   logo: '/u/logo.svg',
   favicon: '/u/simple-logo.svg',
   publicPath: '/u/',

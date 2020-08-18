@@ -240,7 +240,9 @@ interface ICtx {
 
 **store**
 
-| 属性       | 说明                                                  | 提供者                    |
-| ---------- | ----------------------------------------------------- | ------------------------- |
-| `stateMap` | 提供 set & get 方法，set 的时候会自动合并上一次 state | `useTable & useFormTable` |
-| `paramMap` | 提供 set & get 方法，set 会直接覆盖                   | `useTable & useFormTable` |
+每一次请求 ctx 都是重新计算的，每一次请求 ctx 是不能暂存的，下面提供的属性是可以暂存一些数据。
+
+| 属性       | 说明                                                                                              | 提供者                    |
+| ---------- | ------------------------------------------------------------------------------------------------- | ------------------------- |
+| `stateMap` | 提供 set & get 方法，set 的时候会自动合并上一次 state，一些 State 数据，比如 pagination 或者 form | `useTable & useFormTable` |
+| `paramMap` | 提供 set & get 方法，set 会直接覆盖，可以获取到上一次请求成功的参数                               | `useTable & useFormTable` |
