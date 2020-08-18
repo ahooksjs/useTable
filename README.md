@@ -26,6 +26,10 @@ npm install @ahooksjs/next-form-table --save
 import useNextFormTable from '@ahooksjs/next-form-table';
 ```
 
+## Contributing
+
+[Contributing](./CONTRIBUTING.md)
+
 ## License
 
 [MIT](./LICENSE)
