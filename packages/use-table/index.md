@@ -1,6 +1,10 @@
 ---
 title: useTable
 order: 1
+nav:
+  title: Hooks
+  path: /hooks
+  order: 2
 group:
   title: Core
   path: /core

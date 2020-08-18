@@ -1,6 +1,10 @@
 ---
 title: useNextTable
 order: 2
+nav:
+  title: Hooks
+  path: /hooks
+  order: 2
 group:
   title: Next
   path: /next

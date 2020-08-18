@@ -1,14 +1,11 @@
 ---
-title: With Design
+title: 结合 Design
 order: 2
-group:
-  title: Advance
-  path: /advance
-  order: 100
+nav:
+  title: 高级
+  order: 3
 legacy: /advance/design
 ---
-
-> ⚠️ English Translation In Progress
 
 ## 背景
 

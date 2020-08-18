@@ -1,9 +1,10 @@
 export default {
-  title: 'A Hook Solution for Table',
+  title: 'useTable - A Hook Solution for Table',
   logo: '/u/logo.svg',
   favicon: '/u/simple-logo.svg',
   publicPath: '/u/',
   base: '/useTable',
+  mode: 'site',
   extraBabelPlugins: [
     [
       'babel-plugin-import',
@@ -32,6 +33,18 @@ export default {
     { rel: 'stylesheet', href: '/u/style.css' },
   ],
   resolve: {
-    includes: ['docs', 'packages']
+    includes: ['docs', 'packages'],
+  },
+  navs: {
+    'zh-CN': [
+      null,
+      { title: 'GitHub', path: 'https://github.com/alibaba/hooks' },
+      { title: '更新日志', path: 'https://github.com/alibaba/hooks/releases' },
+    ],
+    'en-US': [
+      null,
+      { title: 'GitHub', path: 'https://github.com/alibaba/hooks' },
+      { title: 'Changelog', path: 'https://github.com/alibaba/hooks/releases' },
+    ],
   },
 };

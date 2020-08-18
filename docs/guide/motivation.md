@@ -1,7 +1,13 @@
 ---
-title: 动机
 order: 2
+nav:
+  title: Guide
+  order: 1
 ---
+
+# Motivation
+
+> ⚠️ English Translation In Progress
 
 ## 背景
 

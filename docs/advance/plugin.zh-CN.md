@@ -1,14 +1,11 @@
 ---
-title: Write Plugin
+title: 插件开发
 order: 1
-group:
-  title: Advance
-  path: /advance
-  order: 100
+nav:
+  title: 高级
+  order: 3
 legacy: /advance/plugin
 ---
-
-> ⚠️ English Translation In Progress
 
 ## 背景
 

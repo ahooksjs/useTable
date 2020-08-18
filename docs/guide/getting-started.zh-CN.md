@@ -1,9 +1,10 @@
 ---
-title: Getting Started
+title: 快速上手
 order: 3
+nav:
+  title: 指南
+  order: 1
 ---
-
-> ⚠️ English Translation In Progress
 
 ## 演示
 
@@ -108,13 +109,13 @@ const Component = () => {
 
 如果需要加上多选的功能，只需要加两段代码即可，分别是
 
-- 引入 `useSelectionPlugin`
+* 引入 `useSelectionPlugin`
 
 ```js
 import useSelectionPlugin from '@ahooksjs/use-selection-plugin';
 ```
 
-- 创建并注入
+* 创建并注入
 
 ```js
 const plugin = useSelectionPlugin();

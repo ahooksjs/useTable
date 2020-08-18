@@ -1,6 +1,10 @@
 ---
 title: useAdaptPlugin
 order: 6
+nav:
+  title: Hooks
+  path: /hooks
+  order: 2
 group:
   title: Plugin
   path: /plugin

@@ -1,6 +1,10 @@
 ---
 title: useFilterPlugin
 order: 3
+nav:
+  title: Hooks
+  path: /hooks
+  order: 2
 group:
   title: Plugin
   path: /plugin

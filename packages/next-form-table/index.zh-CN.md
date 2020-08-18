@@ -1,6 +1,10 @@
 ---
 title: useNextFormTable
 order: 1
+nav:
+  title: Hooks
+  path: /hooks
+  order: 2
 group:
   title: Next
   path: /next

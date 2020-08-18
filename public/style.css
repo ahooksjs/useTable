@@ -1,8 +1,11 @@
-.__dumi-default-menu-header h1 {
-  font-weight: 200 !important;
-  font-size: 22px;
+.__dumi-default-menu-header .__dumi-default-menu-logo {
+  width: 100px !important;
 }
 
-.__dumi-default-menu-header .__dumi-default-menu-logo {
-  width: 120px !important;
+.__dumi-default-navbar .__dumi-default-navbar-logo {
+  font-weight: 200 !important;
+  font-size: 20px !important;
+  padding-left: 120px !important;
+  height: 32px;
+  line-height: 32px;
 }

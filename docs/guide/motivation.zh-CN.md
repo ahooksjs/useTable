@@ -1,9 +1,10 @@
 ---
-title: Motivation
+title: 动机
 order: 2
+nav:
+  title: 指南
+  order: 1
 ---
-
-> ⚠️ English Translation In Progress
 
 ## 背景
 

@@ -1,6 +1,10 @@
 ---
 title: useTreePlugin
 order: 4
+nav:
+  title: Hooks
+  path: /hooks
+  order: 2
 group:
   title: Plugin
   path: /plugin
