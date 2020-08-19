@@ -1,9 +1,13 @@
 export default {
-  title: 'useTable • A Hook Solution for Table',
+  title: ' • useTable',
   logo: '/logo.svg',
   favicon: '/simple-logo.svg',
   base: '/',
   mode: 'site',
+  locales: [
+    ['zh-CN', '中文'],
+    ['en-US', 'English'],
+  ],
   extraBabelPlugins: [
     [
       'babel-plugin-import',

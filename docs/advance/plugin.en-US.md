@@ -8,7 +8,7 @@ legacy: /advance/plugin
 
 ## 背景
 
-具体的背景可以看[动机](/guide/motivation)
+具体的背景可以看[动机](../guide/motivation)
 
 ## 概念
 

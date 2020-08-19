@@ -11,8 +11,8 @@ A Pluggable Hooks for Table, [RFC](https://github.com/alibaba/hooks/issues/465) 
 
 ## Feature
 
-- 🔗 Plugins: Some plugins for different features.
 - 🚀 Extensible: It can used by many Design, such as antd and fusion.
+- 🔗 Plugins: Some plugins for different features.
 - 💡 Hook: All is Hook.
 
 ## Overview
@@ -32,4 +32,4 @@ export default () => (
 - `Design`：It can used by many Design, such as Antd and Fusion Next;
 - `Plugins`：Different features, such as sort, filter;
 
-If you want to know the plugin, please look into [Motivation](./guide/motivation)。
+If you want to know the plugin, please look into [Motivation](./motivation)。
