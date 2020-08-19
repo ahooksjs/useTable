@@ -1,6 +1,6 @@
 ---
 title: useTable
-order: 1
+order: 100
 nav:
   title: Hooks
   path: /hooks
@@ -8,7 +8,7 @@ nav:
 group:
   title: Core
   path: /core
-  order: 5
+  order: 100
 legacy: /core/use-table
 ---
 
