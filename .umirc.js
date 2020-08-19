@@ -2,7 +2,7 @@ export default {
   title: 'useTable • A Hook Solution for Table',
   logo: '/logo.svg',
   favicon: '/simple-logo.svg',
-  base: '/useTable',
+  base: '/',
   mode: 'site',
   extraBabelPlugins: [
     [

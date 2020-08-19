@@ -8,7 +8,7 @@ nav:
 group:
   title: Core
   path: /core
-  order: 20
+  order: 5
 legacy: /core/use-table
 ---
 
