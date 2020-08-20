@@ -33,6 +33,6 @@ export default () => (
 - `useFormTable`: useTable + useFormTablePlugin 定制出来的，form 主要用到了 [formily](https://github.com/alibaba/formily)；
 - `Design`：主要是各种 Design 的适配，比如 Antd、Fusion 等；
 - `Plugins`：不同功能的插件，不同的 Design 可以自己定制；
-- `Solutions`：针对不同场景可以存在不同的解决方案，底层可以共用一套插件技术体系；
+- `Solutions`：针对不同场景可以存在不同的上层建设，底层可以共用一套插件技术体系；
 
 看完如果想了解为什么要有插件，可以点击查看[动机](./motivation)。
