@@ -1,5 +1,6 @@
 const json = require('./version.json');
-const CDN_URL = `//unpkg.zhimg.com/usetable-ahooks-asset@${json.version}`;
+const isDev = process.env.NODE_ENV === 'development';
+const CDN_URL = isDev ? '' : `//unpkg.zhimg.com/usetable-ahooks-asset@${json.version}`;
 
 export default {
   title: ' • useTable',
