@@ -55,4 +55,5 @@ export default {
       { title: 'Changelog', path: 'https://github.com/ahooksjs/useTable/releases' },
     ],
   },
+  headScripts: ['https://v1.cnzz.com/z_stat.php?id=1279207986&web_id=1279207986'],
 };
