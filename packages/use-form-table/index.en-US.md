@@ -1,54 +1,36 @@
 ---
-title: useNextFormTable
+title: useFormTable
 order: 1
 nav:
   title: Hooks
   path: /hooks
   order: 2
 group:
-  title: Next
-  path: /next
+  title: Core
+  path: /core
   order: 10
-legacy: /next/use-form-table
+legacy: /core/use-form-table
 ---
 
-# useNextFormTable
+> ⚠️ English Translation In Progress
 
-> useNextFormTable `参数`和`返回值`继承于 [use-form-table](../core/use-form-table)
+# useFormTable
 
 ## 何时使用
 
-`表单查询表格场景`，`Form` + `Table` 场景的 [Fusion Next](https://github.com/alibaba-fusion/next) 和 [formily](formilyjs.org) 实现
+为你独有的 Design 自定义具备插件能力 Form + Table 场景 Hook
 
 ## 安装
 
 ```sh
-npm install @ahooksjs/next-form-table --save
+npm install @ahooksjs/use-form-table --save
 ```
 
 ## 引用方式
 
 ```js
-import useNextFormTable from '@ahooksjs/next-form-table';
+import useFormTable from '@ahooksjs/use-form-table';
 ```
-
-## 代码演示
-
-### 默认
-
-<code src="./demo/default.tsx" />
-
-### 重新请求
-
-<code src="./demo/refreshDeps.tsx" />
-
-### 默认 pageSize
-
-<code src="./demo/pageSize.tsx" />
-
-### 多插件
-
-<code src="./demo/all.tsx" />
 
 ## API
 
