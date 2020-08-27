@@ -1,6 +1,6 @@
 ---
 title: useFormTable
-order: 1
+order: 50
 nav:
   title: Hooks
   path: /hooks
@@ -8,7 +8,7 @@ nav:
 group:
   title: Core
   path: /core
-  order: 10
+  order: 100
 legacy: /core/use-form-table
 ---
 
