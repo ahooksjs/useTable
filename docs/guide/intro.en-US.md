@@ -7,12 +7,12 @@ order: 1
 
 ## Synopsis
 
-A Pluggable Hooks for Table, [RFC](https://github.com/alibaba/hooks/issues/465) and [Github](https://github.com/ahooksjs/useTable) for more information.
+A Pluggable Hooks for Query Table, [RFC](https://github.com/alibaba/hooks/issues/465) and [Github](https://github.com/ahooksjs/useTable) for more information.
 
 ## Feature
 
-- 🚀 Extensible: It can used by many Design, such as antd and fusion.
-- 🔗 Plugins: Some plugins for different features.
+- 🚀 Extensible: Better Customization.
+- 🔗 Plugins: Some plugins.
 - 💡 Hook: All is Hook.
 
 ## Overview
@@ -27,9 +27,9 @@ export default () => (
 );
 ```
 
-- `useTable`：A pluggable hook for table;
+- `useTable`：A pluggable hook for query table;
 - `useFormTable`: useTable + useFormTablePlugin;
-- `Design`：It can used by many Design, such as Antd and Fusion Next;
+- `Design`：It can used by many Design, such as antd and Fusion Next;
 - `Plugins`：Different features, such as sort, filter;
 
 If you want to know the plugin, please look into [Motivation](./motivation)。

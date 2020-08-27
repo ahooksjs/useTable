@@ -2,7 +2,7 @@
 title: ahooks/useTable
 hero:
   title: useTable
-  desc: a Pluggable Hook Solution for Table
+  desc: a Pluggable Hook Solution for Query Table
   actions:
     - text: Getting Started
       link: ./en-US/guide/getting-started
@@ -12,7 +12,7 @@ features:
     desc: Better Customization
   - icon: https://gw.alipayobjects.com/os/q/cms/images/k9ziitmp/13668549-b393-42a2-97c3-a6365ba87ac2_w96_h96.png
     title: Out of the Box
-    desc: Many Plugins
+    desc: Some Plugins
   - icon: https://gw.alipayobjects.com/zos/basement_prod/d078a5a9-1cb3-4352-9f05-505c2e98bc95/k7788v4b_w102_h126.png
     title: Hooks
     desc: All is Hook
