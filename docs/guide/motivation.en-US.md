@@ -11,7 +11,7 @@ nav:
 
 There are many scenarios for querying tables in the management system businesses, basically accounting for about 60%. How to find out a general solution to improve efficiency is a problem we are facing now. Another problem is that although the scenes are similar, the changes in the management system business scenes are unpredictable. We need to provide a flexible and extensible mechanism to allow more people to accumulate capabilities.
 
-We need a solution that can facilitate users to expand filter, sort, selection and other capabilities, and also facilitate the construction of corresponding solutions at the upper level, such as configuration and data-driven. So we separate each function from the corresponding plugin. The core concept of the plugin is `Write One Do Everything`, that is, only a place can be written to resolve a feature, and you can compose each plugin.
+We need a solution that can facilitate users to expand filter, sort, selection and other capabilities, and also facilitate the construction of corresponding solutions at the upper level, such as configuration and data-driven. So we separate each function from the corresponding plugin. The core concept of the plugin is `Write Once Do Everything`, that is, only a place can be written to resolve a feature, and you can compose each plugin.
 
 ## Examples
 
