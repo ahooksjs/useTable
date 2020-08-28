@@ -26,6 +26,10 @@ npm install @ahooksjs/next-form-table --save
 import useNextFormTable from '@ahooksjs/next-form-table';
 ```
 
+## 文档
+
+你可以在[这个网站](https://usetable-ahooks.js.org/)查看到文档
+
 ## 参与贡献
 
 [贡献指南](./CONTRIBUTING.zh-CN.md)
