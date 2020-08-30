@@ -2,7 +2,7 @@
 
 # @ahooks/useTable
 
-> 具备插件能力的 Table Hooks，更多信息可看 [RFC](https://github.com/alibaba/hooks/issues/465)
+> 面向查询表格场景的渐进式方案，更多信息可看 [RFC](https://github.com/alibaba/hooks/issues/465)
 
 ## 特性
 

@@ -2,7 +2,7 @@
 title: ahooks/useTable
 hero:
   title: useTable
-  desc: a Pluggable Hook Solution for Query Table
+  desc: A Progressive Solution for Query Table Scene
   actions:
     - text: Getting Started
       link: ./en-US/guide/getting-started

@@ -2,7 +2,7 @@
 title: ahooks/useTable
 hero:
   title: useTable
-  desc: 为查询表格场景定制插件化能力的 Hook 解决方案
+  desc: 面向查询表格场景的渐进式方案
   actions:
     - text: 快速上手
       link: guide/getting-started

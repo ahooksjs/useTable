@@ -2,7 +2,7 @@ English | [简体中文](https://github.com/ahooksjs/useTable/blob/master/README
 
 # @ahooks/useTable
 
-> A pluggable Hooks for Table, [RFC](https://github.com/alibaba/hooks/issues/465) for more information
+> A Progressive Solution for Query Table Scene, [RFC](https://github.com/alibaba/hooks/issues/465) for more information
 
 ## Features
 
