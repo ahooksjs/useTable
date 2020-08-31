@@ -7,27 +7,25 @@ nav:
 
 # Getting Started
 
-> ⚠️ English Translation In Progress
+## Demo
 
-## 演示
-
-先使用 [Fusion Next](https://fusion.design/pc/component/doc/102) 和 [formily](https://formilyjs.org/) 让大家熟悉下如何组合搭配使用，可以先看看 Codesandbox 这个例子。
+Using [Fusion Next](https://fusion.design/pc/component/doc/102) and [formily](https://formilyjs.org/) in Codesandbox example to explain how to use it.
 
 <code src="./demo.tsx" inline />
 
-下面逐步描述下如何使用。
+Here's how to use it step by step.
 
-## 安装
+## Installation
 
 ```sh
 npm install @ahooksjs/next-form-table @alifd/next @formily/next @formily/next-components --save
 ```
 
-## 使用
+## Usage
 
-#### 定义请求源
+#### Fetching
 
-需要注意两点，一个是请求源必须返回一个 Promise 接口，另外一个接口返回的格式为：
+There are two points to note. One is that the request source must return a Promise interface, and the other interface returns in the format：
 
 ```ts
 interface IResponse {
@@ -42,7 +40,7 @@ interface IResponse {
 }
 ```
 
-如果接口返回的格式不符合呢？可以通过 `Promise` 的 then 接口再转换一下。
+You can transform the response using the Promise then method if the response doesn't match.
 
 ```js
 const list = () => {
@@ -53,7 +51,7 @@ const list = () => {
 };
 ```
 
-如果找不到对应的接口，可以先 mock 下。
+You can mock it if doesn't find the correct resource.
 
 ```js
 const list = () => {
@@ -71,9 +69,7 @@ const list = () => {
 };
 ```
 
-#### 引用
-
-引用 Next 组件和 formily
+#### Import
 
 ```js
 import '@alifd/next/dist/next.css';
@@ -83,7 +79,7 @@ import { SchemaForm, Field, Submit, Reset, FormButtonGroup } from '@formily/next
 import { Input } from '@formily/next-components';
 ```
 
-#### 组合
+#### Compose
 
 ```js
 const Component = () => {
@@ -94,8 +90,8 @@ const Component = () => {
       <SchemaForm {...formProps} components={{ Input }} style={{ marginBottom: 20 }} inline>
         <Field name="name" title="name" x-component={'Input'} />
         <FormButtonGroup>
-          <Submit>查询</Submit>
-          <Reset>重置</Reset>
+          <Submit>Submit</Submit>
+          <Reset>Reset</Reset>
         </FormButtonGroup>
       </SchemaForm>
 
@@ -108,17 +104,17 @@ const Component = () => {
 };
 ```
 
-#### 插件
+#### Plugin
 
-如果需要加上多选的功能，只需要加两段代码即可，分别是
+If you need to add a selection feature, you only need to add two pieces of code.
 
-- 引入 `useSelectionPlugin`
+- import `useSelectionPlugin`
 
 ```js
 import useSelectionPlugin from '@ahooksjs/use-selection-plugin';
 ```
 
-- 创建并注入
+- create it
 
 ```js
 const plugin = useSelectionPlugin();
@@ -127,8 +123,8 @@ const { formProps, tableProps, paginationProps } = useNextFormTable(list, {
 });
 ```
 
-可以看看下面的可运行例子
+The codesandbox example with plugin
 
 <code src="./demo1.tsx" inline />
 
-如果想了解 useNextFormTable 的更多能力的话，可以到 [useNextFormTable](../hooks/next/next-form-table) 查看。
+Going to [useNextFormTable](../hooks/next/next-form-table) to learn more features about useNextFormTable.
