@@ -47,11 +47,13 @@ export default {
     'zh-CN': [
       null,
       { title: 'GitHub', path: 'https://github.com/ahooksjs/useTable' },
+      { title: '知乎', path: 'https://zhuanlan.zhihu.com/useReact' },
       { title: '更新日志', path: 'https://github.com/ahooksjs/useTable/releases' },
     ],
     'en-US': [
       null,
       { title: 'GitHub', path: 'https://github.com/ahooksjs/useTable' },
+      { title: 'Zhihu', path: 'https://zhuanlan.zhihu.com/useReact' },
       { title: 'Changelog', path: 'https://github.com/ahooksjs/useTable/releases' },
     ],
   },
