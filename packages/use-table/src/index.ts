@@ -87,10 +87,10 @@ const useTable: TUseTable = (service, options) => {
 
   useUpdateEffect(query, refreshDeps);
 
-  const { tableProps, getParams, actions, props } = tableQueryProps;
-  const { paginationProps, ...$tableProps } = tableProps;
+  const { tableProps: $tableProps, getParams, actions, props } = tableQueryProps;
+  const { paginationProps, ...tableProps } = $tableProps;
 
-  return { ...props, tableProps: $tableProps, paginationProps, query, getParams, actions };
+  return { actions, ...props, tableProps, paginationProps, query, getParams };
 };
 
 export default useTable;

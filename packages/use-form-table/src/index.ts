@@ -45,6 +45,7 @@ const useFormTablePlugin: () => TableNormalPlugin = () => {
 
       return {
         ...pluginProps,
+        actions,
         formProps: {
           actions,
           effects: ($, ...args) => {

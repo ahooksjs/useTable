@@ -238,4 +238,51 @@ describe('useFormTable#basic', () => {
       });
     });
   });
+
+  it('actions', async () => {
+    const data = { name: 'ahooks' };
+    let $actions = {} as { [name: string]: any };
+
+    const TestComponent = () => {
+      const { formProps, tableProps, actions } = useFormTable((params) => {
+        return service({ dataSource: [{ ...params, name: params.name || data.name }] });
+      });
+
+      $actions = actions;
+
+      return (
+        <Fragment>
+          <SchemaForm {...formProps}>
+            <Field name={'name'} type="string1" x-props={{ 'data-testid': 'input' }} />
+            <button type="submit">Submit</button>
+          </SchemaForm>
+
+          <div>{JSON.stringify(tableProps)}</div>
+        </Fragment>
+      );
+    };
+
+    const { queryByTestId, queryByText } = render(<TestComponent />);
+
+    await waitFor(() => {
+      const element = screen.getByText('ahooks', { exact: false });
+      expect(JSON.parse(element.innerHTML)).toEqual({
+        dataSource: [{ ...data, current: 1, pageSize: 20 }],
+        loading: false,
+      });
+    });
+
+    fireEvent.change(queryByTestId('input') as HTMLElement, { target: { value: 'foo' } });
+    fireEvent.click(queryByText('Submit') as HTMLElement);
+    await waitFor(() => {
+      const element = screen.getByText('foo', { exact: false });
+      expect(JSON.parse(element.innerHTML)).toEqual({
+        dataSource: [{ ...data, current: 1, pageSize: 20, name: 'foo' }],
+        loading: false,
+      });
+
+      const formState = $actions.getFormState();
+      expect(formState.values).toEqual({ name: 'foo' });
+    });
+  });
 });
