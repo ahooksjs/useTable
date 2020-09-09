@@ -94,7 +94,7 @@ describe('useAdaptPlugin', () => {
 
     act(() => {
       expectedParams.pageIndex = 2;
-      result.current.query({ pageIndex: expectedParams.pageIndex });
+      result.current.query({ pageIndex: 1, current: expectedParams.pageIndex });
     });
 
     await waitForNextUpdate();

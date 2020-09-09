@@ -6,15 +6,12 @@ export const adaptParams = (params: Obj = {}, map = {}) => {
       (acc, key) => (map[key] ? acc : { ...acc, [key]: params[key] }),
       {}
     ),
-    ...Object.keys(map).reduce(
-      (acc, key) => {
-        return ({
-          ...acc,
-          [map[key]]: params[map[key]] || params[key],
-        })
-      },
-      {}
-    ),
+    ...Object.keys(map).reduce((acc, key) => {
+      return {
+        ...acc,
+        [map[key]]: params[key] || params[map[key]],
+      };
+    }, {}),
   };
 };
 
