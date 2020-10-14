@@ -6,6 +6,11 @@
   },
   "main": "lib/index.js",
   "module": "es/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ahooksjs/useTable.git",
+    "directory": "packages/use-query-display"
+  },
   "peerDependencies": {
     "react": "^16.12.0"
   },

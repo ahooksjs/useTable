@@ -12,6 +12,11 @@
   "dependencies": {
     "@ahooksjs/use-table": "^0.0.1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ahooksjs/useTable.git",
+    "directory": "packages/use-adapt-plugin"
+  },
   "files": [
     "lib",
     "es"
