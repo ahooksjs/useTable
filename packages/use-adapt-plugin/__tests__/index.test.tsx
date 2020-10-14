@@ -94,11 +94,20 @@ describe('useAdaptPlugin', () => {
 
     act(() => {
       expectedParams.pageIndex = 2;
-      result.current.query({ pageIndex: 1, current: expectedParams.pageIndex });
+      result.current.query({ current: expectedParams.pageIndex });
     });
 
     await waitForNextUpdate();
     await waitForNextUpdate();
     expect(result.current.getParams()).toEqual({ ...expectedParams, pageIndex: 2 });
+
+    act(() => {
+      expectedParams.pageIndex = 1;
+      result.current.query({ pageIndex: expectedParams.pageIndex });
+    });
+
+    await waitForNextUpdate();
+    await waitForNextUpdate();
+    expect(result.current.getParams()).toEqual({ ...expectedParams, pageIndex: 1 });
   });
 });

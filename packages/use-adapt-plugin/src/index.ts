@@ -1,4 +1,4 @@
-import { Obj } from '@ahooksjs/use-table';
+import { Obj, PAYLOAD_SYMBOL } from '@ahooksjs/use-table';
 
 export const adaptParams = (params: Obj = {}, map = {}) => {
   return {
@@ -33,13 +33,25 @@ export interface IUseAdaptOptions {
 
 const useAdaptPlugin = (options?: IUseAdaptOptions) => {
   const { map = {} } = options || {};
+  const deMap = Object.keys(map).reduce((acc, key) => ({ ...acc, [map[key]]: key }), {});
 
   return {
     middlewares: (ctx, next) => {
       // 请求的时候会带上去
-      ctx.params = adaptParams(ctx.params, map);
+      /**
+       * query({ current: 1 }) current 优先
+       * query({ pageIndex: 1 }) pageIndex 优先
+       */
+      const params = Object.keys(ctx.params).reduce((acc, key) => {
+        if (deMap[key]) {
+          acc[deMap[key]] = ctx[PAYLOAD_SYMBOL][key];
+        }
+        return acc;
+      }, ctx.params);
+
+      ctx.params = adaptParams(params, map);
       return next().then(() => {
-        ctx.params = deAdaptParams(ctx.params, map);
+        ctx.params = deAdaptParams(params, map);
         ctx.response = {
           ...ctx.response,
           data: deAdaptResponse(ctx.response.data, map),
