@@ -1,6 +1,6 @@
 {
   "name": "@ahooksjs/use-tree-plugin",
-  "version": "0.1.3-alpha.1",
+  "version": "0.1.3",
   "scripts": {
     "build:tsc": "tsc --project tsconfig.build.json --declarationDir ./lib && tsc --project tsconfig.build.json --declarationDir ./es"
   },
@@ -10,7 +10,7 @@
     "react": "^16.12.0"
   },
   "dependencies": {
-    "@ahooksjs/use-table": "^0.1.3-alpha.1"
+    "@ahooksjs/use-table": "^0.1.3"
   },
   "repository": {
     "type": "git",
