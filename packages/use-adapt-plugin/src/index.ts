@@ -51,7 +51,7 @@ const useAdaptPlugin = (options?: IUseAdaptOptions) => {
 
       ctx.params = adaptParams(params, map);
       return next().then(() => {
-        ctx.params = deAdaptParams(params, map);
+        ctx.params = deAdaptParams(ctx.params, map);
         ctx.response = {
           ...ctx.response,
           data: deAdaptResponse(ctx.response.data, map),
