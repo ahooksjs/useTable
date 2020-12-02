@@ -85,7 +85,9 @@ const useTable: TUseTable = (service, options) => {
     query({}, { queryFrom: methods.ON_MOUNT });
   });
 
-  useUpdateEffect(query, refreshDeps);
+  useUpdateEffect(() => {
+    query({}, { queryFrom: methods.ON_REFRESH_DEPS });
+  }, refreshDeps);
 
   const { tableProps: $tableProps, getParams, actions, props } = tableQueryProps;
   const { paginationProps, ...tableProps } = $tableProps;

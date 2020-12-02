@@ -36,6 +36,10 @@ import useSelectionPlugin from '@ahooksjs/use-selection-plugin';
 
 <code src="./demo/default.tsx" />
 
+### 设置更新策略
+
+<code src="./demo/checkIsNeedReset.tsx" />
+
 ## API
 
 ```js

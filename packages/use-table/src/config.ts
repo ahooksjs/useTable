@@ -8,6 +8,7 @@ export const DID_QUERY = 'didQuery';
 export const timelines = [DID_RENDER, WILL_QUERY, YOUR_TURN, QUERYING, DID_QUERY];
 export const defaults = { current: 1, pageSize: 20 };
 export const methods = {
+  ON_REFRESH_DEPS: 'onRefreshDeps',
   ON_MOUNT: 'onMount',
   ON_PAGE_SIZE_CHANGE: 'onPageSizeChange',
   ON_PAGE_CHANGE: 'onPageChange',

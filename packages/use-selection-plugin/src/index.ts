@@ -6,7 +6,7 @@ const useTableSelectionPlugin: TUseTableSelection = (options: IOptions = {}) => 
     selectedRowKeys: [],
   });
 
-  const { primaryKey = 'id' } = options;
+  const { primaryKey = 'id', checkIsNeedReset = () => true } = options;
 
   const handleSelect = (records: []) => {
     setSelectedRowKeys({
@@ -28,21 +28,29 @@ const useTableSelectionPlugin: TUseTableSelection = (options: IOptions = {}) => 
 
   return {
     middlewares: (ctx, next) => {
-      return next().then(() => {
-        setSelectedRowKeys({ selectedRowKeys: [] });
-      });
+      const isNeedReset = checkIsNeedReset(ctx);
+
+      if (isNeedReset) {
+        return next().then(() => {
+          setSelectedRowKeys({ selectedRowKeys: [] });
+        });
+      }
+
+      return next();
     },
-    props: () => ({
-      tableProps: {
-        rowSelection: {
-          onSelect,
-          onSelectAll,
-          selectedRowKeys: state.selectedRowKeys,
+    props: () => {
+      return ({
+        tableProps: {
+          rowSelection: {
+            onSelect,
+            onSelectAll,
+            selectedRowKeys: state.selectedRowKeys,
+          },
+          primaryKey,
         },
-        primaryKey,
-      },
-      getSelectedRowKeys,
-    }),
+        getSelectedRowKeys,
+      })
+    },
   };
 };
 
