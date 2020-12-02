@@ -3,7 +3,7 @@ import { IOptions, TUseSortablePlugin } from './type';
 
 const useSortablePlugin: TUseSortablePlugin = (options: IOptions = {}) => {
   const sort = useRef({});
-  const { sortByKey = 'sortBy', sortOrderKey = 'sortOrder' } = options;
+  const { sortByKey = 'sortBy', sortOrderKey = 'sortOrder', resetWhenQuery = true } = options;
 
   const propsToParams = (props) => {
     return Object.entries(props).reduce((acc, val) => {
@@ -17,12 +17,8 @@ const useSortablePlugin: TUseSortablePlugin = (options: IOptions = {}) => {
       const { meta, methods } = ctx;
       const { queryFrom } = meta;
       if (
-        [
-          methods.ON_MOUNT,
-          methods.ON_FORM_MOUNT,
-          methods.ON_FORM_SUBMIT,
-          methods.ON_FORM_RESET,
-        ].includes(queryFrom)
+        [methods.ON_MOUNT, methods.ON_FORM_MOUNT].includes(queryFrom) ||
+        ([methods.ON_FORM_SUBMIT, methods.ON_FORM_RESET].includes(queryFrom) && resetWhenQuery)
       ) {
         sort.current = {};
       } else {
