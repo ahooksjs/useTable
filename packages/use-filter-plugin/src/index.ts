@@ -26,7 +26,7 @@ const useFilterPlugin: TUseFilterPlugin = (options: IOptions = {}) => {
         onFilter: (filterParams) => {
           const { query } = ctx;
           filterRef.current = filterParams;
-          query({ ...filterParams, current: 1 });
+          query({ current: 1 });
         },
       },
     }),
