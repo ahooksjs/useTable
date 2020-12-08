@@ -36,6 +36,10 @@ import useFilterPlugin from '@ahooksjs/use-filter-plugin';
 
 <code src="./demo/default.tsx" />
 
+### 处理请求参数
+
+<code src="./demo/transformer.tsx" />
+
 ## API
 
 ```js
