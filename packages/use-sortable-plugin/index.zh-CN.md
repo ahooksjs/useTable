@@ -57,4 +57,4 @@ const plugin = useSortablePlugin({ sortByKey, sortOrderKey });
 | sortByKey      | 可选，选中的 dataIndex 对应的 key     | `String`                       | sortBy    |
 | sortOrderKey   | 可选，排序对应的 key                  | `String`                       | sortOrder |
 | resetWhenQuery | 可选，点击查询/重置要不要重置排序条件 | `Boolean`                      | true      |
-| defaultValue   | 可选，初始化默认值                    | `{ [字段名]: 'desc' | 'asc' }` | {}        |
+| defaultValue   | 可选，初始化默认值                    | { [字段名]: `'desc'` \| `'asc'` } | {}        |
