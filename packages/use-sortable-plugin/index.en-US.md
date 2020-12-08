@@ -38,6 +38,10 @@ import useSortablePlugin from '@ahooksjs/use-sortable-plugin';
 
 <code src="./demo/default.tsx" />
 
+### 默认值
+
+<code src="./demo/initialSort.tsx" />
+
 ### 请求不重置
 
 <code src="./demo/resetWhenQuery.tsx" />
@@ -50,8 +54,9 @@ const plugin = useSortablePlugin({ sortByKey, sortOrderKey });
 
 ## 参数
 
-| 参数           | 说明                                  | 类型      | 默认值    |
-| -------------- | ------------------------------------- | --------- | --------- |
-| sortByKey      | 可选，选中的 dataIndex 对应的 key     | `String`  | sortBy    |
-| sortOrderKey   | 可选，排序对应的 key                  | `String`  | sortOrder |
-| resetWhenQuery | 可选，点击查询/重置要不要重置排序条件 | `Boolean` | true      |
+| 参数           | 说明                                  | 类型                           | 默认值    |
+| -------------- | ------------------------------------- | ------------------------------ | --------- |
+| sortByKey      | 可选，选中的 dataIndex 对应的 key     | `String`                       | sortBy    |
+| sortOrderKey   | 可选，排序对应的 key                  | `String`                       | sortOrder |
+| resetWhenQuery | 可选，点击查询/重置要不要重置排序条件 | `Boolean`                      | true      |
+| defaultValue   | 可选，初始化默认值                    | `{ [字段名]: 'desc' | 'asc' }` | {}        |

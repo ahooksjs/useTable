@@ -2,9 +2,14 @@ import { useRef } from 'react';
 import { IOptions, TUseSortablePlugin } from './type';
 
 const useSortablePlugin: TUseSortablePlugin = (options: IOptions = {}) => {
-  const sort = useRef({});
-  const { sortByKey = 'sortBy', sortOrderKey = 'sortOrder', resetWhenQuery = true } = options;
+  const {
+    sortByKey = 'sortBy',
+    sortOrderKey = 'sortOrder',
+    resetWhenQuery = true,
+    defaultValue = {},
+  } = options;
 
+  const sort = useRef(defaultValue);
   const propsToParams = (props) => {
     return Object.entries(props).reduce((acc, val) => {
       const [dataIndex, order] = val;
@@ -16,14 +21,17 @@ const useSortablePlugin: TUseSortablePlugin = (options: IOptions = {}) => {
     middlewares: (ctx, next) => {
       const { meta, methods } = ctx;
       const { queryFrom } = meta;
-      if (
-        [methods.ON_MOUNT, methods.ON_FORM_MOUNT].includes(queryFrom) ||
-        ([methods.ON_FORM_SUBMIT, methods.ON_FORM_RESET].includes(queryFrom) && resetWhenQuery)
+
+      if ([methods.ON_MOUNT, methods.ON_FORM_MOUNT].includes(queryFrom)) {
+        sort.current = defaultValue;
+      } else if (
+        [methods.ON_FORM_SUBMIT, methods.ON_FORM_RESET].includes(queryFrom) &&
+        resetWhenQuery
       ) {
         sort.current = {};
-      } else {
-        ctx.params = { ...ctx.params, ...propsToParams(sort.current) };
       }
+
+      ctx.params = { ...ctx.params, ...propsToParams(sort.current) };
       return next();
     },
     props: (ctx) => ({
