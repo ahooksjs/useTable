@@ -18,7 +18,7 @@ registerFormField(
 );
 
 describe('useFormTable#basic', () => {
-  it('submit', async () => {
+  it('submit（点击查询）', async () => {
     const data = { name: 'ahooks' };
 
     const TestComponent = () => {
@@ -59,7 +59,7 @@ describe('useFormTable#basic', () => {
     });
   });
 
-  it('reset', async () => {
+  it('reset（重置）', async () => {
     const data = { name: 'ahooks' };
 
     const TestComponent = () => {
@@ -110,7 +110,7 @@ describe('useFormTable#basic', () => {
     });
   });
 
-  it('table', async () => {
+  it('table（表格操作）', async () => {
     const data = { name: 'ahooks' };
 
     const TestComponent = () => {
@@ -182,7 +182,7 @@ describe('useFormTable#basic', () => {
     });
   });
 
-  it('method', async () => {
+  it('method（插件能获取从哪里请求的）', async () => {
     const data = { name: 'ahooks' };
     let method = methods.ON_FORM_MOUNT;
 
@@ -239,7 +239,7 @@ describe('useFormTable#basic', () => {
     });
   });
 
-  it('actions', async () => {
+  it('actions（暴露出来 actions）', async () => {
     const data = { name: 'ahooks' };
     let $actions = {} as { [name: string]: any };
 
@@ -283,6 +283,50 @@ describe('useFormTable#basic', () => {
 
       const formState = $actions.getFormState();
       expect(formState.values).toEqual({ name: 'foo' });
+    });
+  });
+
+  it.only('getFormState（只有点击查询和重置的时候才用到 form 的数据）', async () => {
+    const data = { name: 'ahooks' };
+
+    const TestComponent = () => {
+      const { formProps, tableProps, paginationProps } = useFormTable((params) => {
+        // 加上 total 25，让 pagination 出现分页
+        return service({ dataSource: [{ ...params, name: params.name || data.name }], total: 25 });
+      });
+
+      return (
+        <Fragment>
+          <SchemaForm {...formProps}>
+            <Field name={'name'} type="string1" x-props={{ 'data-testid': 'input' }} />
+            <button type="submit">Submit</button>
+          </SchemaForm>
+
+          <div>{JSON.stringify(tableProps)}</div>
+          <Pagination {...paginationProps} />
+        </Fragment>
+      );
+    };
+
+    const { queryByTestId, queryByText } = render(<TestComponent />);
+
+    await waitFor(() => {
+      const element = screen.getByText('ahooks', { exact: false });
+      expect(JSON.parse(element.innerHTML)).toEqual({
+        dataSource: [{ ...data, current: 1, pageSize: 20 }],
+        loading: false,
+      });
+    });
+
+    fireEvent.change(queryByTestId('input') as HTMLElement, { target: { value: 'foo' } });
+    // 没有点击查询的时候就点击第二页
+    fireEvent.click(queryByText('2') as HTMLElement);
+    await waitFor(() => {
+      const element = screen.getByText('ahooks', { exact: false });
+      expect(JSON.parse(element.innerHTML)).toEqual({
+        dataSource: [{ ...data, current: 2, pageSize: 20, name: 'ahooks' }],
+        loading: false,
+      });
     });
   });
 });
