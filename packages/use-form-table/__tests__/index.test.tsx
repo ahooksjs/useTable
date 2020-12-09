@@ -286,7 +286,7 @@ describe('useFormTable#basic', () => {
     });
   });
 
-  it.only('getFormState（只有点击查询和重置的时候才用到 form 的数据）', async () => {
+  it('getFormState（只有点击查询和重置的时候才用到 form 的数据）', async () => {
     const data = { name: 'ahooks' };
 
     const TestComponent = () => {
