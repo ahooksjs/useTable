@@ -19,6 +19,7 @@
     "test": "jest",
     "preversion": "npm run build && npm run test",
     "version:alpha": "lerna version prerelease --preid alpha --force-publish=* --no-git-tag-version",
+    "version:preminor:alpha": "lerna version preminor --preid alpha --force-publish=* --no-git-tag-version",
     "release:force": "lerna publish from-package --yes",
     "release": "lerna publish"
   },
