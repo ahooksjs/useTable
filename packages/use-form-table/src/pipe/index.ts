@@ -5,6 +5,15 @@ import refreshPipe from './refresh';
 import formPipe from './form';
 import tablePipe from './table';
 
+const checkIsFormPipe = (meta) => {
+  return [
+    methods.ON_FORM_SUBMIT,
+    methods.ON_FORM_MOUNT,
+    methods.ON_FORM_SUBMIT,
+    methods.TO_RESET_FORM,
+  ].includes(meta.queryFrom);
+};
+
 const pipeCheckerMap = {
   [PipeType.REFRESH]: (ctx) => {
     const { meta } = ctx;
@@ -12,18 +21,11 @@ const pipeCheckerMap = {
   },
   [PipeType.FORM]: (ctx) => {
     const { meta } = ctx;
-    return (
-      meta[IS_NORMAL_SYMBOL] === true &&
-      [methods.ON_FORM_SUBMIT, methods.ON_FORM_SUBMIT].includes(meta.queryFrom)
-    );
+    return meta[IS_NORMAL_SYMBOL] === true && checkIsFormPipe(meta);
   },
   [PipeType.TABLE]: (ctx) => {
     const { meta } = ctx;
-    return (
-      meta[IS_NORMAL_SYMBOL] === true 
-      &&
-      ![methods.ON_FORM_SUBMIT, methods.ON_FORM_SUBMIT].includes(meta.queryFrom)
-    );
+    return meta[IS_NORMAL_SYMBOL] === true && !checkIsFormPipe(meta);
   },
 };
 
