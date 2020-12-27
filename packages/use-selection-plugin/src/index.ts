@@ -32,6 +32,10 @@ const useTableSelectionPlugin: TUseTableSelection = (options: IOptions = {}) => 
 
       if (isNeedReset) {
         return next().then(() => {
+          // antd 那边好像只能用 key 的方式来决定唯一值
+          ctx.response.data.dataSource = (ctx.response.data.dataSource || []).map((d) => {
+            return { ...d, key: d[primaryKey] };
+          });
           setSelectedRowKeys({ selectedRowKeys: [] });
         });
       }
@@ -39,7 +43,7 @@ const useTableSelectionPlugin: TUseTableSelection = (options: IOptions = {}) => 
       return next();
     },
     props: () => {
-      return ({
+      return {
         tableProps: {
           rowSelection: {
             onSelect,
@@ -49,7 +53,7 @@ const useTableSelectionPlugin: TUseTableSelection = (options: IOptions = {}) => 
           primaryKey,
         },
         getSelectedRowKeys,
-      })
+      };
     },
   };
 };

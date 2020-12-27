@@ -34,6 +34,10 @@ import antTable from '@ahooksjs/ant-table';
 
 <code src="./demo/default.tsx" />
 
+### 多插件
+
+<code src="./demo/all.tsx" />
+
 ## API
 
 ```js
