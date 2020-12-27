@@ -1,6 +1,8 @@
 import { useRef } from 'react';
 import { IOptions, TUseFilterPlugin } from './type';
 
+export const FILTER_PLUGIN_SYMBOL = Symbol.for('FILTER_PLUGIN_SYMBOL');
+
 const propsToParams = (props) => {
   return Object.keys(props).reduce((acc, key) => {
     return {
@@ -15,6 +17,7 @@ const useFilterPlugin: TUseFilterPlugin = (options: IOptions = {}) => {
   const transformer = options.transformer || ((res) => res);
 
   return {
+    pluginType: FILTER_PLUGIN_SYMBOL,
     middlewares: (ctx, next) => {
       const filterParams = propsToParams(filterRef.current);
       ctx.params = { ...ctx.params, ...transformer(filterParams, filterRef.current) };

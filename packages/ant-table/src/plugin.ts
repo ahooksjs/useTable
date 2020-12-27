@@ -1,11 +1,39 @@
 import { methods } from '@ahooksjs/use-table';
 
+const filterTransformer = (filters) => {
+  return Object.keys(filters).reduce((acc, key) => {
+    return {
+      ...acc,
+      [key]: {
+        selectedKeys: filters[key] || [],
+      },
+    };
+  }, {});
+};
+
+const tableActions = {
+  sort: ({ sorter }, props) => {
+    props.onSort(sorter.field, sorter.order);
+  },
+  filter: ({ filters }, props) => {
+    props.onFilter(filterTransformer(filters));
+  },
+};
+
 const useAntdTablePlugin = () => {
   return {
     props: (ctx) => {
       return {
-        tableProps: {
-          pagination: false,
+        tableProps: ({ primaryKey, ...props }) => {
+          return {
+            ...props,
+            rowKey: primaryKey,
+            pagination: false,
+            onChange: (_, filters, sorter, { action }) => {
+              const fn = tableActions[action] || (() => {});
+              fn({ filters, sorter }, props);
+            },
+          };
         },
         paginationProps: ({ onChange, onPageSizeChange, ...props }) => {
           return {

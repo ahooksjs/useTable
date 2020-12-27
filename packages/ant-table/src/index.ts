@@ -7,7 +7,7 @@ const useAntdTable = (service: (params: Obj) => Promise<IResponse>, options?: Op
 
   const props = useTable(service, {
     ...options,
-    plugins: [antdTablePlugin, ...plugins],
+    plugins: [...plugins, antdTablePlugin],
   });
 
   return props;
