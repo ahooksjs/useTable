@@ -7,28 +7,33 @@ const useAntdTablePlugin = () => {
         tableProps: {
           pagination: false,
         },
-        paginationProps: {
-          // Antd 不能区分页码大小的触发还是页改变的触发
-          onChange: (current, pageSize) => {
-            const { params } = ctx;
-            if (current === params.current) {
-              // 切换页码大小
-              ctx.query(
-                { pageSize, current: ctx.options.current },
-                {
-                  queryFrom: methods.ON_PAGE_SIZE_CHANGE,
-                }
-              );
-            } else if (params.pageSize === pageSize) {
+        paginationProps: ({ onChange, onPageSizeChange, ...props }) => {
+          return {
+            ...props,
+            // Antd 不能区分【页码大小】的触发还是【页改变】的触发
+            onChange: (current, pageSize) => {
+              const { params } = ctx;
+              // 切换页码
+              if (current === params.current) {
+                ctx.query(
+                  { pageSize, current: ctx.options.current },
+                  {
+                    queryFrom: methods.ON_PAGE_SIZE_CHANGE,
+                  }
+                );
+              }
+
               // 切换页
-              ctx.query(
-                { pageSize, current },
-                {
-                  queryFrom: methods.ON_PAGE_SIZE_CHANGE,
-                }
-              );
-            }
-          },
+              if (params.pageSize === pageSize) {
+                ctx.query(
+                  { pageSize, current },
+                  {
+                    queryFrom: methods.ON_PAGE_SIZE_CHANGE,
+                  }
+                );
+              }
+            },
+          };
         },
       };
     },
