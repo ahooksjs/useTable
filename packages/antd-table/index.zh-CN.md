@@ -1,6 +1,6 @@
 ---
 title: useAntdTable
-order: 2
+order: 1
 nav:
   title: Hooks
   path: /hooks
@@ -14,18 +14,22 @@ legacy: /antd/antd-table
 
 # useAntdTable
 
+> useNextTable `参数`和`返回值`继承于 [use-table](../core/use-table)
+
 ## 何时使用
+
+`查询表格场景`，基于 [Antd 4.x](https://github.com/ant-design/ant-design/) 实现
 
 ## 安装
 
 ```sh
-npm install @ahooksjs/ant-table --save
+npm install @ahooksjs/antd-table --save
 ```
 
 ## 引用方式
 
 ```js
-import useAntdTable from '@ahooksjs/ant-table';
+import useAntdTable from '@ahooksjs/antd-table';
 ```
 
 ## 代码演示

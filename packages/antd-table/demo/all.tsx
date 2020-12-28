@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import useAntdTable from '@ahooksjs/ant-table';
+import useAntdTable from '@ahooksjs/antd-table';
 import { Table, Pagination, Button } from 'antd';
 import useFilterPlugin from '@ahooksjs/use-filter-plugin';
 import useSortablePlugin from '@ahooksjs/use-sortable-plugin';

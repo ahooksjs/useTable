@@ -16,3 +16,5 @@ const useAntdTable = (service: (params: Obj) => Promise<IResponse>, options?: Op
 export * from '@ahooksjs/use-table';
 
 export default useAntdTable;
+
+export { useAntdTablePlugin };

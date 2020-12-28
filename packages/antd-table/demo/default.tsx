@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import useAntdTable from '@ahooksjs/ant-table';
+import useAntdTable from '@ahooksjs/antd-table';
 import { Table, Pagination } from 'antd';
 
 const list = ({ current, pageSize, ...formData }) => {
