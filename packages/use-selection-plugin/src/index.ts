@@ -39,7 +39,7 @@ const useTableSelectionPlugin: TUseTableSelection = (options: IOptions = {}) => 
       return next();
     },
     props: () => {
-      return ({
+      return {
         tableProps: {
           rowSelection: {
             onSelect,
@@ -49,7 +49,7 @@ const useTableSelectionPlugin: TUseTableSelection = (options: IOptions = {}) => 
           primaryKey,
         },
         getSelectedRowKeys,
-      })
+      };
     },
   };
 };

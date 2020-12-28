@@ -1,6 +1,8 @@
 import { useRef } from 'react';
 import { IOptions, TUseSortablePlugin } from './type';
 
+export const SORTABLE_PLUGIN_SYMBOL = Symbol.for('SORTABLE_PLUGIN_SYMBOL');
+
 const useSortablePlugin: TUseSortablePlugin = (options: IOptions = {}) => {
   const {
     sortByKey = 'sortBy',
@@ -18,6 +20,7 @@ const useSortablePlugin: TUseSortablePlugin = (options: IOptions = {}) => {
   };
 
   return {
+    pluginType: SORTABLE_PLUGIN_SYMBOL,
     middlewares: (ctx, next) => {
       const { meta, methods } = ctx;
       const { queryFrom } = meta;

@@ -1,59 +1,47 @@
 ---
-title: useNextFormTable
-order: 2
+title: useAntdFormTable
+order: 1
 nav:
   title: Hooks
   path: /hooks
   order: 2
 group:
-  title: Next
-  path: /next
+  title: Antd
+  path: /antd
   order: 10
-legacy: /next/use-form-table
+legacy: /antd/antd-form-table
 ---
 
-# useNextFormTable
+# useAntdFormTable
 
-> useNextFormTable `参数`和`返回值`继承于 [use-form-table](../core/use-form-table)
+> useAntdFormTable `参数`和`返回值`继承于 [use-form-table](../core/use-form-table)
 
 ## 何时使用
 
-`表单查询表格场景`，`Form` + `Table` 场景的 [Fusion Next](https://github.com/alibaba-fusion/next) 和 [formily](formilyjs.org) 实现
+`表单查询表格场景`，`Form` + `Table` 场景的 [Antd 4.x](https://github.com/ant-design/ant-design/) 和 [formily](formilyjs.org) 实现
 
 ## 安装
 
 ```sh
-npm install @ahooksjs/next-form-table --save
+npm install @ahooksjs/antd-form-table --save
 ```
 
 ## 引用方式
 
 ```js
-import useNextFormTable from '@ahooksjs/next-form-table';
+import useAntdFormTable from '@ahooksjs/antd-form-table';
 ```
 
 ## 代码演示
 
-### 默认
+### 默认请求
 
 <code src="./demo/default.tsx" />
-
-### 重新请求
-
-<code src="./demo/refreshDeps.tsx" />
-
-### 默认 pageSize
-
-<code src="./demo/pageSize.tsx" />
-
-### 多插件
-
-<code src="./demo/all.tsx" />
 
 ## API
 
 ```js
-const { formProps, tableProps, paginationProps, query, getParams } = useNextFormTable(service, [
+const { formProps, tableProps, paginationProps, query, getParams } = useAntdFormTable(service, [
   options,
 ]);
 ```
@@ -92,13 +80,13 @@ interface IResponse {
 
 ## 返回值
 
-| 参数            | 说明                                                                                     | 类型                                      |
-| --------------- | ---------------------------------------------------------------------------------------- | ----------------------------------------- |
-| formProps       | formily props，更多定义可以看下面 `IFormProps`                                           | `Object`                                  |
-| tableProps      | fusion next table props，更多定义可以看下面 `ITableProps`                                | `Object`                                  |
-| paginationProps | fusion pagination props，更多定义可以看下面 `IPaginationProps`                           | `Object`                                  |
+| 参数            | 说明                                                                                   | 类型                                      |
+| --------------- | -------------------------------------------------------------------------------------- | ----------------------------------------- |
+| formProps       | formily props，更多定义可以看下面 `IFormProps`                                         | `Object`                                  |
+| tableProps      | Antd Table props，更多定义可以看下面 `ITableProps`                                     | `Object`                                  |
+| paginationProps | Antd Pagination props，更多定义可以看下面 `IPaginationProps`                           | `Object`                                  |
 | query           | 处理过的请求方法，可以在外界刷新 table，默认会带上上一次请求的参数，传入对象会自动合并 | `(params?: Object) => Promise<IResponse>` |
-| getParams       | 获取请求参数，只会在请求成功才更新                                                       | `() => Object`                            |
+| getParams       | 获取请求参数，只会在请求成功才更新                                                     | `() => Object`                            |
 
 #### IFormProps
 
@@ -116,11 +104,9 @@ interface IResponse {
 
 #### IPaginationProps
 
-| 参数             | 说明                   | 类型                         | 默认值   |
-| ---------------- | ---------------------- | ---------------------------- | -------- |
-| total            | 总数                   | `Number`                     | 0        |
-| current          | 当前页                 | `Number`                     | 1        |
-| pageSize         | 页大小                 | `Number`                     | 20       |
-| pageSizeSelector | 每页显示选择器类型     | `String`                     | 'filter' |
-| onChange         | 监听当前页改变的事件   | `(current: number) => void`  | 触发请求 |
-| onPageSizeChange | 监听页码大小改变的事件 | `(pageSize: number) => void` | 触发请求 |
+| 参数     | 说明                 | 类型                                          | 默认值   |
+| -------- | -------------------- | --------------------------------------------- | -------- |
+| total    | 总数                 | `Number`                                      | 0        |
+| current  | 当前页               | `Number`                                      | 1        |
+| pageSize | 页大小               | `Number`                                      | 20       |
+| onChange | 监听当前页改变的事件 | `(current: number, pageSize: number) => void` | 触发请求 |

@@ -26,6 +26,15 @@ export default {
     [
       'babel-plugin-import',
       {
+        libraryName: '@formily/antd-components',
+        libraryDirectory: 'lib',
+        style: true,
+      },
+      '@formily/antd-components',
+    ],
+    [
+      'babel-plugin-import',
+      {
         libraryName: '@alifd/next',
         style: false,
       },
