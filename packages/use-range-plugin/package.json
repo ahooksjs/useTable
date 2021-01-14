@@ -1,6 +1,6 @@
 {
   "name": "@ahooksjs/use-range-plugin",
-  "version": "0.2.0",
+  "version": "0.2.1-alpha.0",
   "scripts": {
     "build:tsc": "tsc --project tsconfig.build.json --declarationDir ./lib && tsc --project tsconfig.build.json --declarationDir ./es"
   },
