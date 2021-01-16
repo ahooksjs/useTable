@@ -39,10 +39,7 @@ const transformers = {
 };
 
 const compose = (fns) => {
-  return (initialValues) =>
-    fns.reduce((values, fn) => {
-      return fn(values);
-    }, initialValues);
+  return (initialValues) => fns.reduce((values, fn) => fn(values), initialValues);
 };
 
 const useTransfromPlugin: TUseTransformPlugin = ({ filter: name }) => ({
