@@ -40,15 +40,18 @@ const useAsyncDefaultPlugin: TUseAsyncDefaultPlugin = (options) => {
 
         return Promise.all(queries.map((q) => q()))
           .then((res: any[]) => {
-            const initialValues = fields.reduce((values, name, $index) => {
-              const data = res[$index].data;
+            const { current, pageIndex, pageSize, ...initialValues } = fields.reduce(
+              (values, name, $index) => {
+                const data = res[$index].data;
 
-              return {
-                ...values,
-                [name]: setDefaultValue(data, name),
-                ...ctx.params,
-              };
-            }, {});
+                return {
+                  ...values,
+                  [name]: setDefaultValue(data, name),
+                  ...ctx.params,
+                };
+              },
+              {}
+            );
 
             if (isDefault) {
               ctx.params = {
