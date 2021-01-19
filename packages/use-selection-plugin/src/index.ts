@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { IOptions, TUseTableSelection } from './type';
 
+export { IOptions, TUseTableSelection };
+
 const useTableSelectionPlugin: TUseTableSelection = (options: IOptions = {}) => {
   const [state, setSelectedRowKeys] = useState({
     selectedRowKeys: [],
