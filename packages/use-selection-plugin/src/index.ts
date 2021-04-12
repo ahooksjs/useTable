@@ -28,6 +28,10 @@ const useTableSelectionPlugin: TUseTableSelection = (options: IOptions = {}) => 
     return state.selectedRowKeys;
   };
 
+  const $setSelectedRowKeys = (selectedRowKeys) => {
+    setSelectedRowKeys({ selectedRowKeys });
+  };
+
   return {
     middlewares: (ctx, next) => {
       const isNeedReset = checkIsNeedReset(ctx);
@@ -51,6 +55,7 @@ const useTableSelectionPlugin: TUseTableSelection = (options: IOptions = {}) => 
           primaryKey,
         },
         getSelectedRowKeys,
+        setSelectedRowKeys: $setSelectedRowKeys,
       };
     },
   };

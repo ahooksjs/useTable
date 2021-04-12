@@ -16,6 +16,7 @@ export interface IProps {
     primaryKey: string;
   };
   getSelectedRowKeys: () => string[];
+  setSelectedRowKeys: (selectedRowKeys: string[]) => void;
 }
 
 export type TUseTableSelection = (options?: IOptions) => TableNormalPlugin<IProps>;
