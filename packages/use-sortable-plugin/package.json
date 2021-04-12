@@ -1,6 +1,6 @@
 {
   "name": "@ahooksjs/use-sortable-plugin",
-  "version": "0.2.3-alpha.1",
+  "version": "0.2.3-alpha.2",
   "scripts": {
     "build:tsc": "tsc --project tsconfig.build.json --declarationDir ./lib && tsc --project tsconfig.build.json --declarationDir ./es"
   },
@@ -10,8 +10,8 @@
     "react": "^16.12.0"
   },
   "dependencies": {
-    "@ahooksjs/use-form-table": "^0.2.3-alpha.1",
-    "@ahooksjs/use-table": "^0.2.3-alpha.1"
+    "@ahooksjs/use-form-table": "^0.2.3-alpha.2",
+    "@ahooksjs/use-table": "^0.2.3-alpha.2"
   },
   "repository": {
     "type": "git",
