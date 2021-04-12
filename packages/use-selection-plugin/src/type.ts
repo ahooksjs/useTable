@@ -2,6 +2,7 @@ import { TableNormalPlugin } from '@ahooksjs/use-table';
 
 export interface IOptions {
   primaryKey?: string;
+  defaultSelectedRowKeys?: string[];
   checkIsNeedReset?: (ctx) => boolean;
 }
 

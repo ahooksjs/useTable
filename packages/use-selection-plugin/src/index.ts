@@ -5,7 +5,7 @@ export { IOptions, TUseTableSelection };
 
 const useTableSelectionPlugin: TUseTableSelection = (options: IOptions = {}) => {
   const [state, setSelectedRowKeys] = useState({
-    selectedRowKeys: [],
+    selectedRowKeys: options.defaultSelectedRowKeys || [],
   });
 
   const { primaryKey = 'id', checkIsNeedReset = () => true } = options;
