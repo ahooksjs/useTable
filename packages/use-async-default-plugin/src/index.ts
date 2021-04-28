@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { FormPath, IFieldState } from '@formily/react';
+import { IFieldState } from '@formily/react';
 import { TUseAsyncDefaultPlugin, IGetValue } from './type';
 
 const getValue: IGetValue = (data) => {
@@ -66,18 +66,15 @@ const useAsyncDefaultPlugin: TUseAsyncDefaultPlugin = (options) => {
               });
             }
 
-            return actions.setFieldState(
-              FormPath.match(`*(${fields.join(',')})`),
-              (state: IFieldState) => {
-                const $res = res[fields.indexOf(state.name)];
-                const { data } = $res;
-                if (isDefault) {
-                  state.value = initialValues[state.name];
-                }
+            return actions.setFieldState(`*(${fields.join(',')})`, (state: IFieldState) => {
+              const $res = res[fields.indexOf(state.name)];
+              const { data } = $res;
+              if (isDefault) {
                 state.value = initialValues[state.name];
-                state.props.enum = data;
               }
-            );
+              state.value = initialValues[state.name];
+              state.props.enum = data;
+            });
           })
           .then(next);
       }
