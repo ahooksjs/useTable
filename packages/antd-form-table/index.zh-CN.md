@@ -18,7 +18,7 @@ legacy: /antd/antd-form-table
 
 ## 何时使用
 
-`表单查询表格场景`，`Form` + `Table` 场景的 [Antd 4.x](https://github.com/ant-design/ant-design/) 和 [formily](formilyjs.org) 实现
+`表单查询表格场景`，`Form` + `Table` 场景的 [Antd 4.x](https://github.com/ant-design/ant-design/) 和 [formily 1.x](https://formilyjs.org) 实现
 
 ## 安装
 
