@@ -16,7 +16,7 @@ legacy: /core/use-table
 
 ## 何时使用
 
-为你独有的 Design 自定义具备插件能力 Table Hook
+为你独有的 Design 自定义具备插件能力 Table Hook，如果想更多了解如何定制的话，可以查看 [高级篇之结合 Design](../../advance/design)。
 
 ## 安装
 

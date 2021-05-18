@@ -26,6 +26,12 @@ npm install @ahooksjs/next-form-table --save
 import useNextFormTable from '@ahooksjs/next-form-table';
 ```
 
+- 使用 Ant Design 4.x
+
+```js
+import useAntdFormTable from '@ahooksjs/antd-form-table';
+```
+
 ## 文档
 
 你可以在[这个网站](https://usetable-ahooks.js.org/)查看到文档

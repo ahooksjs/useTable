@@ -18,7 +18,7 @@ legacy: /next/use-form-table
 
 ## 何时使用
 
-`表单查询表格场景`，`Form` + `Table` 场景的 [Fusion Next](https://github.com/alibaba-fusion/next) 和 [formily](formilyjs.org) 实现
+`表单查询表格场景`，`Form` + `Table` 场景的 [Fusion Next](https://github.com/alibaba-fusion/next) 和 [formily 1.x](https://formilyjs.org) 实现
 
 ## 安装
 
