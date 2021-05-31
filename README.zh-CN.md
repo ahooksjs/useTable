@@ -18,6 +18,12 @@
 npm install @ahooksjs/next-form-table --save
 ```
 
+- 使用 Ant Design 4.x
+
+```sh
+npm install @ahooksjs/antd-form-table --save
+```
+
 ## 使用
 
 - 使用 Fusion Design

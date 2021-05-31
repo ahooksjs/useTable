@@ -18,6 +18,12 @@ English | [简体中文](https://github.com/ahooksjs/useTable/blob/master/README
 npm install @ahooksjs/next-form-table --save
 ```
 
+- Use Ant Design 4.x
+
+```sh
+npm install @ahooksjs/antd-form-table --save
+```
+
 ## Usage
 
 - Use Fusion Design
