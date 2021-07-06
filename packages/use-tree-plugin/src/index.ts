@@ -81,6 +81,10 @@ const useTreePlugin: TUseTree = (
     },
 
     props: (ctx) => ({
+      lazyTree: {
+        setLazyTreeState,
+        state,
+      },
       tableProps: {
         isTree: true,
         openRowKeys: state.openRowKeys,
