@@ -5,7 +5,7 @@ const adapt = (res: IResponse, primaryKey: string): IResponse => {
   const { data = { dataSource: [] } } = res || {};
 
   res.data.dataSource = (data.dataSource as Obj[]).map((d) => {
-    if (d.lazyChildren) {
+    if (d.lazyChildren || d.isLeaf === false) {
       return {
         ...d,
         children: [
