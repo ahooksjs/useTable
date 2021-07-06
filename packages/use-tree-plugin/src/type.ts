@@ -12,6 +12,7 @@ export type IPayload = {
 export type TQuery = (payload: IPayload, params: Obj) => Promise<IResponse>;
 
 export interface IOptions {
+  isCache: boolean;
   primaryKey?: string;
   // TODO
   iterator?: any;

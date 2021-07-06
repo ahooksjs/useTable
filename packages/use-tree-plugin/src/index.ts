@@ -9,7 +9,7 @@ const useTreePlugin: TUseTree = (
   query = () => Promise.resolve({ data: { dataSource: [], total: 0 } }),
   options
 ) => {
-  const { primaryKey = 'id', iterator = () => ({}) } = (options || {}) as IOptions;
+  const { primaryKey = 'id', iterator = () => ({}), isCache = true } = (options || {}) as IOptions;
   const [state, setLazyTreeState] = useState({ openRowKeys: [] });
   const defaultChecker = useCallback(
     (node, pos, $payload) => node[primaryKey] === $payload.currentRowKey,
@@ -42,7 +42,9 @@ const useTreePlugin: TUseTree = (
             traverse(dataSource, (node, pos) => {
               if (checker(node, pos, payload)) {
                 // 标记已经打开过了，下次就不要去请求数据了
-                node.expanded = true;
+                if (isCache) {
+                  node.expanded = true;
+                }
                 const mapper = node.indeterminate
                   ? (child) => {
                       return { ...child, parent: node[primaryKey] };
