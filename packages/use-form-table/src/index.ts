@@ -39,15 +39,16 @@ const useFormTablePlugin: () => TableNormalPlugin = () => {
     },
     props: (pluginProps) => {
       const { formProps = {} } = pluginProps || {};
-      const { helper } = app;
+      const { helper, ctx } = app;
       const theFormProps = Array.isArray(formProps) ? formProps : [formProps];
       const { effects = () => ({}), ...formPropsOfPlugins } = helper.pipeCompose(theFormProps)({});
+      const $actions = { ...actions, ...ctx.actions };
 
       return {
         ...pluginProps,
-        actions,
+        actions: $actions,
         formProps: {
-          actions,
+          actions: $actions,
           effects: ($, ...args) => {
             $(methods.ON_FORM_MOUNT).subscribe(() => {
               app.query({}, { queryFrom: methods.ON_FORM_MOUNT });
