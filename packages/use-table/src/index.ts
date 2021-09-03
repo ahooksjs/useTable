@@ -76,8 +76,12 @@ const useTable: TUseTable = (service, options) => {
 
   const plugin: RawPlugins = [useTablePlugin({ ...options, current, pageSize })];
   const persistedService = usePersistFn(service);
+  const transformer = options?.transformer
+    ? usePersistFn(options?.transformer)
+    : options?.transformer;
+
   const { props: tableQueryProps = {}, query } = useQueryDisplay(
-    { timelines: [PREPARE].concat(timelines), ...options, service: persistedService },
+    { timelines: [PREPARE].concat(timelines), ...options, transformer, service: persistedService },
     plugin.concat(addYourMiddlewares(plugins))
   );
 

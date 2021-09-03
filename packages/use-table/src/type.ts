@@ -101,6 +101,7 @@ export interface Options {
   autoFirstQuery?: boolean;
   refreshDeps?: any[];
   plugins?: TableNormalPlugin[];
+  transformer?: (params: any) => any;
 }
 
 export type TUseTable = (
