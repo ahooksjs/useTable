@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { IOptions, TUseFilterPlugin } from './type';
 
 export const FILTER_PLUGIN_SYMBOL = Symbol.for('FILTER_PLUGIN_SYMBOL');
+const REFRESH_FILTER_METHOD = 'REFRESH_FILTER_METHOD';
 
 const propsToParams = (props) => {
   return Object.keys(props).reduce((acc, key) => {
@@ -14,11 +15,18 @@ const propsToParams = (props) => {
 
 const useFilterPlugin: TUseFilterPlugin = (options: IOptions = {}) => {
   const filterRef = useRef({});
-  const transformer = options.transformer || ((res) => res);
+  const { transformer = (res) => res, resetWhenQuery = true } = options;
 
   return {
     pluginType: FILTER_PLUGIN_SYMBOL,
     middlewares: (ctx, next) => {
+      const { meta, methods } = ctx;
+      const { queryFrom } = meta;
+
+      if ([methods.ON_FORM_SUBMIT, methods.ON_FORM_RESET].includes(queryFrom) && resetWhenQuery) {
+        filterRef.current = {};
+      }
+
       const filterParams = propsToParams(filterRef.current);
       ctx.params = { ...ctx.params, ...transformer(filterParams, filterRef.current) };
       return next();
@@ -29,7 +37,7 @@ const useFilterPlugin: TUseFilterPlugin = (options: IOptions = {}) => {
         onFilter: (filterParams) => {
           const { query } = ctx;
           filterRef.current = filterParams;
-          query({ current: 1 });
+          query({ current: 1 }, { queryFrom: REFRESH_FILTER_METHOD });
         },
       },
     }),
