@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import useAntdTable from '@ahooksjs/antd-table';
-import { Table, Pagination, Button } from 'antd';
+import { Table, Pagination, Button, message } from 'antd';
 import useFilterPlugin from '@ahooksjs/use-filter-plugin';
 import useSortablePlugin from '@ahooksjs/use-sortable-plugin';
 import useSelectionPlugin from '@ahooksjs/use-selection-plugin';
@@ -59,17 +59,18 @@ const Component = () => {
       <p>
         <Button
           onClick={() => {
-            console.log(getSelectedRowKeys());
+            const selectedRowKeys = getSelectedRowKeys() || [];
+            message.success(selectedRowKeys.join(','));
           }}
         >
           点击查看勾选值
         </Button>
       </p>
 
-      <Table {...tableProps}>
-        <Table.Column title="email" dataIndex="email" width={500} filters={filters} />
-        <Table.Column title="phone" dataIndex="phone" width={500} sorter />
-        <Table.Column title="gender" dataIndex="gender" width={200} />
+      <Table scroll={{ y: 300 }} {...tableProps}>
+        <Table.Column title="email" dataIndex="email" filters={filters} />
+        <Table.Column title="phone" dataIndex="phone" sorter />
+        <Table.Column title="gender" dataIndex="gender" />
       </Table>
       <Pagination style={{ marginTop: 16 }} {...paginationProps} />
     </Fragment>

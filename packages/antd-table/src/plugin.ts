@@ -29,6 +29,7 @@ const useAntdTablePlugin = () => {
             ...props,
             rowKey: primaryKey,
             pagination: false,
+            // 排序 & 过滤器需要用到
             onChange: (_, filters, sorter, { action }) => {
               const fn = tableActions[action] || (() => {});
               fn({ filters, sorter }, props);
@@ -38,7 +39,7 @@ const useAntdTablePlugin = () => {
         paginationProps: ({ onChange, onPageSizeChange, ...props }) => {
           return {
             ...props,
-            // Antd 不能区分【页码大小】的触发还是【页改变】的触发
+            // antd 不能区分页码大小的触发还是页改变的触发
             onChange: (current, pageSize) => {
               const { params } = ctx;
               // 切换页码

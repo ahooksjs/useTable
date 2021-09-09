@@ -24,7 +24,10 @@ npm install @ahooksjs/next-form-table @alifd/next @formily/next @formily/next-co
 
 #### 定义请求源
 
-需要注意两点，一个是请求源必须返回一个 Promise 接口，另外一个接口返回的格式为：
+需要注意两点，如下
+
+- 必须返回一个 Promise 对象
+- 遵循接口返回格式，格式如下
 
 ```ts
 interface IResponse {
@@ -39,9 +42,13 @@ interface IResponse {
 }
 ```
 
-如果接口返回的格式不符合呢？可以通过 `Promise` 的 then 接口再转换一下。
+如果接口返回的格式不符合呢？可以通过 `Promise` 的 then 方法再转换一下
 
 ```js
+const transform = (res) => {
+  return { ...res, data: { ...res.data, current: res.data.pageIndex } };
+};
+
 const list = () => {
   return window
     .fetch(`<path-to-get-list>`)
@@ -50,7 +57,7 @@ const list = () => {
 };
 ```
 
-如果找不到对应的接口，可以先 mock 下。
+如果找不到对应的请求源，可以先 mock 下
 
 ```js
 const list = () => {
@@ -109,13 +116,13 @@ const Component = () => {
 
 如果需要加上多选的功能，只需要加两段代码即可，分别是
 
-* 引入 `useSelectionPlugin`
+- 引入 `useSelectionPlugin`
 
 ```js
 import useSelectionPlugin from '@ahooksjs/use-selection-plugin';
 ```
 
-* 创建并注入
+- 创建并注入
 
 ```js
 const plugin = useSelectionPlugin();

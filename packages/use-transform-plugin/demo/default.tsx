@@ -26,7 +26,7 @@ const list = ({ current, pageSize, ...formData }) => {
 };
 
 const Component = () => {
-  const transformPlugin = useTransformPlugin({ filter: ['trim', 'undef'] });
+  const transformPlugin = useTransformPlugin({ filter: 'trim' });
   const { formProps, tableProps, paginationProps } = useNextFormTable(list, {
     plugins: [transformPlugin],
   });
@@ -47,7 +47,7 @@ const Component = () => {
         </FormButtonGroup>
       </SchemaForm>
 
-      <Table primaryKey={'login.uuid'} {...tableProps}>
+      <Table fixedHeader maxBodyHeight={300} primaryKey={'login.uuid'} {...tableProps}>
         <Table.Column title="name" dataIndex="name.last" width={200} />
         <Table.Column title="email" dataIndex="email" width={500} />
         <Table.Column title="phone" dataIndex="phone" width={500} />

@@ -36,14 +36,14 @@ import useSelectionPlugin from '@ahooksjs/use-selection-plugin';
 
 <code src="./demo/default.tsx" />
 
-### 设置更新策略
+### 设置是否清除勾选
 
 <code src="./demo/checkIsNeedReset.tsx" />
 
 ## API
 
 ```js
-const plugin = useSelectionPlugin({ primaryKey });
+const plugin = useSelectionPlugin({ primaryKey, checkIsNeedReset });
 ```
 
 ## 参数
@@ -51,11 +51,11 @@ const plugin = useSelectionPlugin({ primaryKey });
 | 参数             | 说明                                                                                          | 类型               | 默认值     |
 | ---------------- | --------------------------------------------------------------------------------------------- | ------------------ | ---------- |
 | primaryKey       | 可选，dataSource 当中数据的主键，如果给定的数据源中的属性不包含该主键，会造成选择状态全部选中 | `String`           | id         |
-| checkIsNeedReset | 可选，可以用来决定什么时候清除勾选项                                                            | `(ctx) => boolean` | () => true |
+| checkIsNeedReset | 可选，可以用来决定什么时候清除勾选项                                                          | `(ctx) => boolean` | () => true |
 
-## 返回值
+## 方法
 
-⚠️ 需要结合 useTable 的上层 Design 实现才能获取到返回值，具体可以看上面的例子。
+⚠️ 需要结合 useTable 的上层 Design 实现才能获取到返回值，具体使用可以参考上面的例子。
 
 | 参数               | 说明                           | 类型        |
 | ------------------ | ------------------------------ | ----------- |

@@ -32,13 +32,13 @@ import useAsyncDefaultPlugin from '@ahooksjs/use-async-default-plugin';
 
 ## 代码演示
 
-### 默认请求
+### 基本使用
 
 <code src="./demo/default.tsx" />
 
 ### 设置默认值
 
-<code src="./demo/setDefaultValue.tsx" />
+<code desc="重新设置默认值，现在默认是下拉第一个数据" src="./demo/setDefaultValue.tsx" />
 
 ### 多个默认请求
 

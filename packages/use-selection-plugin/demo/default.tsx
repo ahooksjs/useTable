@@ -38,7 +38,6 @@ const Component = () => {
           onClick={() => {
             const selected = getSelectedRowKeys();
             Message.success(selected.join(','));
-            console.log(selected);
           }}
         >
           点击查看勾选值
@@ -53,7 +52,7 @@ const Component = () => {
         </FormButtonGroup>
       </SchemaForm>
 
-      <Table {...tableProps}>
+      <Table fixedHeader maxBodyHeight={300} {...tableProps}>
         <Table.Column title="name" dataIndex="name.last" width={200} />
         <Table.Column title="email" dataIndex="email" width={500} />
         <Table.Column title="phone" dataIndex="phone" width={500} />

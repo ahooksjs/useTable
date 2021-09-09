@@ -16,6 +16,8 @@ legacy: /next/use-range-plugin
 
 ## 何时使用
 
+在一个请求的时候重置之前的查询条件
+
 ## 安装
 
 ```sh
@@ -30,7 +32,7 @@ import useRangePlugin from '@ahooksjs/use-range-plugin';
 
 ## 代码演示
 
-### 默认请求
+### 基本使用
 
 <code src="./demo/default.tsx" />
 
@@ -40,8 +42,10 @@ import useRangePlugin from '@ahooksjs/use-range-plugin';
 const plugin = useRangePlugin();
 ```
 
-## 参数
+## 方法
 
-| 参数 | 说明 | 类型 | 默认值 |
-| ---- | ---- | ---- | ------ |
-| 无   | 无   | 无   | 无     |
+⚠️ 需要结合 useTable 的上层 Design 实现才能获取到返回值，具体使用可以参考上面的例子。
+
+| 参数          | 说明                   | 类型               |
+| ------------- | ---------------------- | ------------------ |
+| resetAndQuery | 重置请求条件并重新请求 | () => Promise<any> |

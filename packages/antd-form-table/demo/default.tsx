@@ -38,10 +38,10 @@ const Component = () => {
         </FormButtonGroup>
       </SchemaForm>
 
-      <Table {...tableProps}>
-        <Table.Column title="email" dataIndex="email" width={500} />
-        <Table.Column title="phone" dataIndex="phone" width={500} />
-        <Table.Column title="gender" dataIndex="gender" width={200} />
+      <Table scroll={{ y: 300 }} {...tableProps}>
+        <Table.Column title="email" dataIndex="email" />
+        <Table.Column title="phone" dataIndex="phone" />
+        <Table.Column title="gender" dataIndex="gender" />
       </Table>
       <Pagination style={{ marginTop: 16 }} {...paginationProps} />
     </Fragment>

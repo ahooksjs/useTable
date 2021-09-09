@@ -20,10 +20,22 @@ features:
 
 ## 轻松上手
 
+### Fusion Design
+
 ```bash
 // 安装依赖
 npm install @ahooksjs/next-form-table --save
 
 // 使用
 import useNextFormTable from '@ahooksjs/next-form-table';
+```
+
+### Ant Design
+
+```bash
+// 安装依赖
+npm install @ahooksjs/antd-form-table --save
+
+// 使用
+import useAntdFormTable from '@ahooksjs/antd-form-table';
 ```

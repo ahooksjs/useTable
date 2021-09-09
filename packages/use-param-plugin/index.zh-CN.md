@@ -32,14 +32,14 @@ import useParamPlugin from '@ahooksjs/use-param-plugin';
 
 ## 代码演示
 
-### 默认请求
+### 基本使用
 
 <code src="./demo/default.tsx" />
 
 ## API
 
 ```js
-const plugin = useParamPlugin(options);
+const plugin = useParamPlugin(transform);
 ```
 
 ## 参数

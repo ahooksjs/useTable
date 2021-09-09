@@ -14,11 +14,9 @@ legacy: /next/next-table
 
 # useNextTable
 
-> useNextTable `参数`和`返回值`继承于 [use-table](../core/use-table)
-
 ## 何时使用
 
-`查询表格场景`，基于 [Fusion Next](https://github.com/alibaba-fusion/next) 实现
+基于 [Fusion Next](https://github.com/alibaba-fusion/next) 实现的`查询表格场景`
 
 ## 安装
 

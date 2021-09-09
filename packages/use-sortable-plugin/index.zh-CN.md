@@ -38,23 +38,23 @@ import useSortablePlugin from '@ahooksjs/use-sortable-plugin';
 
 ### 默认值
 
-<code src="./demo/initialSort.tsx" />
+<code desc="设置排序默认值" src="./demo/initialSort.tsx" />
 
 ### 请求不重置
 
-<code src="./demo/resetWhenQuery.tsx" />
+<code desc="点击查询的时候不会重置排序条件" src="./demo/resetWhenQuery.tsx" />
 
 ## API
 
 ```js
-const plugin = useSortablePlugin({ sortByKey, sortOrderKey });
+const plugin = useSortablePlugin({ sortByKey, sortOrderKey, resetWhenQuery, defaultValue });
 ```
 
 ## 参数
 
-| 参数           | 说明                                  | 类型                           | 默认值    |
-| -------------- | ------------------------------------- | ------------------------------ | --------- |
-| sortByKey      | 可选，选中的 dataIndex 对应的 key     | `String`                       | sortBy    |
-| sortOrderKey   | 可选，排序对应的 key                  | `String`                       | sortOrder |
-| resetWhenQuery | 可选，点击查询/重置要不要重置排序条件 | `Boolean`                      | true      |
+| 参数           | 说明                                  | 类型                              | 默认值    |
+| -------------- | ------------------------------------- | --------------------------------- | --------- |
+| sortByKey      | 可选，选中的 dataIndex 对应的 key     | `String`                          | sortBy    |
+| sortOrderKey   | 可选，排序对应的 key                  | `String`                          | sortOrder |
+| resetWhenQuery | 可选，点击查询/重置要不要重置排序条件 | `Boolean`                         | true      |
 | defaultValue   | 可选，初始化默认值                    | { [字段名]: `'desc'` \| `'asc'` } | {}        |

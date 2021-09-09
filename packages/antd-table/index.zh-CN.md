@@ -14,11 +14,9 @@ legacy: /antd/antd-table
 
 # useAntdTable
 
-> useNextTable `参数`和`返回值`继承于 [use-table](../core/use-table)
-
 ## 何时使用
 
-`查询表格场景`，基于 [Antd 4.x](https://github.com/ant-design/ant-design/) 实现
+基于 [Antd 4.x](https://github.com/ant-design/ant-design/) 实现的`查询表格场景`
 
 ## 安装
 
@@ -34,7 +32,7 @@ import useAntdTable from '@ahooksjs/antd-table';
 
 ## 代码演示
 
-### 默认请求
+### 简单使用
 
 <code src="./demo/default.tsx" />
 
@@ -45,7 +43,7 @@ import useAntdTable from '@ahooksjs/antd-table';
 ## API
 
 ```js
-const { tableProps, paginationProps, query, getParams } = useNextTable(service, [options]);
+const { tableProps, paginationProps, query, getParams } = useAntdTable(service, [options]);
 ```
 
 ## 参数

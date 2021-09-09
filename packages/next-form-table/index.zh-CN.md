@@ -14,11 +14,9 @@ legacy: /next/use-form-table
 
 # useNextFormTable
 
-> useNextFormTable `参数`和`返回值`继承于 [use-form-table](../core/use-form-table)
-
 ## 何时使用
 
-`表单查询表格场景`，`Form` + `Table` 场景的 [Fusion Next](https://github.com/alibaba-fusion/next) 和 [formily 1.x](https://formilyjs.org) 实现
+`Form` + `Table` 表单查询表格场景的 [Fusion Next](https://github.com/alibaba-fusion/next) 和 [formily 1.x](https://formilyjs.org) 实现
 
 ## 安装
 
@@ -34,7 +32,7 @@ import useNextFormTable from '@ahooksjs/next-form-table';
 
 ## 代码演示
 
-### 默认
+### 简单使用
 
 <code src="./demo/default.tsx" />
 
@@ -92,13 +90,13 @@ interface IResponse {
 
 ## 返回值
 
-| 参数            | 说明                                                                                     | 类型                                      |
-| --------------- | ---------------------------------------------------------------------------------------- | ----------------------------------------- |
-| formProps       | formily props，更多定义可以看下面 `IFormProps`                                           | `Object`                                  |
-| tableProps      | fusion next table props，更多定义可以看下面 `ITableProps`                                | `Object`                                  |
-| paginationProps | fusion pagination props，更多定义可以看下面 `IPaginationProps`                           | `Object`                                  |
+| 参数            | 说明                                                                                   | 类型                                      |
+| --------------- | -------------------------------------------------------------------------------------- | ----------------------------------------- |
+| formProps       | formily props，更多定义可以看下面 `IFormProps`                                         | `Object`                                  |
+| tableProps      | fusion next table props，更多定义可以看下面 `ITableProps`                              | `Object`                                  |
+| paginationProps | fusion pagination props，更多定义可以看下面 `IPaginationProps`                         | `Object`                                  |
 | query           | 处理过的请求方法，可以在外界刷新 table，默认会带上上一次请求的参数，传入对象会自动合并 | `(params?: Object) => Promise<IResponse>` |
-| getParams       | 获取请求参数，只会在请求成功才更新                                                       | `() => Object`                            |
+| getParams       | 获取请求参数，只会在请求成功才更新                                                     | `() => Object`                            |
 
 #### IFormProps
 

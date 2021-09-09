@@ -6,7 +6,7 @@ import useAsyncDefaultPlugin from '@ahooksjs/use-async-default-plugin';
 import useFilterPlugin from '@ahooksjs/use-filter-plugin';
 import useSortablePlugin from '@ahooksjs/use-sortable-plugin';
 import useSelectionPlugin from '@ahooksjs/use-selection-plugin';
-import { Table, Pagination, Button } from '@alifd/next';
+import { Table, Pagination, Button, Message } from '@alifd/next';
 
 const select = () => {
   return new Promise((resolve) => {
@@ -78,15 +78,16 @@ const Component = () => {
       <p>
         <Button
           onClick={() => {
-            console.log(getSelectedRowKeys());
+            const selectedRowKeys = getSelectedRowKeys() || [];
+            Message.success(selectedRowKeys.join(','));
           }}
         >
           点击查看勾选值
         </Button>
       </p>
 
-      <Table primaryKey={'login.uuid'} {...tableProps}>
-        <Table.Column title="name" dataIndex="name.last"  width={200} />
+      <Table fixedHeader maxBodyHeight={300} primaryKey={'login.uuid'} {...tableProps}>
+        <Table.Column title="name" dataIndex="name.last" width={200} />
         <Table.Column
           title="email"
           dataIndex="email"

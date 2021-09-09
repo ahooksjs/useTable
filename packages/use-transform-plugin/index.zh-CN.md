@@ -16,6 +16,8 @@ legacy: /next/use-transform-plugin
 
 ## 何时使用
 
+对于请求参数的特殊处理，比如过滤掉所有 undefined 的数据
+
 ## 安装
 
 ```sh
@@ -30,18 +32,24 @@ import useTransformPlugin from '@ahooksjs/use-transform-plugin';
 
 ## 代码演示
 
-### 默认请求
+### 基本使用
 
-<code src="./demo/default.tsx" />
+<code desc="只使用一个转换处理，trim 查询数据" src="./demo/default.tsx" />
 
 ## API
 
 ```js
-const plugin = useTransformPlugin();
+const plugin = useTransformPlugin({ filter });
 ```
 
 ## 参数
 
-| 参数 | 说明 | 类型 | 默认值 |
-| ---- | ---- | ---- | ------ |
-|      |      |      |        |
+| 参数   | 说明     | 类型                               | 默认值 |
+| ------ | -------- | ---------------------------------- | ------ |
+| filter | 过滤条件 | `TFilterType` 或者 `TFilterType[]` | 无     |
+
+### TFilterType
+
+```ts
+type TFilterType = 'empty' | 'undef' | 'null' | 'trim';
+```

@@ -14,11 +14,9 @@ legacy: /antd/antd-form-table
 
 # useAntdFormTable
 
-> useAntdFormTable `参数`和`返回值`继承于 [use-form-table](../core/use-form-table)
-
 ## 何时使用
 
-`表单查询表格场景`，`Form` + `Table` 场景的 [Antd 4.x](https://github.com/ant-design/ant-design/) 和 [formily 1.x](https://formilyjs.org) 实现
+`Form` + `Table` 表单查询表格场景的 [Antd 4.x](https://github.com/ant-design/ant-design/) 和 [formily 1.x](https://formilyjs.org) 实现
 
 ## 安装
 
@@ -34,7 +32,7 @@ import useAntdFormTable from '@ahooksjs/antd-form-table';
 
 ## 代码演示
 
-### 默认请求
+### 简单使用
 
 <code src="./demo/default.tsx" />
 
@@ -46,7 +44,7 @@ const { formProps, tableProps, paginationProps, query, getParams } = useAntdForm
 ]);
 ```
 
-## 参数
+### 参数
 
 | 参数    | 说明                                               | 类型                             | 默认值 |
 | ------- | -------------------------------------------------- | -------------------------------- | ------ |
@@ -78,15 +76,15 @@ interface IResponse {
 }
 ```
 
-## 返回值
+### 返回值
 
-| 参数            | 说明                                                                                   | 类型                                      |
-| --------------- | -------------------------------------------------------------------------------------- | ----------------------------------------- |
-| formProps       | formily props，更多定义可以看下面 `IFormProps`                                         | `Object`                                  |
-| tableProps      | Antd Table props，更多定义可以看下面 `ITableProps`                                     | `Object`                                  |
-| paginationProps | Antd Pagination props，更多定义可以看下面 `IPaginationProps`                           | `Object`                                  |
-| query           | 处理过的请求方法，可以在外界刷新 table，默认会带上上一次请求的参数，传入对象会自动合并 | `(params?: Object) => Promise<IResponse>` |
-| getParams       | 获取请求参数，只会在请求成功才更新                                                     | `() => Object`                            |
+| 参数            | 说明                                                                      | 类型                                      |
+| --------------- | ------------------------------------------------------------------------- | ----------------------------------------- |
+| formProps       | formily props，更多定义可以看下面 `IFormProps`                            | `Object`                                  |
+| tableProps      | Antd Table props，更多定义可以看下面 `ITableProps`                        | `Object`                                  |
+| paginationProps | Antd Pagination props，更多定义可以看下面 `IPaginationProps`              | `Object`                                  |
+| query           | 可以在外界刷新 table 数据，默认会带上上一次请求的参数，传入对象会自动合并 | `(params?: Object) => Promise<IResponse>` |
+| getParams       | 获取请求参数，只会在请求成功后才更新                                      | `() => Object`                            |
 
 #### IFormProps
 

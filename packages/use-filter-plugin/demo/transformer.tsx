@@ -60,7 +60,7 @@ const Component = () => {
         </FormButtonGroup>
       </SchemaForm>
 
-      <Table primaryKey={'login.uuid'} {...tableProps}>
+      <Table fixedHeader maxBodyHeight={300} primaryKey={'login.uuid'} {...tableProps}>
         <Table.Column title="name" dataIndex="name.last" width={200} />
         <Table.Column
           title="email"
