@@ -62,10 +62,12 @@ const useFormTablePlugin: () => TableNormalPlugin = () => {
             });
 
             $(methods.ON_FORM_RESET).subscribe((payload) => {
-              return app.query(
-                { ...payload.values, current: app.ctx.options.current },
-                { [IS_FORM_DATA_SUBMITTED]: true, queryFrom: methods.ON_FORM_RESET }
-              );
+              return actions.validate().then(() => {
+                return app.query(
+                  { ...payload.values, current: app.ctx.options.current },
+                  { [IS_FORM_DATA_SUBMITTED]: true, queryFrom: methods.ON_FORM_RESET }
+                );
+              });
             });
 
             effects($, ...args);
