@@ -329,4 +329,49 @@ describe('useFormTable#basic', () => {
       });
     });
   });
+
+  it('transformer（格式化参数）', async () => {
+    const data = { name: 'ahooks' };
+
+    const TestComponent = () => {
+      const { formProps, tableProps, paginationProps } = useFormTable(
+        (params) => {
+          return service({ dataSource: [{ ...params, name: params.name || data.name }] });
+        },
+        {
+          transformer: (params) => {
+            return {
+              ...params,
+              test: 1,
+              name: (params.name || '').toUpperCase(),
+            };
+          },
+        }
+      );
+
+      return (
+        <Fragment>
+          <SchemaForm {...formProps}>
+            <Field name={'name'} type="string1" x-props={{ 'data-testid': 'input' }} />
+            <button type="submit">Submit</button>
+          </SchemaForm>
+
+          <div>{JSON.stringify(tableProps)}</div>
+          <Pagination {...paginationProps} />
+        </Fragment>
+      );
+    };
+
+    const { queryByTestId, queryByText } = render(<TestComponent />);
+    fireEvent.change(queryByTestId('input') as HTMLElement, { target: { value: 'foo' } });
+    fireEvent.click(queryByText('Submit') as HTMLElement);
+
+    await waitFor(() => {
+      const element = screen.getByText('foo', { exact: false });
+      expect(JSON.parse(element.innerHTML)).toEqual({
+        dataSource: [{ ...data, current: 1, pageSize: 20, name: 'FOO', test: 1 }],
+        loading: false,
+      });
+    });
+  });
 });

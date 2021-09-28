@@ -2,7 +2,6 @@
  * 管理参数
  */
 import { Pipe } from '../type';
-import transformerPipe from './transformer';
 import refreshPipe from './refresh';
 import updatePipe from './update';
 import normalPipe from './normal';
@@ -16,7 +15,6 @@ const createNormalPipe = (pipe: Pipe, $isNormal: boolean): Pipe => (ctx) => {
 const pipes = [
   createNormalPipe(refreshPipe, false),
   createNormalPipe(normalPipe, true),
-  transformerPipe,
   updatePipe,
 ];
 

@@ -87,4 +87,34 @@ describe('useTable#options', () => {
     await waitForNextUpdate();
     expect(result.current.tableProps.dataSource[0].name).toEqual('updated');
   });
+
+  it('transformer', async () => {
+    const dataSource = [{ name: 'ahooks' }];
+    const TOTAL = 25;
+    const { result, waitForNextUpdate, rerender } = renderHook(() =>
+      useTable(
+        (params) => {
+          expect(params).toEqual({ current: 2, pageSize: 20, test: 1 });
+          return service({ dataSource, total: TOTAL });
+        },
+        {
+          transformer: (params) => {
+            return {
+              ...params,
+              current: 2,
+              test: 1,
+            };
+          },
+        }
+      )
+    );
+
+    await waitForNextUpdate();
+    await waitForNextUpdate();
+    expect(result.current.tableProps.dataSource).toEqual(dataSource);
+
+    rerender();
+    await sleep(2);
+    expect(result.current.tableProps.dataSource).toEqual(dataSource);
+  });
 });

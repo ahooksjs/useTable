@@ -111,7 +111,7 @@ describe('useAdaptPlugin', () => {
     expect(result.current.getParams()).toEqual({ ...expectedParams, pageIndex: 1 });
   });
 
-  it.only('plugin', async () => {
+  it('plugin', async () => {
     const dataSource = [{ name: 'ahooks' }];
     const TOTAL = 25;
     const expectedParams: Obj = { pageIndex: 1, pageSize: 20 };
