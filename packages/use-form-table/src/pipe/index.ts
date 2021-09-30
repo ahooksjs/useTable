@@ -11,6 +11,7 @@ const checkIsFormPipe = (meta) => {
     methods.ON_FORM_MOUNT,
     methods.ON_FORM_SUBMIT,
     methods.TO_RESET_FORM,
+    methods.ON_REFRESH_DEPS,
   ].includes(meta.queryFrom);
 };
 

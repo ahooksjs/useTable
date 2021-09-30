@@ -3,7 +3,7 @@ import { PAYLOAD_SYMBOL, Pipe } from '@ahooksjs/use-table';
 import { IS_FORM_DATA_SUBMITTED } from '../symbol';
 
 const tablePipe: Pipe = (ctx) => {
-  const { meta, [PAYLOAD_SYMBOL]: payload, store } = ctx;
+  const { meta, store, [PAYLOAD_SYMBOL]: payload } = ctx;
   const { stateMap } = store;
   const memoState = stateMap.get();
   const { formState = {} } = memoState;
