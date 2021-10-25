@@ -35,10 +35,14 @@ const useTableSelectionPlugin: TUseTableSelection = (options: IOptions = {}) => 
   return {
     middlewares: (ctx, next) => {
       const isNeedReset = checkIsNeedReset(ctx);
+      const { meta, methods } = ctx;
+      const { queryFrom } = meta;
 
       if (isNeedReset) {
         return next().then(() => {
-          setSelectedRowKeys({ selectedRowKeys: [] });
+          if (![methods.ON_MOUNT, methods.ON_FORM_MOUNT].includes(queryFrom)) {
+            setSelectedRowKeys({ selectedRowKeys: [] });
+          }
         });
       }
 
