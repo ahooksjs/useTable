@@ -197,4 +197,34 @@ describe('useTable#plugin', () => {
     expect((result.current as any).name).toEqual('foo');
     expect((result.current as any).title).toEqual(undefined);
   });
+
+  it('transformer', async () => {
+    const dataSource = [{ name: 'ahooks' }];
+    const TOTAL = 25;
+    const usePlugin = () => {
+      return {
+        middlewares: (ctx, next) => {
+          ctx.params.test = 1;
+          return next();
+        },
+        props: () => ({
+          name: 'foo',
+        }),
+      };
+    };
+
+    const { waitForNextUpdate } = renderHook(() => {
+      const plugin = usePlugin();
+      return useTable(() => service({ dataSource, total: TOTAL }), {
+        transformer: (p) => {
+          expect(p).toEqual({ current: 1, pageSize: 20, test: 1 });
+          return { ...p };
+        },
+        plugins: [plugin],
+      });
+    });
+
+    await waitForNextUpdate();
+    await waitForNextUpdate();
+  });
 });
