@@ -1,6 +1,6 @@
 {
   "name": "@ahooksjs/next-form-table",
-  "version": "0.2.12",
+  "version": "0.2.13-alpha.0",
   "scripts": {
     "build:tsc": "tsc --project tsconfig.build.json --declarationDir ./lib && tsc --project tsconfig.build.json --declarationDir ./es"
   },
@@ -10,7 +10,7 @@
     "react": "^16.12.0"
   },
   "dependencies": {
-    "@ahooksjs/use-form-table": "^0.2.12"
+    "@ahooksjs/use-form-table": "^0.2.13-alpha.0"
   },
   "repository": {
     "type": "git",
