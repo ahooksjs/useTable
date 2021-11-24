@@ -15,8 +15,14 @@ const formPipe: Pipe = (ctx) => {
     ...payload,
   };
 
+  const { current, pageSize, ...formPayload } = (payload as any) || {};
+  /**
+   * 为什么会有这个 IS_FORM_DATA_SUBMITTED 判断呢？
+   * 主要是因为如果 reset 的时候，formState 数据还是老的数据，没有清空
+   * 会导致下一个 query 出现问题。
+   */
   stateMap.set({
-    formState: !meta[IS_FORM_DATA_SUBMITTED] ? formState : { values: payload },
+    formState: !meta[IS_FORM_DATA_SUBMITTED] ? formState : { values: formPayload },
   });
 
   return ctx;

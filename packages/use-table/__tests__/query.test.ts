@@ -160,4 +160,40 @@ describe('useTable#query', () => {
 
     expect(result.current.tableProps.dataSource).toEqual(dataSource);
   });
+
+  it('pagination change', async () => {
+    const dataSource = [{ name: 'ahooks' }];
+    const params = { current: 1, pageSize: 20 };
+    const { result, waitForNextUpdate } = renderHook(() =>
+      useTable((p) => {
+        expect(p).toEqual(params);
+        return service({ dataSource });
+      })
+    );
+    // Loading
+    await waitForNextUpdate();
+    // Response
+    await waitForNextUpdate();
+
+    // Click second page
+    const { onChange } = result.current.paginationProps;
+    params.current = 2;
+    act(() => {
+      onChange(params.current);
+    });
+    await waitForNextUpdate();
+    await waitForNextUpdate();
+    expect(result.current.paginationProps.current).toEqual(2);
+    expect(result.current.paginationProps.pageSize).toEqual(20);
+
+    // Query
+    act(() => {
+      result.current.query();
+    });
+
+    await waitForNextUpdate();
+    await waitForNextUpdate();
+    expect(result.current.paginationProps.current).toEqual(2);
+    expect(result.current.paginationProps.pageSize).toEqual(20);
+  });
 });

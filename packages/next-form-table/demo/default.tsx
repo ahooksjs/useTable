@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { SchemaForm, Field, Submit, Reset, FormButtonGroup } from '@formily/next';
 import { Input } from '@formily/next-components';
 import useNextFormTable from '@ahooksjs/next-form-table';
-import { Table, Pagination } from '@alifd/next';
+import { Table, Pagination, Button } from '@alifd/next';
 
 const list = ({ current, pageSize, ...formData }) => {
   let query = `page=${current}&size=${pageSize}`;
@@ -25,10 +25,18 @@ const list = ({ current, pageSize, ...formData }) => {
 };
 
 const Component = () => {
-  const { formProps, tableProps, paginationProps } = useNextFormTable(list);
+  const { formProps, tableProps, paginationProps, query } = useNextFormTable(list);
 
   return (
     <Fragment>
+      <Button
+        onClick={() => {
+          query();
+        }}
+      >
+        Test
+      </Button>
+
       <SchemaForm {...formProps} components={{ Input }} style={{ marginBottom: 20 }} inline>
         <Field name="name" title="name" x-component={'Input'} />
         <FormButtonGroup>
