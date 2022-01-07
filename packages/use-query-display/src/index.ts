@@ -42,7 +42,8 @@ const usePlugin = (pluginManagerContext: {
   props?: Obj;
   plugins?: Plugins;
 }): Obj => {
-  const pluginManager = useMemo(createPluginManager, []);
+  const pluginManagerRef = useRef(createPluginManager());
+  const pluginManager = pluginManagerRef.current;
 
   useInit(() => {
     pluginManager.context.set(pluginManagerContext);
