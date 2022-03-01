@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import { IUseParamPlugin } from './type';
 
 const getSearchParams = (transform = res => res) => {
@@ -10,8 +9,6 @@ const getSearchParams = (transform = res => res) => {
 };
 
 const useParamPlugin: IUseParamPlugin = transform => {
-  const paramsRef = useRef({});
-
   return {
     middlewares: (ctx, next) => {
       const { actions, methods, meta } = ctx;
@@ -26,14 +23,7 @@ const useParamPlugin: IUseParamPlugin = transform => {
             state.values = { ...params, ...values };
           });
         }
-
-        paramsRef.current = params;
       }
-
-      ctx.params = {
-        ...paramsRef.current,
-        ...ctx.params,
-      };
 
       return next();
     },
