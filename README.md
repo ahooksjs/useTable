@@ -46,10 +46,6 @@ You can find the useTable documentation [on the website](https://usetable-ahooks
 
 [Contributing](./CONTRIBUTING.md)
 
-## Patent
-
-[Patent is pending](https://patents.google.com/patent/CN113296779A/)
-
 ## License
 
 [MIT](./LICENSE)

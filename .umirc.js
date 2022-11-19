@@ -1,4 +1,12 @@
-const json = require('./version.json');
+const safeRequire = (p) => {
+  try {
+    return require(p);
+  } catch (error) {
+    return {};
+  }
+};
+
+const json = safeRequire('./version.json');
 const isDev = process.env.NODE_ENV === 'development';
 const CDN_URL = isDev ? '' : `//npm.elemecdn.com/usetable-ahooks-asset@${json.version}`;
 
@@ -66,5 +74,5 @@ export default {
       { title: 'Changelog', path: 'https://github.com/ahooksjs/useTable/releases' },
     ],
   },
-  headScripts: ['https://v1.cnzz.com/z_stat.php?id=1279207986&web_id=1279207986'],
+  headScripts: ['https://hm.baidu.com/hm.js?4e867a25591e04c869cbebe66a8e997f'],
 };

@@ -46,10 +46,6 @@ import useAntdFormTable from '@ahooksjs/antd-form-table';
 
 [贡献指南](./CONTRIBUTING.zh-CN.md)
 
-## 专利
-
-[专利已经公开，还是审核中](https://patents.google.com/patent/CN113296779A/)
-
 ## License
 
 [MIT](./LICENSE)
